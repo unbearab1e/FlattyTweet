@@ -11,7 +11,7 @@ Flitter: Flat twitter client
 #####TODO:
 1. Complete the interface cleanup
 2. Start a code cleanup (GOTOs and other compiler-generated shit)
-3. Fix support for custom API tokens (Works now but requires to set specific settings to a custom twitter application)
+3. Fix support for custom API tokens (Works now but requires to set specific settings to your custom twitter application)
 4. Impliment autoupdate
 
 [GitHub Page](http://unbearab1e.github.io/Flitter)
