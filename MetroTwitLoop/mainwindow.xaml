@@ -14,670 +14,671 @@
         StateChanged="Window_StateChanged" PreviewMouseDown="Main_PreviewMouseDown" Closed="Main_Closed"
         SizeChanged="Main_SizeChanged" x:Name="Main" Style="{DynamicResource MetroWindow}"
         Title="MetroTwitPlus" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-        MinWidth="480" MinHeight="300" BorderThickness="0" BorderBrush="{DynamicResource ModernBgDarkerBrush}"
+        MinWidth="480" MinHeight="300" BorderThickness="0,0,0,0" Margin="0"  BorderBrush="{DynamicResource ModernBgDarkerBrush}"
         ResizeMode="CanResizeWithGrip" WindowState="{Binding MainWindowState}">
-  <FrameworkElement.Resources>
-    <extensions:NegateBooleanToVisibilityConverter x:Key="negateBooleanToVisibilityConverter"/>
-    <extensions:EmptyCollectionToVisibleConverter x:Key="emptyCollectionToVisibilityConverter"/>
-    <extensions:EmptyCollectionToCollapsedConverter x:Key="emptyCollectionToCollapsedConverter"/>
-    <extensions:CountToOpacityConverter x:Key="countToOpacityConverter" TargetOpacity="0.3"/>
-    <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
-    <extensions:BooleanToVisibilityHiddenConverter x:Key="booleanToVisibilityHiddenConverter"/>
-    <DrawingBrush x:Key="OverlayBrush">
-      <DrawingBrush.Drawing>
-        <DrawingGroup>
-          <GeometryDrawing>
-            <GeometryDrawing.Brush>
-              <SolidColorBrush Color="#FFf35f0e"/>
-            </GeometryDrawing.Brush>
-            <GeometryDrawing.Geometry>
-              <EllipseGeometry Center="8,8" RadiusY="7" RadiusX="7"/>
-            </GeometryDrawing.Geometry>
-            <GeometryDrawing.Pen>
-              <Pen Brush="#FFa13500" Thickness="1"/>
-            </GeometryDrawing.Pen>
-          </GeometryDrawing>
-          <DrawingGroup>
-            <GeometryDrawing Brush="#FFFFFFFF">
-              <GeometryDrawing.Geometry>
-                <GeometryGroup>
-                  <PathGeometry Figures="{Binding Figures}">
-                   
-                  </PathGeometry>
-                </GeometryGroup>
-              </GeometryDrawing.Geometry>
-            </GeometryDrawing>
-          </DrawingGroup>
-        </DrawingGroup>
-      </DrawingBrush.Drawing>
-    </DrawingBrush>
-  </FrameworkElement.Resources>
-  <Window.TaskbarItemInfo>
-    <TaskbarItemInfo>
-      <TaskbarItemInfo.ThumbButtonInfos>
-        <ThumbButtonInfoCollection>
-          <ThumbButtonInfo DismissWhenClicked="false" Description="Refresh" ImageSource="Resources/refresh.png"
+    <FrameworkElement.Resources>
+        <extensions:NegateBooleanToVisibilityConverter x:Key="negateBooleanToVisibilityConverter"/>
+        <extensions:EmptyCollectionToVisibleConverter x:Key="emptyCollectionToVisibilityConverter"/>
+        <extensions:EmptyCollectionToCollapsedConverter x:Key="emptyCollectionToCollapsedConverter"/>
+        <extensions:CountToOpacityConverter x:Key="countToOpacityConverter" TargetOpacity="0.3"/>
+        <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
+        <extensions:BooleanToVisibilityHiddenConverter x:Key="booleanToVisibilityHiddenConverter"/>
+        <DrawingBrush x:Key="OverlayBrush">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <GeometryDrawing>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="#FFf35f0e"/>
+                        </GeometryDrawing.Brush>
+                        <GeometryDrawing.Geometry>
+                            <EllipseGeometry Center="8,8" RadiusY="7" RadiusX="7"/>
+                        </GeometryDrawing.Geometry>
+                        <GeometryDrawing.Pen>
+                            <Pen Brush="#FFa13500" Thickness="1"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <DrawingGroup>
+                        <GeometryDrawing Brush="#FFFFFFFF">
+                            <GeometryDrawing.Geometry>
+                                <GeometryGroup>
+                                    <PathGeometry Figures="{Binding Figures}">
+
+                                    </PathGeometry>
+                                </GeometryGroup>
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+    </FrameworkElement.Resources>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo>
+            <TaskbarItemInfo.ThumbButtonInfos>
+                <ThumbButtonInfoCollection>
+                    <ThumbButtonInfo DismissWhenClicked="false" Description="Refresh" ImageSource="Resources/refresh.png"
                            Command="{Binding RefreshCommand}" CommandTarget="{x:Null}"/>
-        </ThumbButtonInfoCollection>
-      </TaskbarItemInfo.ThumbButtonInfos>
-    </TaskbarItemInfo>
-  </Window.TaskbarItemInfo>
-  <UIElement.InputBindings>
-    <KeyBinding Gesture="F5" Command="{Binding RefreshCommand}"/>
-    <KeyBinding Gesture="CTRL+N" Command="{Binding NewTweetShortcutCommand}"/>
-    <KeyBinding Gesture="CTRL+F" Command="{Binding SearchCommand}"/>
-    <KeyBinding Gesture="CTRL+Z" Command="{Binding UndoTweetCommand}"/>
-    <KeyBinding Gesture="CTRL+TAB" Command="{Binding SwitchAccountCommand}"/>
-    <KeyBinding Gesture="CTRL+SHIFT+TAB" Command="{Binding SwitchAccountCommandBack}"/>
-  </UIElement.InputBindings>
-  <i:Interaction.Behaviors>
-    <b:MetroMainWindowBehavior/>
-    <b:RetweetDialogBehavior/>
-    <b:DialogBehavior DialogType="RetweetError" Caption="retweet failed"
+                </ThumbButtonInfoCollection>
+            </TaskbarItemInfo.ThumbButtonInfos>
+        </TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
+    <UIElement.InputBindings>
+        <KeyBinding Gesture="F5" Command="{Binding RefreshCommand}"/>
+        <KeyBinding Gesture="CTRL+N" Command="{Binding NewTweetShortcutCommand}"/>
+        <KeyBinding Gesture="CTRL+F" Command="{Binding SearchCommand}"/>
+        <KeyBinding Gesture="CTRL+Z" Command="{Binding UndoTweetCommand}"/>
+        <KeyBinding Gesture="CTRL+TAB" Command="{Binding SwitchAccountCommand}"/>
+        <KeyBinding Gesture="CTRL+SHIFT+TAB" Command="{Binding SwitchAccountCommandBack}"/>
+    </UIElement.InputBindings>
+    <i:Interaction.Behaviors>
+        <b:MetroMainWindowBehavior/>
+        <b:RetweetDialogBehavior/>
+        <b:DialogBehavior DialogType="RetweetError" Caption="retweet failed"
                       Text="There was an error retweeting. This may be because the tweet is from a protected account or it has been deleted."
                       Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="LinkOpenError" Caption="opening link failed"
+        <b:DialogBehavior DialogType="LinkOpenError" Caption="opening link failed"
                       Text="The browser is not answering our phone calls. We just want to talk.
 
 Please check the browser for any pending updates and is responding.
 
 Try opening the link again?"
                       Buttons="YesNo" DefaultResult="Yes"/>
-    <b:DialogBehavior DialogType="DeleteTweet" Caption="delete tweet" Text="Delete this tweet? It cannot be recovered."
+        <b:DialogBehavior DialogType="DeleteTweet" Caption="delete tweet" Text="Delete this tweet? It cannot be recovered."
                       Buttons="YesNo" DefaultResult="No"/>
-    <b:DialogBehavior DialogType="DeleteDirectMessage" Caption="delete direct message"
+        <b:DialogBehavior DialogType="DeleteDirectMessage" Caption="delete direct message"
                       Text="Are you sure you want to delete this direct message? It cannot be recovered." Buttons="YesNo"
                       DefaultResult="No"/>
-    <b:DialogBehavior DialogType="UpdateNonInternet" Caption="out of service"
+        <b:DialogBehavior DialogType="UpdateNonInternet" Caption="out of service"
                       Text="We can only check for updates when MetroTwit is being run from an internet-based installation."
                       Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="UpdateDownloadError" Caption="out of service"
+        <b:DialogBehavior DialogType="UpdateDownloadError" Caption="out of service"
                       Text="The update server appears to be down. Please check back soon.
 
 Error: {0}" Buttons="OK"
                       DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="UpdateInstallError" Caption="problem updating"
+        <b:DialogBehavior DialogType="UpdateInstallError" Caption="problem updating"
                       Text="Cannot check for a new version of MetroTwit. This ClickOnce deployment is corrupt.
 Error: {0}"
                       Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="UpdateInvalidError" Caption="square peg, round hole"
+        <b:DialogBehavior DialogType="UpdateInvalidError" Caption="square peg, round hole"
                       Text="We can't update ourselves. It is likely not a ClickOnce application.
 
 Error: {0}"
                       Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="UpdateAvailable" Caption="update available"
+        <b:DialogBehavior DialogType="UpdateAvailable" Caption="update available"
                       Text="An update to MetroTwit is available to improve the application. Download and install the shiny new toy?
 
 View Release Notes before upgrading: {0}"
                       Buttons="YesNo" DefaultResult="Yes"/>
-    <b:DialogBehavior DialogType="UpdateMandatory" Caption="update available"
+        <b:DialogBehavior DialogType="UpdateMandatory" Caption="update available"
                       Text="There is a mandatory update to version {0}." Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="UpdateNone" Caption="no update available"
+        <b:DialogBehavior DialogType="UpdateNone" Caption="no update available"
                       Text="You have the latest version of MetroTwit. Give yourself a pat on the back." Buttons="OK"
                       DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="ColumnExists" Caption="column exists" Text="The column you're adding already exists."
+        <b:DialogBehavior DialogType="ColumnExists" Caption="column exists" Text="The column you're adding already exists."
                       Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="TweetLength" Caption="tweet too long"
+        <b:DialogBehavior DialogType="TweetLength" Caption="tweet too long"
                       Text="Your tweet exceeds the Twitter character limit. Please shorten it a little, pretty please."
                       Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="DeleteFriendship" Caption="unfollow {0}"
+        <b:DialogBehavior DialogType="DeleteFriendship" Caption="unfollow {0}"
                       Text="Unfollow {0} from your Twitter friends? This might hurt their feelings." Buttons="YesNo"
                       DefaultResult="Yes"/>
-    <b:DialogBehavior DialogType="FollowSelf" Caption="can't follow yourself"
+        <b:DialogBehavior DialogType="FollowSelf" Caption="can't follow yourself"
                       Text="You should make friends with other people." Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="ImageUploadError" Caption="upload failed"
+        <b:DialogBehavior DialogType="ImageUploadError" Caption="upload failed"
                       Text="We're having trouble uploading the images in your tweet" Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="ConfigError" Caption="we bumped our head"
+        <b:DialogBehavior DialogType="ConfigError" Caption="we bumped our head"
                       Text="We ran into an issue and lost your settings. Unfortunately you will have to sign to Twitter again. We're sorry :("
                       Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="SignInTwitterError" Caption="twitter sign in failed"
+        <b:DialogBehavior DialogType="SignInTwitterError" Caption="twitter sign in failed"
                       Text="We knocked many times but Twitter isn't home. A black hole may have sucked it into the void."
                       Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="SignInRateLimitError" Caption="twitter rate limited"
+        <b:DialogBehavior DialogType="SignInRateLimitError" Caption="twitter rate limited"
                       Text="You have used up all of your Twitter API rate limit.
 Twitter will reset your quota at {0}, please try again after that."
                       Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="SignInOverCapacityError" Caption="twitter over capacity"
+        <b:DialogBehavior DialogType="SignInOverCapacityError" Caption="twitter over capacity"
                       Text="Twitter appears to be very busy and is not responding. Please cross your fingers and try again."
                       Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="SignInUnknownError" Caption="unable to sign in" Text="Error: {0}" Buttons="OK"
+        <b:DialogBehavior DialogType="SignInUnknownError" Caption="unable to sign in" Text="Error: {0}" Buttons="OK"
                       DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="SignInTwitterDownError" Caption="twitter is down"
+        <b:DialogBehavior DialogType="SignInTwitterDownError" Caption="twitter is down"
                       Text="Twitter has completely derailed. SkyNet may have taken over. Good luck." Buttons="OK"
                       DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="SignInUnauthorisedError" Caption="unauthorized"
+        <b:DialogBehavior DialogType="SignInUnauthorisedError" Caption="unauthorized"
                       Text="Our access to your Twitter account may have been revoked or your account is deactivated.
 
 Would you like to forget this account and sign in?"
                       Buttons="YesNo" DefaultResult="Yes"/>
-    <b:DialogBehavior DialogType="SignInProxyError" Caption="proxy authorization"
+        <b:DialogBehavior DialogType="SignInProxyError" Caption="proxy authorization"
                       Text="We couldn't get past your bouncer. If your proxy requires a username and password, add it to network settings and then restart the app.
 
 Would you like to open settings now?"
                       Buttons="YesNo" DefaultResult="Yes"/>
-    <b:DialogBehavior DialogType="TwitterAccessLevelReAuth" Caption="twitter access changed"
+        <b:DialogBehavior DialogType="TwitterAccessLevelReAuth" Caption="twitter access changed"
                       Text="Twitter has recently changed the access levels for all third-party apps.
 
 To provide you all the functionality in MetroTwit, please reauthenticate your Twitter account."
                       Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="ClearNest" Caption="remove all nest data"
+        <b:DialogBehavior DialogType="ClearNest" Caption="remove all nest data"
                       Text="This will remove any synced data on the Nest service for your account, across all clients and devices. Remove all Nest Data?"
                       Buttons="YesNo" DefaultResult="No"/>
-    <b:NonModalDialogBehavior DialogType="ThemeChange" Caption="changing themes"
+        <b:NonModalDialogBehavior DialogType="ThemeChange" Caption="changing themes"
                               Text="Please wait while the pixels get undressed. No peeking."/>
-    <b:DialogBehavior DialogType="PlusVerifyError" Caption="metrotwit plus verify failed"
+        <b:DialogBehavior DialogType="PlusVerifyError" Caption="metrotwit plus verify failed"
                       Text="There was an error verifying your account. Please check the details in settings."
                       Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="MetroTwitServerError" Caption="metrotwit server problems"
+        <b:DialogBehavior DialogType="MetroTwitServerError" Caption="metrotwit server problems"
                       Text="There was an error talking to the MetroTwit server. We'll send in the pixel engineers immediately."
                       Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="UndoTweetConfirmation" Caption="undo tweet"
+        <b:DialogBehavior DialogType="UndoTweetConfirmation" Caption="undo tweet"
                       Text="Do you want to bring out the DeLorean and go back in time before your last tweet?"
                       Buttons="YesNo" DefaultResult="No"/>
-    <b:DialogBehavior DialogType="NothingToUndo" Caption="nothing to undo"
+        <b:DialogBehavior DialogType="NothingToUndo" Caption="nothing to undo"
                       Text="Nope, history doesn't stretch that far..." Buttons="OK" DefaultResult="OK"/>
-    <b:DialogBehavior DialogType="NotPlusMultiAccount" Caption="we need more power, captain"
+        <b:DialogBehavior DialogType="NotPlusMultiAccount" Caption="we need more power, captain"
                       Text="Multiple accounts support requires an upgrade to MetroTwit Plus.
 Go to http://www.metrotwit.com/plus/ for more details."
                       Buttons="OK" DefaultResult="OK"/>
-    <b:UpdateDialogBehavior/>
-    <b:GeoDialogBehavior/>
-    <b:MediaPreviewDialogBehavior/>
-    <b:LoginDialogBehavior/>
-  </i:Interaction.Behaviors>
-    <Grid x:Name="LayoutRoot" Background="{DynamicResource ModernBgDarkerBrush}" KeyboardNavigation.TabNavigation="None">
-    <Grid x:Name="mainContainer" FocusVisualStyle="{x:Null}">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="Auto"/>
-        <ColumnDefinition/>
-      </Grid.ColumnDefinitions>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition/>
-      </Grid.RowDefinitions>
-      <Grid x:Name="leftPaneContainer" Column="0" RowSpan="2" Visibility="{Binding LeftPaneVisible}">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="*"/>
-          <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Canvas x:Name="leftPaneContainerBg" Grid.RowSpan="3">
-          <Panel.Background>
-            <SolidColorBrush Color="{DynamicResource MetroColorFeature}" Opacity="1"/>
-          </Panel.Background>
-        </Canvas>
-        <Canvas x:Name="leftPaneContainerArt" Grid.RowSpan="3" Visibility="{Binding ArtworkVisibility}">
-          <Panel.Background>
-            <ImageBrush Stretch="UniformToFill" Opacity="0.1"
+        <b:UpdateDialogBehavior/>
+        <b:GeoDialogBehavior/>
+        <b:MediaPreviewDialogBehavior/>
+        <b:LoginDialogBehavior/>
+    </i:Interaction.Behaviors>
+
+    <Grid x:Name="LayoutRoot" Margin="0" Background="{DynamicResource ModernBgDarkerBrush}" KeyboardNavigation.TabNavigation="None">
+        <Grid x:Name="mainContainer" FocusVisualStyle="{x:Null}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="leftPaneContainer" Column="0" RowSpan="2" Visibility="{Binding LeftPaneVisible}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Canvas x:Name="leftPaneContainerBg" Grid.RowSpan="3">
+                    <Panel.Background>
+                        <SolidColorBrush Color="{DynamicResource MetroColorFeature}" Opacity="1"/>
+                    </Panel.Background>
+                </Canvas>
+                <Canvas x:Name="leftPaneContainerArt" Grid.RowSpan="3" Visibility="{Binding ArtworkVisibility}">
+                    <Panel.Background>
+                        <ImageBrush Stretch="UniformToFill" Opacity="0.1"
                         ImageSource="{Binding ArtworkImage, Converter={StaticResource nullImageConverter}}"/>
-          </Panel.Background>
-        </Canvas>
-        <StackPanel Grid.Row="0"
+                    </Panel.Background>
+                </Canvas>
+                <StackPanel Grid.Row="0"
                     Visibility="{Binding Source={x:Static Application.Current}, Path=AppState.ShowCompactAccountPane, Converter={StaticResource booleanToVisibilityConverter}}">
-          <Button Click="SettingsButton_Click" x:Name="compactSettingsButton"
+                    <Button Click="SettingsButton_Click" x:Name="compactSettingsButton"
                   Style="{DynamicResource MetroPathButton2}" VerticalAlignment="Top" ToolTip="MetroTwit settings"
                   Height="35" shell:WindowChrome.IsHitTestVisibleInChrome="true"
                   Width="{Binding Source={x:Static Application.Current}, Path=AppState.CompactModeWidth}">
-            <Grid Name="compactSettingsButtonBackground" Background="{DynamicResource ModernFeatureBrush}"
+                        <Grid Name="compactSettingsButtonBackground" Background="{DynamicResource ModernFeatureBrush}"
                   shell:WindowChrome.IsHitTestVisibleInChrome="true">
-              <Path Stretch="Uniform" Height="18" Width="20" Fill="{DynamicResource ModernContrastBrush}"
+                            <Path Stretch="Uniform" Height="18" Width="20" Fill="{DynamicResource ModernContrastBrush}"
                     Data="{StaticResource PathSettings}"/>
-            </Grid>
-          </Button>
-        </StackPanel>
-        <StackPanel Grid.Row="0"
+                        </Grid>
+                    </Button>
+                </StackPanel>
+                <StackPanel Grid.Row="0"
                     Visibility="{Binding Source={x:Static Application.Current}, Path=AppState.ShowCompactAccountPane, Converter={StaticResource negateBooleanToVisibilityConverter}}">
-          <Button Click="SettingsButton_Click" x:Name="fullSettingsButton" Style="{DynamicResource MetroPathButton2}"
+                    <Button Click="SettingsButton_Click" x:Name="fullSettingsButton" Style="{DynamicResource MetroPathButton2}"
                   VerticalAlignment="Top" ToolTip="MetroTwit settings" Height="35"
                   shell:WindowChrome.IsHitTestVisibleInChrome="true"
                   Width="{Binding Source={x:Static Application.Current}, Path=AppState.FullModeWidth}">
-            <Grid Background="{DynamicResource ModernFeatureBrush}" shell:WindowChrome.IsHitTestVisibleInChrome="true">
-              <StackPanel x:Name="fullSettingsButtonBackground" Orientation="Horizontal" HorizontalAlignment="Center"
+                        <Grid Background="{DynamicResource ModernFeatureBrush}" shell:WindowChrome.IsHitTestVisibleInChrome="true">
+                            <StackPanel x:Name="fullSettingsButtonBackground" Orientation="Horizontal" HorizontalAlignment="Center"
                           VerticalAlignment="Center">
-                <Path Stretch="Uniform" Height="12" Fill="{DynamicResource ModernContrastBrush}" Margin="0,0,5,0"
+                                <Path Stretch="Uniform" Height="12" Fill="{DynamicResource ModernContrastBrush}" Margin="0,0,5,0"
                       Data="{StaticResource PathSettings}"/>
-                <TextBlock Text="MetroTwitPlus" Foreground="{DynamicResource ModernContrastBrush}" Margin="0" FontSize="13"
+                                <TextBlock Text="MetroTwitPlus" Foreground="{DynamicResource ModernContrastBrush}" Margin="0" FontSize="13"
                            FontWeight="SemiBold"/>
-              </StackPanel>
-            </Grid>
-          </Button>
-        </StackPanel>
-        <ScrollViewer x:Name="AccountsScrollViewer" Grid.Row="1" Margin="0,0,0,0">
-          <FrameworkElement.Resources>
-            <Style TargetType="{x:Type RepeatButton}">
-              <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="true"/>
-              <Setter Property="Control.Background" Value="Transparent"/>
-              <Setter Property="UIElement.Opacity" Value="0.6"/>
-              <Setter Property="Control.Template">
-                <Setter.Value>
-                  <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Grid Background="{TemplateBinding Control.Background}">
-                      <ContentPresenter/>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                      <Trigger Property="UIElement.IsMouseOver" Value="true">
-                        <Setter Property="UIElement.Opacity" Value="1"/>
-                      </Trigger>
-                    </ControlTemplate.Triggers>
-                  </ControlTemplate>
-                </Setter.Value>
-              </Setter>
-            </Style>
-            <Style x:Key="AccountsVerticalScrollBar" TargetType="{x:Type ScrollBar}">
-              <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
-              <Setter Property="Stylus.IsFlicksEnabled" Value="false"/>
-              <Setter Property="Control.Background" Value="Transparent"/>
-              <Setter Property="Control.BorderBrush" Value="Transparent"/>
-              <Setter Property="Control.BorderThickness" Value="0"/>
-              <Setter Property="Control.Template">
-                <Setter.Value>
-                  <ControlTemplate TargetType="{x:Type ScrollBar}">
-                    <Grid x:Name="Bg" SnapsToDevicePixels="true">
-                      <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="30"/>
-                      </Grid.RowDefinitions>
-                      <RepeatButton x:Name="PART_LineUpButton" Command="{x:Static ScrollBar.LineUpCommand}"
+                            </StackPanel>
+                        </Grid>
+                    </Button>
+                </StackPanel>
+                <ScrollViewer x:Name="AccountsScrollViewer" Grid.Row="1" Margin="0,0,0,0">
+                    <FrameworkElement.Resources>
+                        <Style TargetType="{x:Type RepeatButton}">
+                            <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="true"/>
+                            <Setter Property="Control.Background" Value="Transparent"/>
+                            <Setter Property="UIElement.Opacity" Value="0.6"/>
+                            <Setter Property="Control.Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                        <Grid Background="{TemplateBinding Control.Background}">
+                                            <ContentPresenter/>
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="UIElement.IsMouseOver" Value="true">
+                                                <Setter Property="UIElement.Opacity" Value="1"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                        <Style x:Key="AccountsVerticalScrollBar" TargetType="{x:Type ScrollBar}">
+                            <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
+                            <Setter Property="Stylus.IsFlicksEnabled" Value="false"/>
+                            <Setter Property="Control.Background" Value="Transparent"/>
+                            <Setter Property="Control.BorderBrush" Value="Transparent"/>
+                            <Setter Property="Control.BorderThickness" Value="0"/>
+                            <Setter Property="Control.Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                                        <Grid x:Name="Bg" SnapsToDevicePixels="true">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="30"/>
+                                            </Grid.RowDefinitions>
+                                            <RepeatButton x:Name="PART_LineUpButton" Command="{x:Static ScrollBar.LineUpCommand}"
                                     IsEnabled="{TemplateBinding UIElement.IsMouseOver}" Height="28" VerticalAlignment="Center"
                                     HorizontalAlignment="Stretch">
-                        <Path x:Name="ArrowTop"
+                                                <Path x:Name="ArrowTop"
                               Data="M 0,4 C 0,4 0,6 0,6 0,6 3.5,2.5 3.5,2.5 3.5,2.5 7,6 7,6 7,6 7,4 7,4 7,4 3.5,0.5 3.5,0.5 3.5,0.5 0,4 0,4 Z"
                               Fill="{StaticResource MetroMainButtons}" Margin="3,4,3,3" Width="12" Stretch="Uniform"/>
-                      </RepeatButton>
-                      <RepeatButton x:Name="PART_LineDownButton" Command="{x:Static ScrollBar.LineDownCommand}"
+                                            </RepeatButton>
+                                            <RepeatButton x:Name="PART_LineDownButton" Command="{x:Static ScrollBar.LineDownCommand}"
                                     IsEnabled="{TemplateBinding UIElement.IsMouseOver}" Grid.Row="2" Height="28"
                                     VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                        <Path x:Name="ArrowBottom"
+                                                <Path x:Name="ArrowBottom"
                               Data="M 0,2.5 C 0,2.5 0,0.5 0,0.5 0,0.5 3.5,4 3.5,4 3.5,4 7,0.5 7,0.5 7,0.5 7,2.5 7,2.5 7,2.5 3.5,6 3.5,6 3.5,6 0,2.5 0,2.5 Z"
                               Fill="{StaticResource MetroMainButtons}" Margin="3,4,3,3" Width="12" Stretch="Uniform"/>
-                      </RepeatButton>
-                    </Grid>
-                  </ControlTemplate>
-                </Setter.Value>
-              </Setter>
-            </Style>
-            <Style TargetType="{x:Type ScrollViewer}">
-              <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="true"/>
-              <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-              <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
-              <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}"/>
-              <Setter Property="Control.Template">
-                <Setter.Value>
-                  <ControlTemplate TargetType="{x:Type ScrollViewer}">
-                    <Grid>
-                      <Grid.RowDefinitions>
-                        <RowDefinition x:Name="scrollbarFirstRow" Height="0"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition x:Name="scrollbarThirdRow" Height="0"/>
-                      </Grid.RowDefinitions>
-                      <ScrollBar x:Name="PART_VerticalScrollBar" Grid.RowSpan="3"
+                                            </RepeatButton>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                        <Style TargetType="{x:Type ScrollViewer}">
+                            <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="true"/>
+                            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+                            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+                            <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}"/>
+                            <Setter Property="Control.Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition x:Name="scrollbarFirstRow" Height="0"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition x:Name="scrollbarThirdRow" Height="0"/>
+                                            </Grid.RowDefinitions>
+                                            <ScrollBar x:Name="PART_VerticalScrollBar" Grid.RowSpan="3"
                                  AutomationProperties.AutomationId="VerticalScrollBar"
                                  Style="{StaticResource AccountsVerticalScrollBar}" Cursor="Arrow" Grid.Column="1"
                                  Maximum="{TemplateBinding ScrollViewer.ScrollableHeight}" Minimum="0"
                                  Visibility="{TemplateBinding ScrollViewer.ComputedVerticalScrollBarVisibility}" Width="Auto"
                                  ViewportSize="{TemplateBinding ScrollViewer.ViewportHeight}"
                                  Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"/>
-                      <ScrollContentPresenter Grid.Row="1"/>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                      <Trigger Property="ScrollViewer.ComputedVerticalScrollBarVisibility" Value="Visible">
-                        <Setter TargetName="scrollbarFirstRow" Property="RowDefinition.Height" Value="30"/>
-                        <Setter TargetName="scrollbarThirdRow" Property="RowDefinition.Height" Value="30"/>
-                      </Trigger>
-                    </ControlTemplate.Triggers>
-                  </ControlTemplate>
-                </Setter.Value>
-              </Setter>
-            </Style>
-          </FrameworkElement.Resources>
-          <Grid Margin="1,0,0,0">
-            <Rectangle x:Name="accountArrowIndicator" Visibility="Hidden" Grid.RowSpan="2" HorizontalAlignment="Right"
+                                            <ScrollContentPresenter Grid.Row="1"/>
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="ScrollViewer.ComputedVerticalScrollBarVisibility" Value="Visible">
+                                                <Setter TargetName="scrollbarFirstRow" Property="RowDefinition.Height" Value="30"/>
+                                                <Setter TargetName="scrollbarThirdRow" Property="RowDefinition.Height" Value="30"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </FrameworkElement.Resources>
+                    <Grid Margin="1,0,0,0">
+                        <Rectangle x:Name="accountArrowIndicator" Visibility="Hidden" Grid.RowSpan="2" HorizontalAlignment="Right"
                        VerticalAlignment="Top" Width="1" Height="1"/>
-            <ItemsControl x:Name="accountProfilesList"
+                        <ItemsControl x:Name="accountProfilesList"
                           ItemsSource="{Binding Source={x:Static Application.Current}, Path=AppState.Accounts}">
-              <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                  <Grid x:Name="layoutContainer" Background="Transparent">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid x:Name="layoutContainer" Background="Transparent">
                                         <Rectangle x:Name="AccountBg" Fill="{DynamicResource ModernBgDarkerBrush}" Opacity="1" Visibility="Collapsed"/>
-                    <StackPanel Margin="12">
-                      <StackPanel x:Name="CompactLayout" Margin="0,0,0,20"
+                                        <StackPanel Margin="12">
+                                            <StackPanel x:Name="CompactLayout" Margin="0,0,0,20"
                                   Visibility="{Binding Source={x:Static Application.Current}, Path=AppState.ShowCompactAccountPane, Converter={StaticResource booleanToVisibilityConverter}}">
-                        <FrameworkElement.ContextMenu>
-                          <ContextMenu>
-                            <MenuItem Header="Switch to this account" Command="{Binding SwitchToThisAccountCommand}"/>
-                            <Separator/>
-                            <MenuItem Header="Edit account" Command="{Binding ManageAccountCommand}"/>
-                          </ContextMenu>
-                        </FrameworkElement.ContextMenu>
-                        <Button x:Name="CompactUserAvatar" Style="{DynamicResource MetroOverlayButton}" Cursor="Hand" Height="30"
+                                                <FrameworkElement.ContextMenu>
+                                                    <ContextMenu>
+                                                        <MenuItem Header="Switch to this account" Command="{Binding SwitchToThisAccountCommand}"/>
+                                                        <Separator/>
+                                                        <MenuItem Header="Edit account" Command="{Binding ManageAccountCommand}"/>
+                                                    </ContextMenu>
+                                                </FrameworkElement.ContextMenu>
+                                                <Button x:Name="CompactUserAvatar" Style="{DynamicResource MetroOverlayButton}" Cursor="Hand" Height="30"
                                 Width="30" Command="{Binding TwitterUserNameCommand}">
-                          <Canvas Width="30" Height="30">
-                            <Panel.Background>
-                              <ImageBrush>
-                                <ImageBrush.ImageSource>
-                                  <PriorityBinding TargetNullValue="{StaticResource DefaultImageSource}">
-                                    <Binding Path="TwitterUserImage" IsAsync="true" Converter="{StaticResource nullImageConverter}"/>
-                                    <Binding Path="UserDefaultImage" IsAsync="true" Converter="{StaticResource nullImageConverter}"/>
-                                  </PriorityBinding>
-                                </ImageBrush.ImageSource>
-                              </ImageBrush>
-                            </Panel.Background>
-                          </Canvas>
-                        </Button>
-                        <StackPanel x:Name="CompactDockedColumns">
-                          <Button Style="{DynamicResource MetroPathButton2}" Cursor="Hand" Margin="0,8,0,0" Height="24"
+                                                    <Canvas Width="30" Height="30">
+                                                        <Panel.Background>
+                                                            <ImageBrush>
+                                                                <ImageBrush.ImageSource>
+                                                                    <PriorityBinding TargetNullValue="{StaticResource DefaultImageSource}">
+                                                                        <Binding Path="TwitterUserImage" IsAsync="true" Converter="{StaticResource nullImageConverter}"/>
+                                                                        <Binding Path="UserDefaultImage" IsAsync="true" Converter="{StaticResource nullImageConverter}"/>
+                                                                    </PriorityBinding>
+                                                                </ImageBrush.ImageSource>
+                                                            </ImageBrush>
+                                                        </Panel.Background>
+                                                    </Canvas>
+                                                </Button>
+                                                <StackPanel x:Name="CompactDockedColumns">
+                                                    <Button Style="{DynamicResource MetroPathButton2}" Cursor="Hand" Margin="0,8,0,0" Height="24"
                                   ToolTip="Friends" Command="{Binding FriendsCommand}"
                                   Opacity="{Binding TwitViewModel.FriendsVM.TweetCount, Converter={StaticResource countToOpacityConverter}}">
-                            <Grid>
-                              <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="24"/>
-                                <ColumnDefinition Width="16"/>
-                              </Grid.ColumnDefinitions>
-                              <Path Grid.Column="0" Width="16" Height="11" Stretch="Fill"
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="24"/>
+                                                                <ColumnDefinition Width="16"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Path Grid.Column="0" Width="16" Height="11" Stretch="Fill"
                                     Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathGroupPeople}"/>
-                              <TextBlock Grid.Column="1" Margin="0,1,0,0" FontWeight="SemiBold" FontSize="14"
+                                                            <TextBlock Grid.Column="1" Margin="0,1,0,0" FontWeight="SemiBold" FontSize="14"
                                          Foreground="{DynamicResource ModernFeatureBrush}"
                                          Text="{Binding TwitViewModel.FriendsVM.TweetCount, TargetNullValue=-}"/>
-                            </Grid>
-                          </Button>
-                          <Button Style="{DynamicResource MetroPathButton2}" Cursor="Hand" Margin="0,8,0,0" Height="24"
+                                                        </Grid>
+                                                    </Button>
+                                                    <Button Style="{DynamicResource MetroPathButton2}" Cursor="Hand" Margin="0,8,0,0" Height="24"
                                   ToolTip="Mentions" Command="{Binding MentionsCommand}"
                                   Opacity="{Binding TwitViewModel.MentionsVM.TweetCount, Converter={StaticResource countToOpacityConverter}}">
-                            <Grid>
-                              <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="24"/>
-                                <ColumnDefinition Width="16"/>
-                              </Grid.ColumnDefinitions>
-                              <Path Width="14" Height="14" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="24"/>
+                                                                <ColumnDefinition Width="16"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Path Width="14" Height="14" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
                                     Data="{StaticResource PathMention}"/>
-                              <TextBlock Grid.Column="1" Margin="0,1,0,0" FontWeight="SemiBold" FontSize="14"
+                                                            <TextBlock Grid.Column="1" Margin="0,1,0,0" FontWeight="SemiBold" FontSize="14"
                                          Foreground="{DynamicResource ModernFeatureBrush}"
                                          Text="{Binding TwitViewModel.MentionsVM.TweetCount, TargetNullValue=-}"/>
-                            </Grid>
-                          </Button>
-                          <Button Style="{DynamicResource MetroPathButton2}" Cursor="Hand" Margin="0,8,0,0" Height="24"
+                                                        </Grid>
+                                                    </Button>
+                                                    <Button Style="{DynamicResource MetroPathButton2}" Cursor="Hand" Margin="0,8,0,0" Height="24"
                                   ToolTip="Direct Messages" Command="{Binding DirectMessagesCommand}"
                                   Opacity="{Binding TwitViewModel.DirectMessagesVM.TweetCount, Converter={StaticResource countToOpacityConverter}}">
-                            <Grid>
-                              <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="24"/>
-                                <ColumnDefinition Width="16"/>
-                              </Grid.ColumnDefinitions>
-                              <Path Width="16" Height="11" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="24"/>
+                                                                <ColumnDefinition Width="16"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Path Width="16" Height="11" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
                                     Data="{StaticResource PathDirectMessage}"/>
-                              <TextBlock Grid.Column="1" Margin="0,1,0,0" FontWeight="SemiBold" FontSize="14"
+                                                            <TextBlock Grid.Column="1" Margin="0,1,0,0" FontWeight="SemiBold" FontSize="14"
                                          Foreground="{DynamicResource ModernFeatureBrush}"
                                          Text="{Binding TwitViewModel.DirectMessagesVM.TweetCount, TargetNullValue=-}"/>
-                            </Grid>
-                          </Button>
-                          <Button Style="{DynamicResource MetroPathButton2}" Cursor="Hand" Margin="0,8,0,0" Height="24"
+                                                        </Grid>
+                                                    </Button>
+                                                    <Button Style="{DynamicResource MetroPathButton2}" Cursor="Hand" Margin="0,8,0,0" Height="24"
                                   ToolTip="Activities &amp; Requests" Command="{Binding ActivitiesCommand}"
                                   Opacity="{Binding UnreadActivtiesCount, Converter={StaticResource countToOpacityConverter}}">
-                            <Grid>
-                              <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="24"/>
-                                <ColumnDefinition Width="16"/>
-                              </Grid.ColumnDefinitions>
-                              <Path Width="14" Height="12" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="24"/>
+                                                                <ColumnDefinition Width="16"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Path Width="14" Height="12" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
                                     Data="{StaticResource PathNotifications}"/>
-                              <TextBlock Grid.Column="1" Margin="0,1,0,0" FontWeight="SemiBold" FontSize="14"
+                                                            <TextBlock Grid.Column="1" Margin="0,1,0,0" FontWeight="SemiBold" FontSize="14"
                                          Foreground="{DynamicResource ModernFeatureBrush}"
                                          Text="{Binding UnreadActivtiesCount, TargetNullValue=-}"/>
-                            </Grid>
-                          </Button>
-                        </StackPanel>
-                      </StackPanel>
-                      <StackPanel x:Name="FullLayout"
+                                                        </Grid>
+                                                    </Button>
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <StackPanel x:Name="FullLayout"
                                   Visibility="{Binding Source={x:Static Application.Current}, Path=AppState.ShowCompactAccountPane, Converter={StaticResource negateBooleanToVisibilityConverter}}">
-                        <Button x:Name="FullUserName" Style="{DynamicResource MetroPathButton2}" Cursor="Hand"
+                                                <Button x:Name="FullUserName" Style="{DynamicResource MetroPathButton2}" Cursor="Hand"
                                 FocusVisualStyle="{x:Null}" Command="{Binding TwitterUserNameCommand}">
-                          <Grid>
-                            <Grid.ColumnDefinitions>
-                              <ColumnDefinition Width="Auto"/>
-                              <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Canvas x:Name="FullUserAvatar" Width="24" Height="24">
-                              <Panel.Background>
-                                <ImageBrush>
-                                  <ImageBrush.ImageSource>
-                                    <PriorityBinding TargetNullValue="{StaticResource DefaultImageSource}">
-                                      <Binding Path="TwitterUserImage" IsAsync="true" Converter="{StaticResource nullImageConverter}"/>
-                                      <Binding Path="UserDefaultImage" IsAsync="true" Converter="{StaticResource nullImageConverter}"/>
-                                    </PriorityBinding>
-                                  </ImageBrush.ImageSource>
-                                </ImageBrush>
-                              </Panel.Background>
-                            </Canvas>
-                            <TextBlock Grid.Column="1" Foreground="{DynamicResource MetroHeadingColorDark}" FontSize="15"
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <ColumnDefinition/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Canvas x:Name="FullUserAvatar" Width="24" Height="24">
+                                                            <Panel.Background>
+                                                                <ImageBrush>
+                                                                    <ImageBrush.ImageSource>
+                                                                        <PriorityBinding TargetNullValue="{StaticResource DefaultImageSource}">
+                                                                            <Binding Path="TwitterUserImage" IsAsync="true" Converter="{StaticResource nullImageConverter}"/>
+                                                                            <Binding Path="UserDefaultImage" IsAsync="true" Converter="{StaticResource nullImageConverter}"/>
+                                                                        </PriorityBinding>
+                                                                    </ImageBrush.ImageSource>
+                                                                </ImageBrush>
+                                                            </Panel.Background>
+                                                        </Canvas>
+                                                        <TextBlock Grid.Column="1" Foreground="{DynamicResource MetroHeadingColorDark}" FontSize="15"
                                        FontWeight="SemiBold" TextTrimming="CharacterEllipsis" Margin="10,0,0,0"
                                        Text="{Binding TwitterAccountName}"/>
-                          </Grid>
-                        </Button>
-                        <StackPanel x:Name="FullDockedColumns" Margin="0,0,0,0">
-                          <Button Height="24" Margin="0,8,0,0" Style="{DynamicResource MetroPathButton2}" Cursor="Hand"
+                                                    </Grid>
+                                                </Button>
+                                                <StackPanel x:Name="FullDockedColumns" Margin="0,0,0,0">
+                                                    <Button Height="24" Margin="0,8,0,0" Style="{DynamicResource MetroPathButton2}" Cursor="Hand"
                                   ToolTip="Friends" FocusVisualStyle="{x:Null}" Command="{Binding FriendsCommand}"
                                   Opacity="{Binding TwitViewModel.FriendsVM.TweetCount, Converter={StaticResource countToOpacityConverter}, TargetNullValue=0, FallbackValue=0}">
-                            <Grid>
-                              <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="24"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                              </Grid.ColumnDefinitions>
-                              <Path Grid.Column="0" Width="16" Height="11" Stretch="Fill"
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="24"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Path Grid.Column="0" Width="16" Height="11" Stretch="Fill"
                                     Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathGroupPeople}"/>
-                              <TextBlock Grid.Column="1" Margin="10,0" FontSize="14" Foreground="{DynamicResource MetroHeadingColorDark}"
+                                                            <TextBlock Grid.Column="1" Margin="10,0" FontSize="14" Foreground="{DynamicResource MetroHeadingColorDark}"
                                          TextTrimming="CharacterEllipsis">timeline</TextBlock>
-                              <TextBlock Grid.Column="2" FontWeight="SemiBold" FontSize="14"
+                                                            <TextBlock Grid.Column="2" FontWeight="SemiBold" FontSize="14"
                                          Foreground="{DynamicResource ModernFeatureBrush}"
                                          Text="{Binding TwitViewModel.FriendsVM.TweetCount}"/>
-                            </Grid>
-                          </Button>
-                          <Button Height="24" Margin="0,8,0,0" Style="{DynamicResource MetroPathButton2}" Cursor="Hand"
+                                                        </Grid>
+                                                    </Button>
+                                                    <Button Height="24" Margin="0,8,0,0" Style="{DynamicResource MetroPathButton2}" Cursor="Hand"
                                   ToolTip="Mentions" FocusVisualStyle="{x:Null}" Command="{Binding MentionsCommand}"
                                   Opacity="{Binding TwitViewModel.MentionsVM.TweetCount, Converter={StaticResource countToOpacityConverter}, TargetNullValue=0, FallbackValue=0}">
-                            <Grid>
-                              <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="24"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                              </Grid.ColumnDefinitions>
-                              <Path Width="14" Height="14" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="24"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Path Width="14" Height="14" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
                                     Data="{StaticResource PathMention}"/>
-                              <TextBlock Grid.Column="1" Margin="10,0" FontSize="14" Foreground="{DynamicResource MetroHeadingColorDark}"
+                                                            <TextBlock Grid.Column="1" Margin="10,0" FontSize="14" Foreground="{DynamicResource MetroHeadingColorDark}"
                                          TextTrimming="CharacterEllipsis">mentions</TextBlock>
-                              <TextBlock Grid.Column="2" FontWeight="SemiBold" FontSize="14"
+                                                            <TextBlock Grid.Column="2" FontWeight="SemiBold" FontSize="14"
                                          Foreground="{DynamicResource ModernFeatureBrush}"
                                          Text="{Binding TwitViewModel.MentionsVM.TweetCount}"/>
-                            </Grid>
-                          </Button>
-                          <Button Height="24" Margin="0,8,0,0" Style="{DynamicResource MetroPathButton2}" Cursor="Hand"
+                                                        </Grid>
+                                                    </Button>
+                                                    <Button Height="24" Margin="0,8,0,0" Style="{DynamicResource MetroPathButton2}" Cursor="Hand"
                                   ToolTip="Direct Messages" FocusVisualStyle="{x:Null}" Command="{Binding DirectMessagesCommand}"
                                   Opacity="{Binding TwitViewModel.DirectMessagesVM.TweetCount, Converter={StaticResource countToOpacityConverter}, TargetNullValue=0, FallbackValue=0}">
-                            <Grid>
-                              <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="24"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                              </Grid.ColumnDefinitions>
-                              <Path Width="16" Height="11" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="24"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Path Width="16" Height="11" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
                                     Data="{StaticResource PathDirectMessage}"/>
-                              <TextBlock Grid.Column="1" Margin="10,0" FontSize="14" Foreground="{DynamicResource MetroHeadingColorDark}"
+                                                            <TextBlock Grid.Column="1" Margin="10,0" FontSize="14" Foreground="{DynamicResource MetroHeadingColorDark}"
                                          TextTrimming="CharacterEllipsis">messages</TextBlock>
-                              <TextBlock Grid.Column="2" FontWeight="SemiBold" FontSize="14"
+                                                            <TextBlock Grid.Column="2" FontWeight="SemiBold" FontSize="14"
                                          Foreground="{DynamicResource ModernFeatureBrush}"
                                          Text="{Binding TwitViewModel.DirectMessagesVM.TweetCount}"/>
-                            </Grid>
-                          </Button>
-                          <Button Height="24" Margin="0,8,0,0" Style="{DynamicResource MetroPathButton2}" Cursor="Hand"
+                                                        </Grid>
+                                                    </Button>
+                                                    <Button Height="24" Margin="0,8,0,0" Style="{DynamicResource MetroPathButton2}" Cursor="Hand"
                                   ToolTip="Activities &amp; Requests" FocusVisualStyle="{x:Null}"
                                   Command="{Binding ActivitiesCommand}"
                                   Opacity="{Binding UnreadActivtiesCount, Converter={StaticResource countToOpacityConverter}, TargetNullValue=0, FallbackValue=0}">
-                            <Grid>
-                              <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="24"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                              </Grid.ColumnDefinitions>
-                              <Path Width="14" Height="12" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="24"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Path Width="14" Height="12" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
                                     Data="{StaticResource PathNotifications}"/>
-                              <TextBlock Grid.Column="1" Margin="10,0" FontSize="14" Foreground="{DynamicResource MetroHeadingColorDark}"
+                                                            <TextBlock Grid.Column="1" Margin="10,0" FontSize="14" Foreground="{DynamicResource MetroHeadingColorDark}"
                                          TextTrimming="CharacterEllipsis">notifications</TextBlock>
-                              <TextBlock Grid.Column="2" FontWeight="SemiBold" FontSize="14"
+                                                            <TextBlock Grid.Column="2" FontWeight="SemiBold" FontSize="14"
                                          Foreground="{DynamicResource ModernFeatureBrush}" Text="{Binding UnreadActivtiesCount}"/>
-                            </Grid>
-                          </Button>
-                        </StackPanel>
-                      </StackPanel>
-                    </StackPanel>
-                    <Button x:Name="InactiveSwitchButton" Style="{DynamicResource MetroOverlayButton}" Visibility="Collapsed"
+                                                        </Grid>
+                                                    </Button>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <Button x:Name="InactiveSwitchButton" Style="{DynamicResource MetroOverlayButton}" Visibility="Collapsed"
                             Margin="0,0,1,0" Command="{Binding SwitchToThisAccountCommand}">
-                      <Control.Background>
-                        <SolidColorBrush Color="{DynamicResource MetroColorFeature}" Opacity="0.3"/>
-                      </Control.Background>
-                      <FrameworkElement.ContextMenu>
-                        <ContextMenu>
-                          <MenuItem Header="Switch to this account" Command="{Binding SwitchToThisAccountCommand}"/>
-                        </ContextMenu>
-                      </FrameworkElement.ContextMenu>
-                    </Button>
-                    <VisualStateManager.VisualStateGroups>
-                      <VisualStateGroup x:Name="AccountStates">
-                        <VisualState x:Name="AccountActive">
-                          <Storyboard>
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="AccountBg">
-                              <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
-                            </ObjectAnimationUsingKeyFrames>
-                          </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="AccountInactive">
-                          <Storyboard>
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="InactiveSwitchButton">
-                              <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
-                            </ObjectAnimationUsingKeyFrames>
-                          </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="AccountSignedout">
-                          <Storyboard>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="layoutContainer">
-                              <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.3"/>
-                            </DoubleAnimationUsingKeyFrames>
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CompactDockedColumns">
-                              <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
-                            </ObjectAnimationUsingKeyFrames>
-                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="FullDockedColumns">
-                              <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
-                            </ObjectAnimationUsingKeyFrames>
-                          </Storyboard>
-                        </VisualState>
-                      </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
-                  </Grid>
-                </DataTemplate>
-              </ItemsControl.ItemTemplate>
-            </ItemsControl>
-          </Grid>
-        </ScrollViewer>
-        <Grid MouseDown="tweetOverlay_MouseDown_1" x:Name="ManageAccountsButton" Row="2" Height="90"
+                                            <Control.Background>
+                                                <SolidColorBrush Color="{DynamicResource MetroColorFeature}" Opacity="0.3"/>
+                                            </Control.Background>
+                                            <FrameworkElement.ContextMenu>
+                                                <ContextMenu>
+                                                    <MenuItem Header="Switch to this account" Command="{Binding SwitchToThisAccountCommand}"/>
+                                                </ContextMenu>
+                                            </FrameworkElement.ContextMenu>
+                                        </Button>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="AccountStates">
+                                                <VisualState x:Name="AccountActive">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="AccountBg">
+                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="AccountInactive">
+                                                    <Storyboard>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="InactiveSwitchButton">
+                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="AccountSignedout">
+                                                    <Storyboard>
+                                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="layoutContainer">
+                                                            <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.3"/>
+                                                        </DoubleAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CompactDockedColumns">
+                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="FullDockedColumns">
+                                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                                                        </ObjectAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+                </ScrollViewer>
+                <Grid MouseDown="tweetOverlay_MouseDown_1" x:Name="ManageAccountsButton" Row="2" Height="90"
               Margin="0,0,1,0">
-          <Rectangle Fill="{DynamicResource ModernFeatureBrush}" Opacity="0.15"/>
-          <Button x:Name="addAccountFull" Style="{DynamicResource MetroPathButton}" HorizontalAlignment="Center"
+                    <Rectangle Fill="{DynamicResource ModernFeatureBrush}" Opacity="0.15"/>
+                    <Button x:Name="addAccountFull" Style="{DynamicResource MetroPathButton}" HorizontalAlignment="Center"
                   VerticalAlignment="Center" Height="40" Width="40" ToolTip="Manage accounts"
                   Command="{Binding AddUserAccountCommand}">
-            <Canvas>
-              <Ellipse Width="30" Height="30" Margin="5" Stretch="Fill" StrokeLineJoin="Round"
+                        <Canvas>
+                            <Ellipse Width="30" Height="30" Margin="5" Stretch="Fill" StrokeLineJoin="Round"
                        Stroke="{DynamicResource MetroHeadingColorDark}" StrokeThickness="1"/>
-              <Path Width="16" Height="16" Margin="12" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
+                            <Path Width="16" Height="16" Margin="12" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
                     Data="{StaticResource PathManageAccounts}"/>
-            </Canvas>
-          </Button>
-        </Grid>
-      </Grid>
-      <Grid MouseLeftButtonDown="HeaderPanel_MouseLeftButtonDown" x:Name="HeaderPanel" Background="Transparent"
+                        </Canvas>
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid MouseLeftButtonDown="HeaderPanel_MouseLeftButtonDown" x:Name="HeaderPanel" Background="Transparent"
             Height="36" Column="1">
-        <FrameworkElement.ContextMenu>
-          <ContextMenu>
-            <MenuItem Header="Minimize" Command="{Binding MinimiseCommand}"/>
-            <MenuItem x:Name="MaximizeMenuItem" Header="Maximize" Command="{Binding MaximiseCommand}"/>
-            <MenuItem x:Name="RestoreMenuItem" Header="Restore" Visibility="Collapsed"
+                <FrameworkElement.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Minimize" Command="{Binding MinimiseCommand}"/>
+                        <MenuItem x:Name="MaximizeMenuItem" Header="Maximize" Command="{Binding MaximiseCommand}"/>
+                        <MenuItem x:Name="RestoreMenuItem" Header="Restore" Visibility="Collapsed"
                       Command="{Binding MaximiseCommand}"/>
-            <Separator/>
-            <MenuItem Header="Quit" Command="{Binding ExitCommand}"/>
-          </ContextMenu>
-        </FrameworkElement.ContextMenu>
-        <ProgressBar Height="3" VerticalAlignment="Top" IsIndeterminate="true"
+                        <Separator/>
+                        <MenuItem Header="Quit" Command="{Binding ExitCommand}"/>
+                    </ContextMenu>
+                </FrameworkElement.ContextMenu>
+                <ProgressBar Height="3" VerticalAlignment="Top" IsIndeterminate="true"
                      Foreground="{DynamicResource ModernFeatureBrush}" Background="Transparent"
                      Visibility="{Binding ProgressVisible}"/>
-        <view:InlineErrorControl x:Name="errorcontrol" VerticalAlignment="Top" Margin="0,3,0,0" Panel.ZIndex="99"
+                <view:InlineErrorControl x:Name="errorcontrol" VerticalAlignment="Top" Margin="0,3,0,0" Panel.ZIndex="99"
                                  HorizontalAlignment="Center" MinWidth="400" DataContext="{Binding ErrorMessage}"/>
-        <StackPanel HorizontalAlignment="Right" Margin="0,0,6,0" Orientation="Horizontal">
-          <StackPanel x:Name="windowControls" Orientation="Horizontal" VerticalAlignment="Top"
+                <StackPanel HorizontalAlignment="Right" Margin="0,0,6,0" Orientation="Horizontal">
+                    <StackPanel x:Name="windowControls" Orientation="Horizontal" VerticalAlignment="Top"
                       IsEnabled="{Binding AppState.EnableMainWindowControlBox, Source={x:Static Application.Current}}">
-            <Button x:Name="MinimiseButton" Style="{DynamicResource MetroPathButton2}" Width="34" Height="30"
+                        <Button x:Name="MinimiseButton" Style="{DynamicResource MetroPathButton2}" Width="34" Height="30"
                     ToolTip="Minimize" shell:WindowChrome.IsHitTestVisibleInChrome="true"
                     Command="{Binding MinimiseCommand}">
-              <Rectangle Width="10" Height="3" Fill="{DynamicResource MetroHeadingColorDark}" VerticalAlignment="Bottom"
+                            <Rectangle Width="10" Height="3" Fill="{DynamicResource MetroHeadingColorDark}" VerticalAlignment="Bottom"
                          Margin="0,0,0,8"/>
-            </Button>
-            <Button x:Name="MaximiseBtn" Style="{DynamicResource MetroPathButton2}" Width="34" Height="30"
+                        </Button>
+                        <Button x:Name="MaximiseBtn" Style="{DynamicResource MetroPathButton2}" Width="34" Height="30"
                     ToolTip="Maximize" shell:WindowChrome.IsHitTestVisibleInChrome="true"
                     Command="{Binding MaximiseCommand}">
-              <Path Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathMaximize}"
+                            <Path Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathMaximize}"
                     Margin="0,6,0,0" Width="11" Height="11" Stretch="Fill"/>
-            </Button>
-            <Button x:Name="RestoreBtn" Style="{DynamicResource MetroPathButton2}" Width="34" Height="30"
+                        </Button>
+                        <Button x:Name="RestoreBtn" Style="{DynamicResource MetroPathButton2}" Width="34" Height="30"
                     ToolTip="Restore" Visibility="Collapsed" shell:WindowChrome.IsHitTestVisibleInChrome="true"
                     Command="{Binding MaximiseCommand}">
-              <Path Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathRestore}" Margin="0,6,0,0"
+                            <Path Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathRestore}" Margin="0,6,0,0"
                     Width="11" Height="11" Stretch="Fill"/>
-            </Button>
-            <Button x:Name="CloseBtn" Width="34" Height="30" Style="{DynamicResource MetroPathButton2}" ToolTip="Quit"
+                        </Button>
+                        <Button x:Name="CloseBtn" Width="34" Height="30" Style="{DynamicResource MetroPathButton2}" ToolTip="Quit"
                     shell:WindowChrome.IsHitTestVisibleInChrome="true" Command="{Binding ExitCommand}">
-              <Path Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathClose}" Margin="0,6,0,0"
+                            <Path Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathClose}" Margin="0,6,0,0"
                     Stretch="Fill" Width="11" Height="11"/>
-            </Button>
-            <Button x:Name="CloseBtnMax" Width="40" Height="30" Margin="0,0,-6,0"
+                        </Button>
+                        <Button x:Name="CloseBtnMax" Width="40" Height="30" Margin="0,0,-6,0"
                     Style="{DynamicResource MetroPathButton2}" ToolTip="Quit" Visibility="Collapsed"
                     shell:WindowChrome.IsHitTestVisibleInChrome="true" Command="{Binding ExitCommand}">
-              <Path Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathClose}" Margin="0,6,6,0"
+                            <Path Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathClose}" Margin="0,6,6,0"
                     Stretch="Fill" Width="11" Height="11"/>
-            </Button>
-          </StackPanel>
-        </StackPanel>
-      </Grid>
-      <ItemsControl x:Name="twitViewItems" Grid.Column="1" Grid.Row="1" Margin="0"
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <ItemsControl x:Name="twitViewItems" Grid.Column="1" Grid.Row="1" Margin="0"
                     ItemsSource="{Binding TwitViewModels}" FocusVisualStyle="{x:Null}">
-        <Control.Template>
-          <ControlTemplate TargetType="{x:Type ItemsControl}">
-            <ItemsPresenter/>
-          </ControlTemplate>
-        </Control.Template>
-        <ItemsControl.ItemsPanel>
-          <ItemsPanelTemplate>
-            <Grid/>
-          </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-        <ItemsControl.ItemTemplate>
-          <DataTemplate>
-            <view:TwitView x:Name="twitViewInstance" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                <Control.Template>
+                    <ControlTemplate TargetType="{x:Type ItemsControl}">
+                        <ItemsPresenter/>
+                    </ControlTemplate>
+                </Control.Template>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <view:TwitView x:Name="twitViewInstance" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                            Visibility="{Binding Path=IsActive, Converter={StaticResource booleanToVisibilityHiddenConverter}}"
                            DataContext="{Binding}">
-              <UIElement.RenderTransform>
-                <TransformGroup>
-                  <ScaleTransform/>
-                  <SkewTransform/>
-                  <RotateTransform/>
-                  <TranslateTransform/>
-                </TransformGroup>
-              </UIElement.RenderTransform>
-            </view:TwitView>
-          </DataTemplate>
-        </ItemsControl.ItemTemplate>
-      </ItemsControl>
-    </Grid>
-    <Canvas MouseDown="tweetOverlay_MouseDown_1" x:Name="tweetOverlay"
+                            <UIElement.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </UIElement.RenderTransform>
+                        </view:TwitView>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+        <Canvas MouseDown="tweetOverlay_MouseDown_1" x:Name="tweetOverlay"
             Style="{DynamicResource MetroTweetOverlay}" Margin="0,0,0,90" ZIndex="5" Visibility="Collapsed"/>
-    <Canvas x:Name="overlay" Style="{DynamicResource MetroOverlay}" ZIndex="6" Visibility="Collapsed"
+        <Canvas x:Name="overlay" Style="{DynamicResource MetroOverlay}" ZIndex="6" Visibility="Collapsed"
             shell:WindowChrome.IsHitTestVisibleInChrome="true"/>
-  </Grid>
+    </Grid>
 </Window>

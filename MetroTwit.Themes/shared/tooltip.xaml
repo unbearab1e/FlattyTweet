@@ -11,7 +11,7 @@
                     <Grid Margin="8" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" MaxWidth="320" MaxHeight="60">
                         <Canvas Background="{DynamicResource ModernFeatureBrush}" />
                         <Border Background="{DynamicResource MetroMenuBg}" Margin="1">
-                            <ContentPresenter TextBlock.FontSize="12" Margin="7,4,7,6" TextBlock.Foreground="{DynamicResource MetroMenuText}" RenderOptions.ClearTypeHint="Enabled">
+                            <ContentPresenter TextBlock.FontSize="12" Margin="7,4,7,6" TextBlock.Foreground="{DynamicResource ModernContrastBrush}" RenderOptions.ClearTypeHint="Enabled">
                                 <ContentPresenter.Resources>
                                     <Style TargetType="{x:Type TextBlock}">
                                         <Setter Property="TextTrimming" Value="CharacterEllipsis"/>

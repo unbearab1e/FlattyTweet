@@ -14,15 +14,15 @@
                     <ControlTemplate.Resources>
 
                         <ControlTemplate x:Key="MenuItem.Item" TargetType="{x:Type MenuItem}">
-                            <Border x:Name="Border" Background="{DynamicResource ModernBgLighterBrush}" Padding="10,5,10,5">
+                            <Border x:Name="Border" Background="{DynamicResource ModernFeatureBrush}" Padding="10,5,10,5">
                                 <ContentPresenter ContentSource="Header" RecognizesAccessKey="True" RenderOptions.ClearTypeHint="Enabled" TextBlock.Foreground="{DynamicResource ModernContrastBrush}" />
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource ModernFeatureBrush}"/>
+                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource ModernContrastBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsHighlighted" Value="True">
-                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource ModernFeatureBrush}"/>
+                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource ModernBgLighterBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="False">
                                     <Setter TargetName="Border" Property="Opacity" Value="0.5"/>
@@ -44,10 +44,10 @@
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource ModernFeatureBrush}"/>
+                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource ModernBgLighterBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsHighlighted" Value="True">
-                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource ModernFeatureBrush}"/>
+                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource ModernBgLighterBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="False">
                                     <Setter TargetName="Border" Property="Opacity" Value="0.5"/>
@@ -80,7 +80,7 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type Separator}">
-                                        <Rectangle Height="1" Fill="{DynamicResource ModernBgLighterBrush}" Margin="8,6" />
+                                        <Rectangle Height="1" Fill="{DynamicResource ModernFeatureBrush}" Margin="8,6" />
                                     </ControlTemplate>
                                 </Setter.Value>
                             </Setter>
@@ -88,7 +88,7 @@
 
                     </ControlTemplate.Resources>
 
-                    <Border x:Name="Border" Margin="8" MinWidth="170" Background="{DynamicResource ModernBgLighterBrush}" BorderThickness="1" BorderBrush="{DynamicResource ModernFeatureBrush}">
+                    <Border x:Name="Border" Margin="8" MinWidth="170" Background="{DynamicResource ModernFeatureBrush}" BorderThickness="1" BorderBrush="{DynamicResource ModernBgLighterBrush}">
                         <StackPanel x:Name="Content" IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" Margin="0">
                             <StackPanel.RenderTransform>
                                 <TransformGroup>
@@ -99,7 +99,7 @@
                                 </TransformGroup>
                             </StackPanel.RenderTransform>
                         </StackPanel>
-                        
+
                     </Border>
                     <!--<ControlTemplate.Triggers>
                         <EventTrigger RoutedEvent="FrameworkElement.Loaded">

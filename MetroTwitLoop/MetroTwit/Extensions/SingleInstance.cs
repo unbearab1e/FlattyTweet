@@ -23,7 +23,7 @@ namespace MetroTwit.Extensions
     public static bool Start()
     {
       bool createdNew = false;
-      SingleInstance.mutex = new Mutex(true, string.Format("Local\\MetroTwit.{0}", (object) ProgramInfo.AssemblyGuid), out createdNew);
+      SingleInstance.mutex = new Mutex(true, string.Format("Local\\Flitter.{0}", (object) ProgramInfo.AssemblyGuid), out createdNew);
       return createdNew;
     }
 

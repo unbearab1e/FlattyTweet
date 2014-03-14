@@ -7,10 +7,10 @@
              MouseEnter="UserControl_MouseEnter" MouseLeave="UserControl_MouseLeave"
              MouseDown="userControl_MouseDown" MouseLeftButtonUp="userControl_MouseLeftButtonUp"
              x:Name="userControl" Style="{DynamicResource MetroUserControl}" Opacity="0" Margin="0,-1">
-  <Border Background="{DynamicResource ModernBgDarkerBrush}" BorderThickness="1"
+  <Border Background="{DynamicResource ModernBgDarkerBrush}" BorderThickness="0"
           BorderBrush="{DynamicResource MetroNotificationBorder}" ClipToBounds="true">
     <StackPanel RenderOptions.ClearTypeHint="Enabled" Width="300">
-      <ProgressBar Name="NotificationProgressBar" Height="3" Maximum="100" Minimum="0"
+      <ProgressBar Name="NotificationProgressBar" Height="2" Maximum="100" Minimum="0"
                    Foreground="{DynamicResource ModernFeatureBrush}"/>
       <DockPanel Margin="6,3,6,2">
         <Button DockPanel.Dock="Right" Style="{DynamicResource MetroPathButton}" Width="22" Height="22"
