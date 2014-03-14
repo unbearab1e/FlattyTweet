@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="MetroColorFeature">#FF2ca900</Color>
+    <Color x:Key="MetroColorFeatureFade">#FF56af37</Color>
+    <Color x:Key="MetroColorFeatureContrast">#FFFFFFFF</Color>
+
+    <!--New color scheme-->
+    <Color x:Key="ModernColorFeature">#FF2ca900</Color>
+    <Color x:Key="ModernColorFeatureContrast">#FFFFFFFF</Color>
+    <SolidColorBrush x:Key="ModernFeatureBrush" Color="{StaticResource ModernColorFeature}" />
+    <SolidColorBrush x:Key="ModernContrastBrush" Color="{StaticResource ModernColorFeatureContrast}" />
+
+</ResourceDictionary>

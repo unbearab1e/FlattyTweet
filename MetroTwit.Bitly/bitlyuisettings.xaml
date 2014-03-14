@@ -1,0 +1,82 @@
+<UserControl x:Class="MetroTwit.Bitly.BitlyUISettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:bitly="clr-namespace:MetroTwit.Bitly">
+  <FrameworkElement.Resources>
+    <bitly:InvertBooleanConverter x:Key="booleanInverterConverter"/>
+    <bitly:BooleanComparisonConverter x:Key="booleanComparisonConverter"/>
+  </FrameworkElement.Resources>
+  <UIElement.RenderTransform>
+    <TransformGroup>
+      <ScaleTransform/>
+    </TransformGroup>
+  </UIElement.RenderTransform>
+  <StackPanel Margin="0,8,0,8">
+    <StackPanel Margin="0,0,0,10">
+      <RadioButton Margin="0,0,0,5" Content="Use bit.ly URL"
+                   IsChecked="{Binding Usejmp, Converter={StaticResource booleanComparisonConverter}, ConverterParameter=false}"/>
+      <RadioButton Content="Use j.mp URL"
+                   IsChecked="{Binding Usejmp, Converter={StaticResource booleanComparisonConverter}, ConverterParameter=true}"/>
+    </StackPanel>
+    <RadioButton x:Name="anonymousAccountRadioButton" Margin="0,6,0,8" Content="Use guest account">
+      <ToggleButton.IsChecked>
+        <Binding Converter="{StaticResource booleanInverterConverter}" ValidatesOnDataErrors="true"
+                 UpdateSourceTrigger="PropertyChanged">          <!-- constructor argument:
+               UsePersonalLogin
+          -->
+
+        </Binding>
+      </ToggleButton.IsChecked>
+    </RadioButton>
+    <RadioButton Checked="personalAccountRadioButton_Checked" x:Name="personalAccountRadioButton"
+                 Content="Use custom account:">
+      <ToggleButton.IsChecked>
+        <Binding ValidatesOnDataErrors="true" UpdateSourceTrigger="PropertyChanged">          <!-- constructor argument:
+               UsePersonalLogin
+          -->
+
+        </Binding>
+      </ToggleButton.IsChecked>
+    </RadioButton>
+    <Grid Margin="16,10,0,0" IsEnabled="{Binding IsChecked, ElementName=personalAccountRadioButton}">
+      <Grid.RowDefinitions>
+        <RowDefinition/>
+        <RowDefinition/>
+      </Grid.RowDefinitions>
+      <StackPanel>
+        <DockPanel>
+          <Label PreviewMouseDown="TextBlock_MouseDown" DockPanel.Dock="Right"
+                 Style="{DynamicResource MetroFormLabel}" Margin="15,0,0,0">
+            <Hyperlink Style="{DynamicResource UnderlineHyperlink}">Find your API login</Hyperlink>
+          </Label>
+          <Label x:Name="usernameLabel" Content="API _Username:" Padding="0" Margin="0,0,0,3"
+                 Style="{DynamicResource MetroFormLabel}" Target="{Binding ElementName=usernameTextBox}"/>
+        </DockPanel>
+        <TextBox x:Name="usernameTextBox" Margin="0,0,0,8">
+          <TextBox.Text>
+            <Binding ValidatesOnDataErrors="true" UpdateSourceTrigger="PropertyChanged">              <!-- constructor argument:
+                   Username
+              -->
+
+            </Binding>
+          </TextBox.Text>
+        </TextBox>
+      </StackPanel>
+      <StackPanel Grid.Row="1">
+        <Label x:Name="apiKeyLabel" Content="API _Key:" Padding="0" Margin="0,0,0,3"
+               Style="{DynamicResource MetroFormLabel}" Target="{Binding ElementName=apiKeyTextBox}"/>
+        <TextBox x:Name="apiKeyTextBox">
+          <TextBox.Text>
+            <Binding ValidatesOnDataErrors="true" UpdateSourceTrigger="PropertyChanged">              <!-- constructor argument:
+                   APIKey
+              -->
+
+            </Binding>
+          </TextBox.Text>
+        </TextBox>
+      </StackPanel>
+    </Grid>
+  </StackPanel>
+</UserControl>

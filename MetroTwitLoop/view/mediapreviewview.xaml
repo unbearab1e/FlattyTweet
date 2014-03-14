@@ -1,0 +1,44 @@
+<ex:InlinePopup x:Class="MetroTwit.View.MediaPreviewView"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:ex="clr-namespace:MetroTwit.Extensions"
+                Style="{DynamicResource MetroInlinePopup}">
+  <UIElement.InputBindings>
+    <KeyBinding Key="Escape" Command="{Binding CloseCommand}"/>
+  </UIElement.InputBindings>
+    <StackPanel Background="{DynamicResource ModernBgDarkerBrush}" Width="{Binding MediaWidth, Mode=OneWay}">
+    <Button Style="{DynamicResource MetroButton}" Content="open in browser" Margin="0,0,0,10" Width="200"
+            HorizontalAlignment="Left" Command="{Binding LinkCommand, Mode=OneWay}"
+            CommandParameter="{Binding Link.Url, Mode=OneWay}"/>
+    <UserControl x:Name="Throbber" Style="{DynamicResource Throbber}" Margin="20,30" Width="250"
+                 Visibility="{Binding ThrobberVisible, Mode=OneWay}">
+      <StackPanel>
+        <TextBlock TextAlignment="Center">Loading preview...</TextBlock>
+        <TextBlock TextAlignment="Center" Margin="0,20,0,0" TextWrapping="Wrap" Opacity="0.7">
+          Tip: Hold CTRL when clicking links
+          <LineBreak/>
+          to skip the media preview.
+        </TextBlock>
+      </StackPanel>
+    </UserControl>
+    <Border x:Name="ControlHost" Margin="0,0,0,10" Visibility="{Binding WebBrowserVisible, Mode=OneWay}"
+            Width="{Binding MediaWidth, Mode=OneWay}" Height="{Binding MediaHeight, Mode=OneWay}"/>
+    <Button Style="{DynamicResource MetroOverlayButton}" Margin="0,0,0,10" Cursor="Hand"
+            Command="{Binding LinkCommand}" CommandParameter="{Binding ImageUrl}"
+            Visibility="{Binding ImageVisible, Mode=OneWay}">
+            <Image Source="{Binding Image, IsAsync=True,Mode=OneWay, Converter={StaticResource nullImageConverter}}" x:Name="ImageHost" Cursor="Hand" RenderOptions.BitmapScalingMode="HighQuality" MinHeight="100" Width="{Binding MediaWidth, Mode=OneWay}" Height="{Binding MediaHeight, Mode=OneWay}">
+      </Image>
+    </Button>
+    <TextBlock FontSize="15" FontWeight="SemiBold" Margin="0,0,0,5" TextWrapping="Wrap"
+               Width="{Binding MediaWidth, Mode=OneWay}" Text="{Binding Title, Mode=OneWay}"
+               Visibility="{Binding TitleVisibility, Mode=OneWay}"/>
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" MaxHeight="120"
+                  Margin="0,0,0,5" Width="{Binding MediaWidth, Mode=OneWay}"
+                  Visibility="{Binding DescriptionVisibility, Mode=OneWay}">
+      <TextBlock Background="{DynamicResource ModernBgDarkerBrush}" FontSize="13" TextWrapping="Wrap"
+                 DataContext="{Binding Description}" ex:TweetRenderer.Tweet="{Binding Mode=OneWay}"/>
+    </ScrollViewer>
+  </StackPanel>
+</ex:InlinePopup>

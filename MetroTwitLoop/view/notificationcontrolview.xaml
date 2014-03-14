@@ -1,0 +1,83 @@
+<UserControl x:Class="MetroTwit.View.NotificationControlView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Extensions="clr-namespace:MetroTwit.Extensions"
+             MouseEnter="UserControl_MouseEnter" MouseLeave="UserControl_MouseLeave"
+             MouseDown="userControl_MouseDown" MouseLeftButtonUp="userControl_MouseLeftButtonUp"
+             x:Name="userControl" Style="{DynamicResource MetroUserControl}" Opacity="0" Margin="0,-1">
+  <Border Background="{DynamicResource ModernBgDarkerBrush}" BorderThickness="1"
+          BorderBrush="{DynamicResource MetroNotificationBorder}" ClipToBounds="true">
+    <StackPanel RenderOptions.ClearTypeHint="Enabled" Width="300">
+      <ProgressBar Name="NotificationProgressBar" Height="3" Maximum="100" Minimum="0"
+                   Foreground="{DynamicResource ModernFeatureBrush}"/>
+      <DockPanel Margin="6,3,6,2">
+        <Button DockPanel.Dock="Right" Style="{DynamicResource MetroPathButton}" Width="22" Height="22"
+                Command="{Binding CloseNotification}">
+          <Path x:Name="close" Fill="{DynamicResource MetroNotificationClose}" Data="{StaticResource PathClose}"
+                Stretch="Fill" Width="10" Height="10"/>
+        </Button>
+        <DockPanel>
+          <TextBlock Margin="0,0,17,0" Style="{DynamicResource MetroHeading1}"
+                     Foreground="{DynamicResource MetroNotificationHeading}" FontSize="16"
+                     TextTrimming="CharacterEllipsis" Text="{Binding NotificationName}"/>
+          <TextBlock Margin="-14,-1,0,0" FontWeight="SemiBold" TextWrapping="NoWrap" VerticalAlignment="Top"
+                     FontSize="13" Foreground="{DynamicResource MetroNotificationHeading}" Text="{Binding NewCount}"/>
+        </DockPanel>
+      </DockPanel>
+      <Grid x:Name="NotificationTweet" Height="54" Margin="6,0,6,6">
+        <Grid.RowDefinitions>
+          <RowDefinition/>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Width="24" Height="24" Margin="0,4,6,0" VerticalAlignment="Top">
+          <Image.Source>
+            <PriorityBinding>
+              <Binding Path="CurrentTweet.UserImage" IsAsync="true" Converter="{StaticResource nullImageConverter}"/>
+              <Binding Path="CurrentTweet.UserDefaultImage" IsAsync="true" Converter="{StaticResource nullImageConverter}"/>
+            </PriorityBinding>
+          </Image.Source>
+        </Image>
+        <TextBlock Grid.Column="1" Margin="0,0" Style="{DynamicResource NotificationTweet}"
+                   Foreground="{DynamicResource ModernTextDarkerBrush}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"
+                   Extensions:TweetRenderer.Notification="{Binding CurrentTweet, Mode=OneWay}"/>
+        <Border Grid.Column="1" Grid.Row="1" Margin="0,0,0,0"
+                Visibility="{Binding CurrentTweet.RetweetVisibility, Mode=OneWay}">
+          <StackPanel Orientation="Horizontal">
+            <Path Stretch="Uniform" Width="16" Height="16" Fill="{DynamicResource ModernFeatureBrush}"
+                  Margin="0,0,4,0" Data="{StaticResource PathRetweet}"/>
+            <TextBlock Style="{DynamicResource NotificationTweet}" Foreground="{DynamicResource ModernFeatureBrush}"
+                       TextTrimming="CharacterEllipsis">
+              <Run Text="Retweeted by"/>
+              <Run Text="{Binding CurrentTweet.RetweetUser.Name, Mode=OneTime}"/>
+            </TextBlock>
+          </StackPanel>
+        </Border>
+        <Grid ColumnSpan="2" Row="1" Margin="10,0,0,0"
+              Visibility="{Binding CurrentTweet.RetweetCountVisibility, Mode=OneWay}">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+          </Grid.ColumnDefinitions>
+          <Path Stretch="Uniform" Width="16" Height="16" Fill="{DynamicResource ModernFeatureBrush}"
+                Margin="0,0,4,0" Data="{StaticResource PathRetweet}"/>
+          <TextBlock Grid.Column="1" Style="{DynamicResource NotificationTweet}"
+                     Foreground="{DynamicResource ModernFeatureBrush}" TextTrimming="CharacterEllipsis">
+            <Run Text="Retweeted by"/>
+            <Run Text="{Binding CurrentTweet.RetweetText, Mode=OneTime}"/>
+          </TextBlock>
+        </Grid>
+        <UIElement.RenderTransform>
+          <TransformGroup>
+            <TranslateTransform/>
+          </TransformGroup>
+        </UIElement.RenderTransform>
+      </Grid>
+    </StackPanel>
+  </Border>
+</UserControl>

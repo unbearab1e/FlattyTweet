@@ -1,0 +1,715 @@
+<UserControl x:Class="MetroTwit.View.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell"
+             xmlns:Extensions="clr-namespace:MetroTwit.Extensions"
+             xmlns:b="clr-namespace:MetroTwit.Behaviors"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:Model="clr-namespace:MetroTwit.Model"
+             Loaded="Settings_Loaded" x:Name="Settings" Style="{StaticResource MetroUserControl}"
+             Visibility="{Binding SettingsVisible}">
+    <UserControl.Resources>
+        <Extensions:IntToBooleanConverter x:Key="intToBooleanConverter"/>
+        <Extensions:AccentConverter x:Key="accentConverter"/>
+        <Extensions:ArtworkConverter x:Key="artworkConverter"/>
+        <Extensions:TwitterTimeDisplayConverter x:Key="twitterTimeDisplayConverter"/>
+        <Extensions:EqualityConverter x:Key="equalityConverter"/>
+        <Extensions:NotificationPositionConverter x:Key="notificationPositionConverter"/>
+        <BooleanToVisibilityConverter x:Key="boolToVisConverter"/>
+        <Extensions:AdDisplayColumnConverter x:Key="adDisplayColumnConverter"/>
+        <Extensions:TweetFontSizeDisplayConverter x:Key="tweetFontSizeDisplayConverter"/>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Button Style="{DynamicResource MetroPathButton}" HorizontalAlignment="Left" VerticalAlignment="Top"
+            Height="40" Width="40" ToolTip="Save" Margin="0,-36,0,0"
+            shell:WindowChrome.IsHitTestVisibleInChrome="true" Command="{Binding BackCommand}">
+            <Canvas Margin="-7,-7,0,0">
+                <Ellipse Width="40" Height="40" Margin="0" Stretch="Fill" StrokeLineJoin="Round"
+                 Stroke="{DynamicResource MetroHeadingColorDark}" StrokeThickness="1"/>
+                <Path Width="20" Height="20" Margin="10" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
+              Data="{StaticResource PathBack}"/>
+            </Canvas>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="30,0" Text="settings" TextWrapping="Wrap"
+               VerticalAlignment="Bottom" Style="{StaticResource MetroHeading1}"/>
+        <TabControl SelectionChanged="tabSettings_SelectionChanged" x:Name="tabSettings" Grid.Row="1" Margin="30,20">
+            <TabItem x:Name="generalTab" Header="general">
+                <StackPanel MaxWidth="700">
+                    <!--TextBlock TextWrapping="Wrap" Text="Software updates" Style="{DynamicResource MetroHeading2}"
+                     Margin="0,0,0,5"/>
+                    <CheckBox Content="Automatically check for updates on launch" Margin="0,0,0,10"
+                    IsChecked="{Binding AutomaticallyCheckForUpdates}"/>
+                    <Button Content="check for _updates now" Style="{DynamicResource MetroButton}" Width="200"
+                  HorizontalAlignment="Left" Margin="0,0,0,5" Command="{Binding CheckForUpdatesCommand}"/>
+                    <TextBlock TextWrapping="Wrap" Text="MetroTwit Plus" Style="{DynamicResource MetroHeading2}" Margin="0,20,0,5"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,5" FontWeight="SemiBold" Foreground="Green"
+                     Visibility="{Binding PlusActive, Mode=OneWay, Converter={StaticResource boolToVisConverter}}">
+            MetroTwit Plus status: Verified
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,5"
+                     Visibility="{Binding PlusInActive, Mode=OneWay, Converter={StaticResource boolToVisConverter}}">
+            <Run Text="Upgrade to manage multiple accounts and disable advertisements. "/>
+            <Hyperlink Style="{DynamicResource UnderlineHyperlink}" Command="{Binding GetPlusCommand}">Get MetroTwit Plus.</Hyperlink>
+                    </TextBlock>
+                    <TextBlock Margin="0,0,0,5">Unlock code:</TextBlock>
+                    <TextBox Width="270" HorizontalAlignment="Left" Margin="0,0,0,5" Text="{Binding PlusTransactionID}"/>
+                    <TextBlock>
+            PayPal email address:
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox HorizontalAlignment="Left" Margin="0,5,5,5" Width="270" Text="{Binding PlusEmail}"/>
+                        <Button Content="_verify plus" HorizontalAlignment="Left" Margin="0,5,0,5"
+                    Style="{DynamicResource MetroButton}" VerticalAlignment="Center" Width="150"
+                    Command="{Binding VerifyPlusCommand}"/>
+                    </StackPanel>
+                    <TextBlock TextWrapping="Wrap" Text="Advertisements" Style="{DynamicResource MetroHeading2}" Margin="0,20,0,5"/>
+                    <CheckBox Content="Show me advertisements anyway. I want to live life on the edge!" Margin="0,0,0,5"
+                    Visibility="{Binding PlusActive, Mode=OneWay, Converter={StaticResource boolToVisConverter}}"
+                    IsChecked="{Binding PlusShowAds}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock TextWrapping="Wrap" Text="Show in column:" Margin="0,2,10,0" Grid.Column="0"/>
+                        <StackPanel Grid.Column="1">
+                            <ComboBox Margin="0,0,0,5" Width="300" HorizontalAlignment="Left"
+                        SelectedIndex="{Binding AdDisplayColumn, Converter={StaticResource adDisplayColumnConverter}}">
+                                <ComboBoxItem>Friends</ComboBoxItem>
+                                <ComboBoxItem>
+                                    Mentions and Retweets
+                                </ComboBoxItem>
+                                <ComboBoxItem>Direct Messages</ComboBoxItem>
+                                <ComboBoxItem>Search</ComboBoxItem>
+                                <ComboBoxItem>Lists</ComboBoxItem>
+                                <ComboBoxItem>Public</ComboBoxItem>
+                            </ComboBox>
+                            <TextBlock TextWrapping="Wrap" Opacity="0.5" Text="(Will only use this selection if the column is visible)"
+                         Margin="0,0,0,5"/>
+                        </StackPanel>
+                    </Grid-->
+                    <TextBlock TextWrapping="Wrap" Text="Startup" Style="{DynamicResource MetroHeading2}" Margin="0,20,0,5"
+                     Visibility="Collapsed"/>
+                    <CheckBox Content="Start MetroTwit when I log in to Windows" Margin="0,0,0,5" IsEnabled="false"
+                    Visibility="Collapsed" IsChecked="{Binding StartMetroTwitwithWindows}"/>
+                    <TextBlock TextWrapping="Wrap" Text="Minimized MetroTwit" Style="{DynamicResource MetroHeading2}"
+                     Margin="0,20,0,5"/>
+                    <RadioButton GroupName="MinimizeMetroTwit" Content="Keep in taskbar" Margin="0,0,0,5"
+                       IsChecked="{Binding MinimisetoTrayInt, Mode=TwoWay, Converter={StaticResource intToBooleanConverter}, ConverterParameter=0}"/>
+                    <RadioButton GroupName="MinimizeMetroTwit" Content="Send to notifications area" Margin="0,0,0,5"
+                       IsChecked="{Binding MinimisetoTrayInt, Mode=TwoWay, Converter={StaticResource intToBooleanConverter}, ConverterParameter=1}"/>
+                    <TextBlock TextWrapping="Wrap" Style="{DynamicResource MetroHeading2}" Margin="0,20,0,5">
+            <Run Text="About MetroTwit"/>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,5">
+            <Run Text="{Binding Path=VersionandBuildDate, Mode=OneTime}"/>
+            <LineBreak/>
+            <Run Text="{Binding Path=Copyright, Mode=OneTime}"/>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,5">
+            Made in Australia by David Golden, Winston Pang and Long Zheng.
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,5">
+            Portions of this software contains code from the Twitterizer library © 2011 Ricky Smith and the Json.NET library © 2007 James Newton-King.
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,5">
+            We appreciate the help and support from Jaycob Cratchley, Matt Cavanagh, Chris Lindhartsen, Chris Walsh, Rafael Rivera, Rob Relyea, Garrett Serack, Jared Shockley, Paul Jenkins and the Windows Phone design team.
+                    </TextBlock>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="displayTab" Header="display">
+                <StackPanel MaxWidth="700">
+                    <TextBlock TextWrapping="Wrap" Text="Color theme" Style="{DynamicResource MetroHeading2}" Margin="0,0,0,5"/>
+                    <RadioButton GroupName="ColorThemeMetroTwit1" Content="Light theme (black text on white)" Margin="0,0,0,5"
+                       IsChecked="{Binding Theme, Converter={StaticResource equalityConverter}, ConverterParameter=Light}"/>
+                    <RadioButton GroupName="ColorThemeMetroTwit2" Content="Dark theme (white text on black)" Margin="0,0,0,5"
+                       IsChecked="{Binding Theme, Converter={StaticResource equalityConverter}, ConverterParameter=Dark}"/>
+                    <TextBlock TextWrapping="Wrap" Text="Theme accent" Style="{DynamicResource MetroHeading2}" Margin="0,20,0,5"/>
+                    <RadioButton GroupName="ThemeAccentMetroTwit1" Content="Aero glass color" Margin="0,0,0,5"
+                       IsChecked="{Binding Accent, Converter={StaticResource equalityConverter}, ConverterParameter=Aero}"/>
+                    <RadioButton x:Name="CustomAccent" GroupName="ThemeAccentMetroTwit2" Content="Custom color" Margin="0,0,0,5"
+                       IsChecked="{Binding Accent, Converter={StaticResource equalityConverter}, ConverterParameter=Custom}"/>
+                    <ComboBox Margin="16,0,0,5" Width="400"
+                    SelectedIndex="{Binding AccentColour, Converter={StaticResource accentConverter}}"
+                    IsEnabled="{Binding IsChecked, ElementName=CustomAccent}">
+                        <ComboBoxItem>
+                            <DockPanel>
+                                <Canvas DockPanel.Dock="Left" Width="16" Height="16" Background="#FF00A9DA" Margin="2,1,6,0"/>
+                                <TextBlock>Blue</TextBlock>
+                            </DockPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <DockPanel>
+                                <Canvas DockPanel.Dock="Left" Width="16" Height="16" Background="#FF6800d3" Margin="2,1,6,0"/>
+                                <TextBlock>Purple</TextBlock>
+                            </DockPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <DockPanel>
+                                <Canvas DockPanel.Dock="Left" Width="16" Height="16" Background="#FFdd1f8f" Margin="2,1,6,0"/>
+                                <TextBlock>Pink</TextBlock>
+                            </DockPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <DockPanel>
+                                <Canvas DockPanel.Dock="Left" Width="16" Height="16" Background="#FFa60800" Margin="2,1,6,0"/>
+                                <TextBlock>Red</TextBlock>
+                            </DockPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <DockPanel>
+                                <Canvas DockPanel.Dock="Left" Width="16" Height="16" Background="#FFe06900" Margin="2,1,6,0"/>
+                                <TextBlock>Orange</TextBlock>
+                            </DockPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <DockPanel>
+                                <Canvas DockPanel.Dock="Left" Width="16" Height="16" Background="#FF2ca900" Margin="2,1,6,0"/>
+                                <TextBlock>Green</TextBlock>
+                            </DockPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <DockPanel>
+                                <Canvas DockPanel.Dock="Left" Width="16" Height="16" Background="#FF8ebc00" Margin="2,1,6,0"/>
+                                <TextBlock>Lime</TextBlock>
+                            </DockPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <DockPanel>
+                                <Canvas DockPanel.Dock="Left" Width="16" Height="16" Background="#FF555555" Margin="2,1,6,0"/>
+                                <TextBlock>Silver</TextBlock>
+                            </DockPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <DockPanel>
+                                <Canvas DockPanel.Dock="Left" Width="16" Height="16" Background="#FF007ACC" Margin="2,1,6,0"/>
+                                <TextBlock>DarkBlue</TextBlock>
+                            </DockPanel>
+                        </ComboBoxItem>
+                    </ComboBox>
+                    <TextBlock TextWrapping="Wrap" Text="Sidebar background" Style="{DynamicResource MetroHeading2}"
+                     Margin="0,20,0,5"/>
+                    <ComboBox Margin="0,0,0,5" SelectedIndex="{Binding Artwork, Converter={StaticResource artworkConverter}}">
+                        <ComboBoxItem>None</ComboBoxItem>
+                        <ComboBoxItem>Flowers 1</ComboBoxItem>
+                        <ComboBoxItem>Flowers 2</ComboBoxItem>
+                        <ComboBoxItem>Grunge 1</ComboBoxItem>
+                        <ComboBoxItem>Grunge 2</ComboBoxItem>
+                        <ComboBoxItem>Grill</ComboBoxItem>
+                        <ComboBoxItem>Dots</ComboBoxItem>
+                        <ComboBoxItem>Lines (by DVQ)</ComboBoxItem>
+                    </ComboBox>
+                    <Canvas x:Name="ArtworkPreview" HorizontalAlignment="Left" Width="96" Height="96" Margin="0,0,0,5"
+                  Visibility="{Binding ArtworkVisibility}">
+                        <Panel.Background>
+                            <ImageBrush Stretch="UniformToFill"
+                          ImageSource="{Binding ArtworkImage, Converter={StaticResource nullImageConverter}}"/>
+                        </Panel.Background>
+                    </Canvas>
+                    <TextBlock TextWrapping="Wrap" Text="Display options" Style="{DynamicResource MetroHeading2}"
+                     Margin="0,20,0,5"/>
+                    <CheckBox Margin="0,0,0,5" IsChecked="{Binding KeepScrollPositionatTop}">
+                        <TextBlock TextWrapping="Wrap">
+              Keep scroll position at top when new tweets come in
+                        </TextBlock>
+                    </CheckBox>
+                    <CheckBox Margin="0,0,0,5"
+                    IsChecked="{Binding Source={x:Static Application.Current}, Path=AppState.ShowCompactAccountPane}">
+                        <TextBlock TextWrapping="Wrap">Mini-mode sidebar</TextBlock>
+                    </CheckBox>
+                    <TextBlock TextWrapping="Wrap" Text="Tweeting options" Style="{DynamicResource MetroHeading2}"
+                     Margin="0,20,0,5"/>
+                    <CheckBox Margin="0,0,0,5" IsChecked="{Binding UseAutoComplete}">
+                        <TextBlock TextWrapping="Wrap">
+              Use autocomplete when typing a Twitter username and hashtag
+                        </TextBlock>
+                    </CheckBox>
+                    <CheckBox Margin="0,0,0,5" IsChecked="{Binding UseSpellChecker}">
+                        <TextBlock TextWrapping="Wrap">
+              Use spell-checking when writing a tweet
+                        </TextBlock>
+                    </CheckBox>
+                    <CheckBox Margin="0,0,0,5" IsChecked="{Binding PostTweetOnEnter}">
+                        <TextBlock TextWrapping="Wrap">
+              Send tweet update on ENTER key
+                        </TextBlock>
+                    </CheckBox>
+                    <TextBlock TextWrapping="Wrap" Text="Tweet layout options" Style="{DynamicResource MetroHeading2}"
+                     Margin="0,20,0,5"/>
+                    <TextBlock TextWrapping="Wrap" Text="Tweet text size" Margin="0,0,0,5"/>
+                    <ComboBox Margin="0,0,0,10"
+                    SelectedIndex="{Binding TweetFontSizePreference, Converter={StaticResource tweetFontSizeDisplayConverter}}">
+                        <ComboBoxItem>Small</ComboBoxItem>
+                        <ComboBoxItem>Medium</ComboBoxItem>
+                        <ComboBoxItem>Large</ComboBoxItem>
+                    </ComboBox>
+                    <CheckBox x:Name="ShowTime" Content="Show time on tweets" Margin="0,0,0,5"
+                    IsChecked="{Binding ShowTimeofTweet}"/>
+                    <StackPanel Margin="16,0,0,5">
+                        <ComboBox Margin="0,0,0,5" IsEnabled="{Binding IsChecked, ElementName=ShowTime}"
+                      SelectedIndex="{Binding TwitterTimeDisplay, Converter={StaticResource twitterTimeDisplayConverter}}">
+                            <ComboBoxItem>Relative time</ComboBoxItem>
+                            <ComboBoxItem>Absolute time</ComboBoxItem>
+                            <ComboBoxItem>
+                                Relative time for last 6 hours, then absolute time
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                Absolute time for last 6 hours, then relative time
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                    <CheckBox Margin="0,0,0,10" IsChecked="{Binding ShowSourceofTweet}">
+                        <TextBlock TextWrapping="Wrap">
+              Show name of Twitter application
+                        </TextBlock>
+                    </CheckBox>
+                    <CheckBox Margin="0,0,0,10" IsChecked="{Binding DisplayImagesInlineAutomatically}">
+                        <TextBlock TextWrapping="Wrap">
+              Show inline media thumbnails
+                        </TextBlock>
+                    </CheckBox>
+                    <TextBlock TextWrapping="Wrap" Opacity="0.5"
+                     Text="(Please restart MetroTwit for these options to take effect)" Margin="0,0,0,15"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="alertsAndSoundsTab" Header="alerts">
+                <StackPanel MaxWidth="700">
+                    <TextBlock TextWrapping="Wrap" Style="{DynamicResource MetroHeading2}" Margin="0,0,0,5">
+            <Run Text="Notification toasts"/>
+                    </TextBlock>
+                    <CheckBox Content="Show notification toasts" Margin="0,0,0,5" IsChecked="{Binding ShowNotificationToasts}"/>
+                    <TextBlock Opacity="0.5" TextWrapping="Wrap" Margin="20,0,0,5">
+            Configure notification toast for each column in the "column settings" dropdown
+                    </TextBlock>
+                    <StackPanel Margin="20,5,0,0" IsEnabled="{Binding ShowNotificationToasts}">
+                        <Label Margin="0,0,0,5">
+                            <TextBlock TextWrapping="Wrap">
+                <Run Text="Display notifications for "/>
+                <Run FontWeight="Bold" Text="{Binding NotificationDisplayTime}"/>
+                <Run Text=" seconds"/>
+                            </TextBlock>
+                        </Label>
+                        <StackPanel Margin="0,0,0,15" Orientation="Horizontal">
+                            <Label Content="Less time"/>
+                            <Slider Width="120" Maximum="20" Minimum="1" Margin="10,0" IsSnapToTickEnabled="true"
+                      Value="{Binding NotificationDisplayTime}"/>
+                            <Label Content="More time"/>
+                        </StackPanel>
+                        <Label>
+                            <TextBlock TextWrapping="Wrap" Margin="0,0,0,5">
+                <Run Text="Show each new tweet for "/>
+                <Run FontWeight="Bold" Text="{Binding NotificationTweetDisplayTime}"/>
+                <Run Text=" seconds"/>
+                            </TextBlock>
+                        </Label>
+                        <StackPanel Margin="0,0,0,15" Orientation="Horizontal">
+                            <Label Content="Less time"/>
+                            <Slider Width="120" Maximum="10" Minimum="1" Margin="10,0" IsSnapToTickEnabled="true"
+                      Value="{Binding NotificationTweetDisplayTime}"/>
+                            <Label Content="More time"/>
+                        </StackPanel>
+                        <Label>
+                            <TextBlock TextWrapping="Wrap" Margin="0,0,0,5">
+                <Run Text="Notification monitor and position"/>
+                            </TextBlock>
+                        </Label>
+                        <ListBox HorizontalAlignment="Left" FocusVisualStyle="{x:Null}" Background="{x:Null}"
+                     SelectedIndex="{Binding NotificationScreen}" ItemsSource="{Binding Screens, IsAsync=True, Mode=OneWay}">
+
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <RadioButton Style="{DynamicResource NotifScreenRadioButton}" Width="{Binding BoundsWidth}"
+                               Height="{Binding BoundsHeight}" Margin="{Binding BoundsMargin}"
+                               IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}">
+                                        <Border Background="{DynamicResource MetroComboBoxBg}" Margin="{Binding WorkingAreaMargin}"
+                            Height="{Binding WorkingAreaHeight}" Width="{Binding WorkingAreaWidth}">
+                                            <Grid Margin="4,4,8,8">
+                                                <Grid Name="ScreenNumber" Width="48" Height="48" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <TextBlock FontSize="32" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                     Foreground="{DynamicResource MetroCheckboxBorder}" Margin="0,0,0,4" Text="{Binding ScreenNumber}"/>
+                                                </Grid>
+                                                <RadioButton CommandParameter="1" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                     DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+                                     IsChecked="{Binding NotificationPosition, Mode=OneWay, Converter={StaticResource notificationPositionConverter}, ConverterParameter=1}"
+                                     Command="{Binding NotificationPositionCommand}"
+                                     Visibility="{Binding IsSelected, Converter={StaticResource boolToVisConverter}, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}"/>
+                                                <RadioButton CommandParameter="2" HorizontalAlignment="Right" VerticalAlignment="Top"
+                                     DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+                                     IsChecked="{Binding NotificationPosition, Mode=OneWay, Converter={StaticResource notificationPositionConverter}, ConverterParameter=2}"
+                                     Command="{Binding NotificationPositionCommand}"
+                                     Visibility="{Binding IsSelected, Converter={StaticResource boolToVisConverter}, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}"/>
+                                                <RadioButton CommandParameter="3" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                     DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+                                     IsChecked="{Binding NotificationPosition, Mode=OneWay, Converter={StaticResource notificationPositionConverter}, ConverterParameter=3}"
+                                     Command="{Binding NotificationPositionCommand}"
+                                     Visibility="{Binding IsSelected, Converter={StaticResource boolToVisConverter}, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}"/>
+                                                <RadioButton CommandParameter="4" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                     DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+                                     IsChecked="{Binding NotificationPosition, Mode=OneWay, Converter={StaticResource notificationPositionConverter}, ConverterParameter=4}"
+                                     Command="{Binding NotificationPositionCommand}"
+                                     Visibility="{Binding IsSelected, Converter={StaticResource boolToVisConverter}, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}"/>
+                                            </Grid>
+                                        </Border>
+                                    </RadioButton>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <FrameworkElement.Resources>
+                                <Style TargetType="{x:Type ListBox}">
+                                    <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="true"/>
+                                    <Setter Property="Control.Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type ListBox}">
+                                                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                                                    <StackPanel IsItemsHost="true" Orientation="Horizontal"/>
+                                                </ScrollViewer>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                                <Style TargetType="{x:Type ListBoxItem}">
+                                    <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="true"/>
+                                    <Setter Property="Control.Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                                <ContentPresenter Margin="0,0,5,0"/>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                                <Style x:Key="NotifScreenRadioButton" TargetType="{x:Type RadioButton}">
+                                    <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="true"/>
+                                    <Setter Property="FrameworkElement.HorizontalAlignment" Value="Stretch"/>
+                                    <Setter Property="Control.Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type RadioButton}">
+                                                <Border Name="NotifScreen" BorderThickness="1" BorderBrush="{DynamicResource MetroComboBoxBg}"
+                                RenderTransformOrigin="0.5,0.5">
+                                                    <Border.Background>
+                                                        <SolidColorBrush Color="{DynamicResource MetroComboBoxItemHighlighted}"/>
+                                                    </Border.Background>
+                                                    <UIElement.RenderTransform>
+                                                        <TransformGroup>
+                                                            <ScaleTransform/>
+                                                            <SkewTransform/>
+                                                            <RotateTransform/>
+                                                            <TranslateTransform/>
+                                                        </TransformGroup>
+                                                    </UIElement.RenderTransform>
+                                                    <ContentPresenter/>
+                                                    <VisualStateManager.VisualStateGroups>
+                                                        <VisualStateGroup x:Name="CommonStates">
+                                                            <VisualState x:Name="Normal"/>
+                                                            <VisualState x:Name="MouseOver">
+                                                                <Storyboard>
+                                                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush.Color" Storyboard.TargetName="NotifScreen">
+                                                                        <DiscreteColorKeyFrame KeyTime="0" Value="{DynamicResource MetroCheckboxBorderHover}"/>
+                                                                    </ColorAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Pressed">
+                                                                <Storyboard>
+                                                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush.Color" Storyboard.TargetName="NotifScreen">
+                                                                        <DiscreteColorKeyFrame KeyTime="0" Value="{DynamicResource MetroCheckboxBorderHover}"/>
+                                                                    </ColorAnimationUsingKeyFrames>
+                                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="NotifScreen"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.05" Value="0.95"/>
+                                                                    </DoubleAnimationUsingKeyFrames>
+                                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="NotifScreen"
+                                                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.05" Value="0.95"/>
+                                                                    </DoubleAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Disabled">
+                                                                <Storyboard>
+                                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="NotifScreen">
+                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.2"/>
+                                                                    </DoubleAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                        </VisualStateGroup>
+                                                        <VisualStateGroup x:Name="CheckStates">
+                                                            <VisualState x:Name="Checked">
+                                                                <Storyboard>
+                                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="NotifScreen">
+                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1.0"/>
+                                                                    </DoubleAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Unchecked">
+                                                                <Storyboard>
+                                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="NotifScreen">
+                                                                        <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.5"/>
+                                                                    </DoubleAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                        </VisualStateGroup>
+                                                    </VisualStateManager.VisualStateGroups>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </FrameworkElement.Resources>
+                        </ListBox>
+                    </StackPanel>
+                    <TextBlock TextWrapping="Wrap" Style="{DynamicResource MetroHeading2}" Margin="0,20,0,5">
+            <Run Text="Notification sounds"/>
+                    </TextBlock>
+                    <CheckBox Content="Play notification sounds" Margin="0,0,0,5" IsChecked="{Binding UseNotificationSound}"/>
+                    <TextBlock Opacity="0.5" TextWrapping="Wrap" Margin="20,0,0,5">
+            Configure notification sounds for each column in the "column settings" dropdown
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Style="{DynamicResource MetroHeading2}" Margin="0,20,0,5">
+            <Run Text="Windows 7 taskbar"/>
+                    </TextBlock>
+                    <CheckBox Content="Show unread counter in Windows 7 taskbar" Margin="0,0,0,5"
+                    IsChecked="{Binding ShowTaskbarCount}"/>
+                    <TextBlock Opacity="0.5" TextWrapping="Wrap" Margin="20,0,0,5">
+            Configure unread counter for each column in the "column settings" dropdown
+                    </TextBlock>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="twitterTab" Header="twitter">
+                <StackPanel>
+                    <StackPanel MaxWidth="700" HorizontalAlignment="Left">
+                        <TextBlock TextWrapping="Wrap" Style="{DynamicResource MetroHeading2}" Margin="0,0,0,5">
+              <Run Text="Custom Twitter API application"/>
+                        </TextBlock>
+                        <TextBlock Margin="0,0,0,5">
+              Custom Twitter Consumer Key:
+                        </TextBlock>
+                        <TextBox Width="270" HorizontalAlignment="Left" Margin="0,0,0,5" Text="{Binding CustomTwitterConsumerKey}"/>
+                        <TextBlock Margin="0,0,0,5">
+              Custom Twitter Consumer Secret:
+                        </TextBlock>
+                        <TextBox Width="270" HorizontalAlignment="Left" Margin="0,0,0,5"
+                     Text="{Binding CustomTwitterConsumerSecret}"/>
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+              <Run Text="Please note: After changing this setting you will need to remove and readd all accounts so they have the correct tokens from Twitter."/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Style="{DynamicResource MetroHeading2}" Margin="0,0,0,5">
+              <Run Text="Streaming options"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+              <Run Text="Streaming enables instant updates which may easily overwhelm you if you have follow a lot of active users. To enhance usability and readability, new tweets can be backlogged for a short moment before being displayed."/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+              <Run Text="Backlog streamed tweets for "/>
+              <Run FontWeight="Bold" Text="{Binding BacklogSecondsText, Mode=OneWay}"/>
+                        </TextBlock>
+                        <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                            <Label Content="Slower updates"/>
+                            <Slider Width="160" Maximum="120" Minimum="0" Margin="10,0" TickPlacement="Both" IsSnapToTickEnabled="true"
+                      Value="{Binding BacklogSeconds}"/>
+                            <Label Content="Faster updates"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                        <ItemsControl ItemsSource="{Binding Accounts}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderThickness="1" BorderBrush="{DynamicResource MetroComboBoxBg}" Margin="0,0,10,0" Width="250">
+                                        <StackPanel Margin="10">
+                                            <TextBlock FontSize="15" FontWeight="Bold" Margin="0,0,0,10">
+                        <Run Text="@"/>
+                        <Run Text="{Binding TwitterAccountName}"/>
+                                            </TextBlock>
+                                            <CheckBox Margin="0,0,0,5" IsChecked="{Binding AllReplies}">
+                                                <TextBlock TextWrapping="Wrap">
+                          Show all replies including users you don't follow
+                                                </TextBlock>
+                                            </CheckBox>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                    <StackPanel MaxWidth="700" HorizontalAlignment="Left">
+                        <TextBlock TextWrapping="Wrap" Style="{DynamicResource MetroHeading2}" Margin="0,20,0,5">
+              <Run Text="Filtering"/>
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+              Block unwanted tweets from appearing in your stream. Supports
+              <Run FontStyle="Italic">keywords</Run>
+              ,
+              <Run FontStyle="Italic">@usernames</Run>
+              ,
+              <Run FontStyle="Italic">#hashtags</Run>
+              or
+              <Run FontStyle="Italic">:applications</Run>
+              . Separate multiple filters by comma.
+                        </TextBlock>
+                        <TextBlock Margin="0,0,0,5">Global filters:</TextBlock>
+                        <RichTextBox DataObject.Pasting="RichTextBox_Pasting" Height="28" VerticalAlignment="Stretch"
+                         AcceptsReturn="false" Margin="0,0,0,10">
+                            <i:Interaction.Behaviors>
+                                <b:BoundRichTextBoxBehavior Binding="{Binding Filter}"/>
+                            </i:Interaction.Behaviors>
+                        </RichTextBox>
+                    </StackPanel>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                        <ItemsControl ItemsSource="{Binding Accounts}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderThickness="1" BorderBrush="{DynamicResource MetroComboBoxBg}" Margin="0,0,10,0" Width="250">
+                                        <StackPanel Margin="10">
+                                            <TextBlock FontSize="15" FontWeight="Bold" Margin="0,0,0,10">
+                        <Run Text="@"/>
+                        <Run Text="{Binding TwitterAccountName}"/>
+                                            </TextBlock>
+                                            <TextBlock Margin="0,0,0,5">Account filters:</TextBlock>
+                                            <RichTextBox Height="50" VerticalAlignment="Stretch" AcceptsReturn="false"
+                                   Extensions:IntellisenseExtension.TwitterAccountID="{Binding TwitterAccountID, Mode=OneWay}">
+                                                <i:Interaction.Behaviors>
+                                                    <b:BoundRichTextBoxBehavior Binding="{Binding Filter}"/>
+                                                </i:Interaction.Behaviors>
+                                            </RichTextBox>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="networkTab" Header="network">
+                <StackPanel MaxWidth="700">
+                    <TextBlock TextWrapping="Wrap" Style="{DynamicResource MetroHeading2}" Margin="0,0,0,5">
+            <Run Text="API proxy"/>
+                    </TextBlock>
+                    <CheckBox Content="Use a Twitter API proxy" Margin="0,0,0,5" IsChecked="{Binding UseProxlet}"/>
+                    <StackPanel Orientation="Horizontal" Margin="20,0,0,10" IsEnabled="{Binding UseProxlet}">
+                        <Label VerticalAlignment="Center">
+                            <TextBlock>Proxy base address:</TextBlock>
+                        </Label>
+                        <TextBox Margin="10,0,0,0" Width="250" VerticalAlignment="Center" Text="{Binding ProxletAddress}"/>
+                    </StackPanel>
+                    <TextBlock TextWrapping="Wrap" Style="{DynamicResource MetroHeading2}" Margin="0,20,0,5">
+            <Run Text="Proxy authentication"/>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+            <Run Text="If your proxy connection requires basic authentication, enter the settings to allow MetroTwit to talk to the internet. Proxies with integrated authentication do not need to fill this."/>
+                    </TextBlock>
+                    <TextBlock Margin="0,0,0,5">Proxy username:</TextBlock>
+                    <TextBox Width="270" HorizontalAlignment="Left" Margin="0,0,0,5" Text="{Binding ProxyUsername}"/>
+                    <TextBlock Margin="0,0,0,5">Proxy password:</TextBlock>
+                    <PasswordBox Width="270" HorizontalAlignment="Left" Margin="0,0,0,5" Password=""
+                       Extensions:PasswordBoxHelper.BindPassword="true"
+                       Extensions:PasswordBoxHelper.BoundPassword="{Binding ProxyPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock TextWrapping="Wrap" Opacity="0.5"
+                     Text="(Please restart MetroTwit for these options to take effect)" Margin="0,0,0,15"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="servicesTab" Header="services">
+                <StackPanel>
+                    <StackPanel MaxWidth="700" HorizontalAlignment="Left">
+                        <TextBlock TextWrapping="Wrap" Style="{StaticResource MetroHeading2}" Margin="0,0,0,5">
+              <Run Text="Link services"/>
+                        </TextBlock>
+                    </StackPanel>
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                        <ItemsControl ItemsSource="{Binding Accounts}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel IsItemsHost="true" Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderThickness="1" BorderBrush="{DynamicResource MetroComboBoxBg}" Margin="0,0,10,0">
+                                        <StackPanel Margin="10">
+                                            <TextBlock FontSize="15" FontWeight="Bold" Margin="0,0,0,10">
+                        <Run Text="@"/>
+                        <Run Text="{Binding TwitterAccountName}"/>
+                                            </TextBlock>
+                                            <RadioButton Content="Use native Twitter link shortening" Margin="0,0,0,5"
+                                   IsChecked="{Binding AutomaticallyShortenLinksFalse}"/>
+                                            <RadioButton x:Name="AutoShortenLinksCheckBox" Content="Shorten links using third party service:"
+                                   Margin="0,0,0,5" IsChecked="{Binding AutomaticallyShortenLinksTrue}"/>
+                                            <StackPanel x:Name="urlShorteningOptionsPanel" Margin="16,5,5,5" HorizontalAlignment="Stretch"
+                                  IsEnabled="{Binding IsChecked, ElementName=AutoShortenLinksCheckBox}">
+                                                <ComboBox x:Name="urlShorteningServicesComboBox" DisplayMemberPath="Name"
+                                  SelectedValue="{Binding Settings.URLShorteningService}"
+                                  ItemsSource="{Binding URLShorteningServices, Source={x:Static Model:CoreServices.Instance}}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                    <StackPanel MaxWidth="700" HorizontalAlignment="Left">
+                        <TextBlock TextWrapping="Wrap" Style="{StaticResource MetroHeading2}" Margin="0,20,0,5">
+              <Run Text="Media services"/>
+                        </TextBlock>
+                        <CheckBox Content="Show previews from third-party media services" Margin="0,0,0,5"
+                      IsChecked="{Binding ShowMediaPreviews}"/>
+                        <Grid Margin="0,0,0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="140"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="0,8,0,5"
+                         VerticalAlignment="Top">
+                Upload images using:
+                            </TextBlock>
+                            <ComboBox x:Name="imageUploadingServicesComboBox" Margin="10,5,5,5" Grid.Row="0" Grid.Column="1" Width="300"
+                        DisplayMemberPath="Name" SelectedValue="{Binding ImageUploadingService}"
+                        ItemsSource="{Binding ImageUploadingServices, Source={x:Static Model:CoreServices.Instance}}"/>
+                        </Grid>
+                        <TextBlock TextWrapping="Wrap" Style="{StaticResource MetroHeading2}" Margin="0,20,0,5">
+              <Run Text="Location services"/>
+                        </TextBlock>
+                        <Grid Margin="0,0,0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="140"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="0,3,0,5"
+                         VerticalAlignment="Center">
+                Lookup maps and addresses with:
+                            </TextBlock>
+                            <ComboBox x:Name="mapServicesComboBox" Grid.Row="0" Grid.Column="1" Margin="10,5,5,5" Width="300"
+                        DisplayMemberPath="Name" VerticalAlignment="Center" SelectedValue="{Binding MapService}"
+                        ItemsSource="{Binding MapServices, Source={x:Static Model:CoreServices.Instance}}"/>
+                        </Grid>
+                        <TextBlock TextWrapping="Wrap" Style="{StaticResource MetroHeading2}" Margin="0,20,0,5">
+              <Run Text="Tweet services"/>
+                        </TextBlock>
+                        <StackPanel x:Name="tweetServicesOptionsPanel" Margin="0,0,0,5"/>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+        <Grid HorizontalAlignment="Left" Row="2" VerticalAlignment="Top" Margin="30,10,30,36">
+            <Button Content="_back" Style="{DynamicResource MetroButton}" Width="200" Margin="0,0,10,0" IsCancel="true"
+              IsDefault="true" Command="{Binding BackCommand}"/>
+        </Grid>
+    </Grid>
+</UserControl>

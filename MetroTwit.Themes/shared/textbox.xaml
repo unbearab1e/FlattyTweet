@@ -1,0 +1,198 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Resource dictionary entries should be defined here. -->
+
+    <Style x:Key="{x:Type TextBox}" TargetType="{x:Type TextBox}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="CaretBrush" Value="{DynamicResource MetroTextBoxCaret}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border Name="Border" Background="{DynamicResource MetroTextBoxBg}" BorderBrush="{DynamicResource MetroTextBoxBorder}" BorderThickness="1">
+                        <ScrollViewer Margin="2,4,2,4" FontSize="13" x:Name="PART_ContentHost" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxBorderHover}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxBorderHover}"/>
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource MetroTextBoxBgFocus}"/>
+                        </Trigger>
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource MetroTextBoxErrorBg}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxErrorBg}" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Validation.HasError" Value="True" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxErrorBorder}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Validation.HasError" Value="True" />
+                                <Condition Property="IsFocused" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxErrorBorder}"/>
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource MetroTextBoxBgFocus}"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <AdornedElementPlaceholder />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ContextMenu">
+            <Setter.Value>
+                <ContextMenu>
+                    <MenuItem Header="Cut" Command="ApplicationCommands.Cut"/>
+                    <MenuItem Header="Copy" Command="ApplicationCommands.Copy"/>
+                    <MenuItem Header="Paste" Command="ApplicationCommands.Paste"/>
+                </ContextMenu>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{x:Type PasswordBox}" TargetType="{x:Type PasswordBox}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="CaretBrush" Value="{DynamicResource MetroTextBoxCaret}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
+                    <Border Name="Border" Background="{DynamicResource MetroTextBoxBg}" BorderBrush="{DynamicResource MetroTextBoxBorder}" BorderThickness="1">
+                        <ScrollViewer Margin="2,4,2,4" FontSize="13" x:Name="PART_ContentHost" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxBorderHover}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxBorderHover}"/>
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource MetroTextBoxBgFocus}"/>
+                        </Trigger>
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource MetroTextBoxErrorBg}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxErrorBg}" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Validation.HasError" Value="True" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxErrorBorder}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Validation.HasError" Value="True" />
+                                <Condition Property="IsFocused" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxErrorBorder}"/>
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource MetroTextBoxBgFocus}"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <AdornedElementPlaceholder />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{x:Type RichTextBox}" TargetType="{x:Type RichTextBox}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="CaretBrush" Value="{DynamicResource MetroTextBoxCaret}" />
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RichTextBox}">
+                    <Border Name="Border" Background="{DynamicResource MetroTextBoxBg}" BorderBrush="{DynamicResource MetroTextBoxBg}" BorderThickness="1">
+                        <ScrollViewer Margin="0,4,0,4" FontSize="13" x:Name="PART_ContentHost" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxBorderHover}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxBorderHover}"/>
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource MetroTextBoxBgFocus}"/>
+                        </Trigger>
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource MetroTextBoxErrorBg}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxErrorBg}" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Validation.HasError" Value="True" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxErrorBorder}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Validation.HasError" Value="True" />
+                                <Condition Property="IsFocused" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxErrorBorder}"/>
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource MetroTextBoxBgFocus}"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ContextMenu">
+            <Setter.Value>
+                <ContextMenu>
+                    <MenuItem Header="Cut" Command="ApplicationCommands.Cut"/>
+                    <MenuItem Header="Copy" Command="ApplicationCommands.Copy"/>
+                    <MenuItem Header="Paste" Command="ApplicationCommands.Paste"/>
+                </ContextMenu>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="TextDecorations" Value="{x:Null}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="TextDecorations" Value="Underline" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="UnderlineHyperlink" TargetType="{x:Type Hyperlink}">
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="TextDecorations" Value="Underline" />
+        <Setter Property="Foreground" Value="{DynamicResource HyperlinkURL}" />
+    </Style>
+
+</ResourceDictionary>

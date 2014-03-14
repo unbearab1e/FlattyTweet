@@ -1,0 +1,10 @@
+<UserControl x:Class="MetroTwit.View.PopupFormSaveErrorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <StackPanel>
+    <TextBlock HorizontalAlignment="Center" Style="{DynamicResource MetroHeading1}"
+               Foreground="{DynamicResource ModernTextDarkerBrush}" Margin="0,30,0,5" Text="{Binding ErrorText}"/>
+    <Button HorizontalAlignment="Center" Content="_ok" Style="{DynamicResource MetroButton}" Width="140"
+            IsDefault="true" Command="{Binding OKCommand}"/>
+  </StackPanel>
+</UserControl>

@@ -1,0 +1,26 @@
+<UserControl x:Class="MetroTwit.View.WelcomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             Style="{DynamicResource MetroUserControl}">
+  <DockPanel Margin="30,36">
+    <Button DockPanel.Dock="Bottom" Margin="0,30,0,0" Content="quit" Width="150" HorizontalAlignment="Right"
+            Style="{DynamicResource MetroButton}" Command="{Binding QuitCommand}"/>
+    <StackPanel>
+      <TextBlock Margin="0,0,0,20" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center"
+                 Style="{DynamicResource MetroHeading1}" Foreground="{DynamicResource MetroHeadingColorDark}">
+        hey there, nice to see you
+      </TextBlock>
+      <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+        We hope the clean and elegant user interface with simple yet intuitive features will make this the Windows Twitter client you'll love to use.
+      </TextBlock>
+      <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+        Let's get started by signing in to Twitter.
+      </TextBlock>
+      <Button Content="_add a twitter account" Width="300" Height="40" IsDefault="true"
+              HorizontalAlignment="Left" Style="{DynamicResource MetroButton}"
+              Command="{Binding AddUserAccountCommand}"/>
+    </StackPanel>
+  </DockPanel>
+</UserControl>

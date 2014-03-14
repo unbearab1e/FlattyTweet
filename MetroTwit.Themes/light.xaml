@@ -1,0 +1,193 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+
+    <!--
+    Theme colors
+    -->
+
+    <Color x:Key="MetroTextColor" >#FF000000</Color>
+    <Color x:Key="MetroTextLightColor" >#FF666666</Color>
+    <SolidColorBrush x:Key="MetroText" Color="{StaticResource MetroTextColor}"  />
+    <SolidColorBrush x:Key="MetroTextLight" Color="{StaticResource MetroTextLightColor}"  />
+    <SolidColorBrush x:Key="MetroBg" Color="#FFFFFFFF"  />
+
+    <!-- 
+    Selected object
+    -->
+
+    <SolidColorBrush x:Key="MetroSelectColor" Color="{StaticResource MetroColorFeature}"  />
+
+    <!-- 
+    Overlay
+    -->
+
+    <SolidColorBrush x:Key="MetroWindowOverlay" Color="#CCEEEEEE"  />
+    <SolidColorBrush x:Key="MetroTweetsOverlay" Color="#CCFFFFFF"  />
+    <SolidColorBrush x:Key="MetroSolidBlackOverlay" Color="#66000000"  />
+    <RadialGradientBrush x:Key="MetroBlackOverlay" Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusY="1" RadiusX="1" >
+        <GradientStop Color="#00000000" Offset="0.2"/>
+        <GradientStop Color="#DD000000" Offset="1"/>
+    </RadialGradientBrush>
+
+    <!--
+    Drop shadow
+    -->
+
+    <DropShadowEffect x:Key="MetroDropShadow" Direction="300" ShadowDepth="0" BlurRadius="10" RenderingBias="Performance" Opacity="0.8"  />
+
+    <!-- 
+    Controls
+    -->
+
+    <SolidColorBrush x:Key="MetroCheckboxCheck" Color="#FFFFFFFF"  />
+    <SolidColorBrush x:Key="MetroCheckboxBorder" Color="#FF333333"  />
+
+    <SolidColorBrush x:Key="MetroComboBoxBg" Color="#FFEEEEEE"  />
+    <SolidColorBrush x:Key="MetroComboBoxArrow" Color="#FF999999"  />
+    <Color x:Key="MetroComboBoxBorderHover">#FF333333</Color>
+    <Color x:Key="MetroComboBoxBgHover">#FFFFFFFF</Color>
+    <Color x:Key="MetroComboBoxItemHighlighted">#FFDFDFDF</Color>
+
+    <SolidColorBrush x:Key="MetroMenuBg" Color="#FFFFFFFF"  />
+    <SolidColorBrush x:Key="MetroMenuText" Color="#FF000000"  />
+    <SolidColorBrush x:Key="MetroMenuItemHover" Color="#FFDFDFDF"  />
+    <SolidColorBrush x:Key="MetroMenuItemArrow" Color="#FF333333"  />
+    <SolidColorBrush x:Key="MetroMenuItemSeparator" Color="#FFCCCCCC"  />
+
+    <SolidColorBrush x:Key="MetroPopupColumnBg" Color="#FFFFFFFF"  />
+    <SolidColorBrush x:Key="MetroPopupColumnBorder" Color="#FF666666"  />
+
+    <SolidColorBrush x:Key="MetroScollbarScroll" Color="#FFCCCCCC"  />
+    <Color x:Key="MetroScollbarScrollHover" >#FF333333</Color>
+    <SolidColorBrush x:Key="MetroScollbarBg" Color="#FFEEEEEE"  />
+
+    <SolidColorBrush x:Key="MetroExpander" Color="#FF333333"  />
+    <SolidColorBrush x:Key="MetroExpanderTick" Color="#FFFFFFFF"  />
+
+    <SolidColorBrush x:Key="MetroProgressLight" Color="{StaticResource MetroColorFeatureContrast}"  />
+    <SolidColorBrush x:Key="MetroProgressDark" Color="{StaticResource MetroColorFeature}" />
+    <SolidColorBrush x:Key="MetroProgressBg" Color="#FFEEEEEE" />
+
+    <SolidColorBrush x:Key="MetroSliderBg" Color="#FFCCCCCC"  />
+    <SolidColorBrush x:Key="MetroSliderThumb" Color="#FF666666"  />
+    <SolidColorBrush x:Key="MetroSliderBorder" Color="#FFFFFFFF"  />
+    <Color x:Key="MetroSliderThumbHover" >#FF111111</Color>
+
+    <SolidColorBrush x:Key="MetroTextBoxBg" Color="#FFEEEEEE"  />
+    <SolidColorBrush x:Key="MetroTextBoxBorderHover" Color="#FF333333"  />
+    <SolidColorBrush x:Key="MetroTextBoxBgFocus" Color="#FFFFFFFF"  />
+    <SolidColorBrush x:Key="MetroTextBoxCaret" Color="#FF000000"  />
+    <SolidColorBrush x:Key="MetroTextBoxErrorBorder" Color="#FFe50000"  />
+    <SolidColorBrush x:Key="MetroTextBoxErrorBg" Color="#FFffcece" />
+
+    <!--
+    Text
+    -->
+
+    <SolidColorBrush x:Key="MetroHeadingColorLight" Color="{StaticResource MetroColorFeatureContrast}"  />
+    <SolidColorBrush x:Key="MetroHeadingColorDark" Color="#FF000000"  />
+    <SolidColorBrush x:Key="MetroFormLabelColor" Color="#FF333333"  />
+
+    <!--
+    Intellisense
+    -->
+
+    <SolidColorBrush x:Key="MetroIntellisenseBg" Color="#FFFFFFFF"  />
+    <Color x:Key="MetroIntellisenseListHover" >#FFf3f3f3</Color>
+    <Color x:Key="MetroIntellisenseListSelected" >#FFDFDFDF</Color>
+
+    <!-- 
+    Buttons
+    -->
+
+    <SolidColorBrush x:Key="MetroButtonText" Color="#FF000000"  />
+    <SolidColorBrush x:Key="MetroButtonStroke" Color="#FF666666"  />
+
+    <SolidColorBrush x:Key="MetroButtonNormal" Color="#FFEEEEEE"  />
+    <Color x:Key="MetroButtonHover">#FF333333</Color>
+    <Color x:Key="MetroButtonPressed">#FF666666</Color>
+    <Color x:Key="MetroButtonHoverText">#FFFFFFFF</Color>
+
+    <SolidColorBrush x:Key="MetroMainButtons" Color="#FF000000"  />
+
+    <!--
+    Notifications
+    -->
+
+    <SolidColorBrush x:Key="MetroNotificationBg" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="MetroNotificationBorder" Color="#FF999999" />
+    <SolidColorBrush x:Key="MetroNotificationHeading" Color="#FF000000" />
+    <SolidColorBrush x:Key="MetroNotificationClose" Color="#FF999999" />
+
+    <!--
+    Hyperlinks
+    -->
+    <SolidColorBrush x:Key="HyperlinkURL" Color="#FF0083de" />
+    <SolidColorBrush x:Key="HyperlinkHashtag" Color="#FFc7003d" />
+    <SolidColorBrush x:Key="HyperlinkUsername" Color="#FF00a900" />
+    <!--
+    Tweets
+    -->
+
+    <Color x:Key="TweetBgFull">#FFFFFFFF</Color>
+    <Color x:Key="TweetBgFade">#00FFFFFF</Color>
+    <SolidColorBrush x:Key="TweetBg" Color="{StaticResource TweetBgFull}"  />
+    <SolidColorBrush x:Key="TweetTextBg" Color="{StaticResource TweetBgFade}"  />
+    <Color x:Key="TweetTextBgMouseOver" >#FFf3f3f3</Color>
+    <Color x:Key="TweetTextBgFocused" >#FFeaeaea</Color>
+    <Color x:Key="TweetAvatarBg" >#FFFFFFFF</Color>
+    <SolidColorBrush x:Key="TweetText" Color="#FF333333" />
+    <SolidColorBrush x:Key="TweetFooterText" Color="{StaticResource MetroTextLightColor}" />
+    <SolidColorBrush x:Key="TweetFooterIcon" Color="#FFAAAAAA" />
+
+    <!--
+    Tweet profile
+    -->
+
+    <SolidColorBrush x:Key="FollowsYouIconBg" Color="#FF1f9200"  />
+    <SolidColorBrush x:Key="FollowsYouText" Color="#FFffffff"  />
+    <SolidColorBrush x:Key="ProtectedAccountIconSmall" Color="#FF999999"  />
+    <SolidColorBrush x:Key="ProtectedAccountIconLarge" Color="#FF333333"  />
+
+    <!--
+    Tweets options
+    -->
+
+    <SolidColorBrush x:Key="MetroTweetOptionsIcon" Color="#FFFFFFFF"  />
+    <SolidColorBrush x:Key="MetroTweetOptionsStroke" Color="#FFFFFFFF"  />
+    <Color x:Key="MetroTweetOptionsStrokeHover">#FFFFFFFF</Color>
+    <DropShadowEffect x:Key="MetroTweetOptionsPressed" ShadowDepth="0" BlurRadius="5" Color="#FFFFFFFF" Opacity="1" />
+    <SolidColorBrush x:Key="MetroTweetOptionsBg" Color="#AA000000"  />
+
+    <!--
+    New tweet box
+    -->
+
+    <SolidColorBrush x:Key="NewTweetBg" Color="#FFFFFFFF"  />
+    <SolidColorBrush x:Key="NewTweetBorderColor" Color="#FFCCCCCC"  />
+    <Color x:Key="NewTweetBorderHover" >#FF666666</Color>
+    <SolidColorBrush x:Key="NewTweetText" Color="#FF000000"  />
+    <SolidColorBrush x:Key="NewTweetTextCaret" Color="#FF000000"  />
+    <SolidColorBrush x:Key="NewTweetButton" Color="#FF000000"  />
+
+    <SolidColorBrush x:Key="NewTweetCharCountOK" Color="#25333333"  />
+    <SolidColorBrush x:Key="NewTweetCharCountOver" Color="#25c1003b"  />
+
+    <SolidColorBrush x:Key="NewTweetStatusGray" Color="#FF333333"  />
+    <SolidColorBrush x:Key="NewTweetStatusGreen" Color="#FF009800"  />
+    <SolidColorBrush x:Key="NewTweetStatusRed" Color="#FFcb001d"  />
+
+    <!--
+    URL shortening & ButtonProgress
+    -->
+
+    <SolidColorBrush x:Key="ButtonProgressBorderFillNormal" Color="#FFCCCCCC" />
+
+    <SolidColorBrush x:Key="URLShorteningButtonFillNormal" Color="#FFEEEEEE" />
+    <Color x:Key="URLShorteningButtonFillHover">#FF333333</Color>
+    <Color x:Key="URLShorteningButtonFillFocus">#FF666666</Color>
+    <SolidColorBrush x:Key="URLShorteningButtonTextNormal" Color="#FF0083de" />
+    <Color x:Key="URLShorteningButtonTextFocus">#FFFFFFFF</Color>
+
+</ResourceDictionary>

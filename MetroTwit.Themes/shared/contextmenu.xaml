@@ -1,0 +1,125 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Resource dictionary entries should be defined here. -->
+
+
+    <Style TargetType="{x:Type ContextMenu}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Foreground" Value="{DynamicResource ModernContrastBrush}"/>
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ContextMenu}">
+                    <ControlTemplate.Resources>
+
+                        <ControlTemplate x:Key="MenuItem.Item" TargetType="{x:Type MenuItem}">
+                            <Border x:Name="Border" Background="{DynamicResource ModernBgLighterBrush}" Padding="10,5,10,5">
+                                <ContentPresenter ContentSource="Header" RecognizesAccessKey="True" RenderOptions.ClearTypeHint="Enabled" TextBlock.Foreground="{DynamicResource ModernContrastBrush}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource ModernFeatureBrush}"/>
+                                </Trigger>
+                                <Trigger Property="IsHighlighted" Value="True">
+                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource ModernFeatureBrush}"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="Border" Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+
+                        <ControlTemplate x:Key="MenuItem.Header" TargetType="{x:Type MenuItem}">
+                            <Border x:Name="Border" Background="{DynamicResource ModernFeatureBrush}" Padding="10,5,10,5">
+                                <Grid>
+                                    <ContentPresenter ContentSource="Header" RecognizesAccessKey="True" RenderOptions.ClearTypeHint="Enabled" TextBlock.Foreground="{DynamicResource ModernContrastBrush}" />
+                                    <Path Width="4" Height="5" Stretch="Fill" Fill="{DynamicResource MetroMenuItemArrow}" Data="{DynamicResource PathRightArrow}" HorizontalAlignment="Right"/>
+                                    <Popup Name="PART_Popup" Placement="Right" HorizontalOffset="8" AllowsTransparency="True" IsOpen="{TemplateBinding IsSubmenuOpen}" PopupAnimation="Fade">
+                                        <Border Margin="8" MinWidth="170" Background="{DynamicResource ModernBgLighterBrush}" BorderThickness="1" BorderBrush="{DynamicResource ModernFeatureBrush}">
+                                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" Margin="0"/>
+                                        </Border>
+                                    </Popup>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource ModernFeatureBrush}"/>
+                                </Trigger>
+                                <Trigger Property="IsHighlighted" Value="True">
+                                    <Setter TargetName="Border" Property="Background" Value="{DynamicResource ModernFeatureBrush}"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="Border" Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+
+                        <Style TargetType="{x:Type MenuItem}">
+                            <Style.Triggers>
+                                <Trigger Property="Role" Value="TopLevelHeader">
+                                    <Setter Property="Template"
+					              Value="{StaticResource MenuItem.Header}"/>
+                                </Trigger>
+                                <Trigger Property="Role" Value="TopLevelItem">
+                                    <Setter Property="Template"
+					              Value="{StaticResource MenuItem.Item}"/>
+                                </Trigger>
+                                <Trigger Property="Role" Value="SubmenuHeader">
+                                    <Setter Property="Template"
+					             Value="{StaticResource MenuItem.Header}"/>
+                                </Trigger>
+                                <Trigger Property="Role" Value="SubmenuItem">
+                                    <Setter Property="Template"
+					              Value="{StaticResource MenuItem.Item}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+
+                        <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type Separator}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Separator}">
+                                        <Rectangle Height="1" Fill="{DynamicResource ModernBgLighterBrush}" Margin="8,6" />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+
+                    </ControlTemplate.Resources>
+
+                    <Border x:Name="Border" Margin="8" MinWidth="170" Background="{DynamicResource ModernBgLighterBrush}" BorderThickness="1" BorderBrush="{DynamicResource ModernFeatureBrush}">
+                        <StackPanel x:Name="Content" IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" Margin="0">
+                            <StackPanel.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </StackPanel.RenderTransform>
+                        </StackPanel>
+                        
+                    </Border>
+                    <!--<ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="Content">
+                                        <EasingDoubleKeyFrame KeyTime="0" Value="30"/>
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0">
+                                            <EasingDoubleKeyFrame.EasingFunction>
+                                                <ExponentialEase EasingMode="EaseOut" Exponent="6"/>
+                                            </EasingDoubleKeyFrame.EasingFunction>
+                                        </EasingDoubleKeyFrame>
+                                    </DoubleAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>-->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
