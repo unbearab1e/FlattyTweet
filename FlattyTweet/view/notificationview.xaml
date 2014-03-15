@@ -1,0 +1,22 @@
+<Window x:Class="FlattyTweet.View.NotificationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:view="clr-namespace:FlattyTweet.View"
+        xmlns:viewmodel="clr-namespace:FlattyTweet.ViewModel"
+        Title="NotificationView" Topmost="true" ShowInTaskbar="false" WindowStyle="None"
+        AllowsTransparency="true" Background="Transparent" ResizeMode="NoResize" ShowActivated="false"
+        Style="{DynamicResource MetroNotificationWindow}"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+  <FrameworkElement.Resources>
+    <DataTemplate DataType="{x:Type viewmodel:NotificationControlViewModel}">
+      <view:NotificationControlView HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+    </DataTemplate>
+  </FrameworkElement.Resources>
+  <ItemsControl x:Name="NotificationList" ItemsSource="{Binding Notifications}">
+    <ItemsControl.ItemsPanel>
+      <ItemsPanelTemplate>
+        <StackPanel Margin="10"/>
+      </ItemsPanelTemplate>
+    </ItemsControl.ItemsPanel>
+  </ItemsControl>
+</Window>

@@ -1,0 +1,106 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"	
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell"
+	mc:Ignorable="d">
+
+    <Style x:Key="MetroWindow" TargetType="{x:Type Window}">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="Foreground" Value="{DynamicResource ModernTextLighterBrush}" />
+        <Setter Property="shell:WindowChrome.WindowChrome">
+            <Setter.Value>
+                <shell:WindowChrome CaptionHeight="30"
+                                        CornerRadius="0"
+                                        GlassFrameThickness="0,0,0,0"                                        
+                                        ResizeBorderThickness="5" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MetroNotificationWindow" TargetType="{x:Type Window}">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="Foreground" Value="{DynamicResource ModernTextLighterBrush}" />        
+    </Style>
+
+    <Style x:Key="MetroUserControl" TargetType="{x:Type UserControl}">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="Foreground" Value="{DynamicResource ModernTextLighterBrush}" />
+    </Style>
+
+    <Style x:Key="MetroOverlay" TargetType="{x:Type Canvas}">
+        <Setter Property="Visibility" Value="Collapsed" />
+        <Setter Property="Background" Value="{DynamicResource MetroWindowOverlay}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding OverlayIsVisible}" Value="True">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MetroTweetOverlay" TargetType="{x:Type Canvas}">
+        <Setter Property="Visibility" Value="Collapsed" />
+        <Setter Property="Background" Value="{DynamicResource MetroTweetsOverlay}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding TweetOverlayIsVisible}" Value="True">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ErrorMessage" TargetType="{x:Type UserControl}">
+        <Setter Property="Foreground" Value="{DynamicResource ModernTextLighterBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type UserControl}">
+                    <DockPanel>
+                        <Path Stretch="Uniform" Width="16" Height="16" VerticalAlignment="Top" Margin="0,3,10,0" Fill="{DynamicResource ModernTextLighterBrush}" Data="{StaticResource PathWarning}"/>
+                        <ContentPresenter />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

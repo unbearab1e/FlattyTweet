@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\Joshua\AppData\Local\Apps\2.0\8WK4PAMP.D6Y\V814PCJP.C3C\metr..tion_89233686fad4c081_0001.0001_335d7c2b6b7c57eb\MetroTwitLoop.exe-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0134C4EF-2127-4D7C-BDC9-93A6D5C05582}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>FlattyTweet</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\Smthng\FlattyRelease\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.1.0.3134</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>resources\Twitter.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>106708EFE48F48FD548C30FA182DCFB02F7B8549</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>MetroTwitPlus_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>FlattyTweet.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Windows.Shell">
+      <HintPath>..\Microsoft.Windows.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System.Windows.Interactivity" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="GalaSoft.MvvmLight.WPF45">
+      <HintPath>lib\GalaSoft.MvvmLight.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="Twitterizer">
+      <HintPath>..\Twitterizer.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Bugsense.WPF">
+      <HintPath>lib\Bugsense.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras.WPF45">
+      <HintPath>lib\GalaSoft.MvvmLight.Extras.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.AddIn" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SerializableDictionary.cs" />
+    <Compile Include="ProcessedByFody.cs" />
+    <Compile Include="FlattyTweet\App.cs" />
+    <Compile Include="FlattyTweet\MainWindow.cs" />
+    <Compile Include="FlattyTweet\AddIns\TwitterImageUploadService.cs" />
+    <Compile Include="FlattyTweet\Behaviors\AnimatedTweetListBox.cs" />
+    <Compile Include="FlattyTweet\Behaviors\BoundRichTextBoxBehavior.cs" />
+    <Compile Include="FlattyTweet\Behaviors\InlineMessageBehavior.cs" />
+    <Compile Include="FlattyTweet\Behaviors\HoverbarScrollViewer.cs" />
+    <Compile Include="FlattyTweet\Behaviors\UndoTweetDialogBehavior.cs" />
+    <Compile Include="FlattyTweet\Behaviors\LoginDialogBehavior.cs" />
+    <Compile Include="FlattyTweet\Behaviors\HorizontalMouseScroll.cs" />
+    <Compile Include="FlattyTweet\Behaviors\KeepTopScrollerBehavior.cs" />
+    <Compile Include="FlattyTweet\Behaviors\UnreadMarkerListBoxBehavior.cs" />
+    <Compile Include="FlattyTweet\Behaviors\MetroSideWindowBehavior.cs" />
+    <Compile Include="FlattyTweet\Behaviors\MediaPreviewDialogBehavior.cs" />
+    <Compile Include="FlattyTweet\Behaviors\GeoDialogBehavior.cs" />
+    <Compile Include="FlattyTweet\Behaviors\UpdateDialogBehavior.cs" />
+    <Compile Include="FlattyTweet\Behaviors\NonModalDialogBehavior.cs" />
+    <Compile Include="FlattyTweet\Behaviors\DialogBehavior.cs" />
+    <Compile Include="FlattyTweet\Behaviors\RetweetDialogBehavior.cs" />
+    <Compile Include="FlattyTweet\Behaviors\MetroMainWindowBehavior.cs" />
+    <Compile Include="FlattyTweet\Behaviors\Win32.cs" />
+    <Compile Include="FlattyTweet\Behaviors\StretchyColumnBehavior.cs" />
+    <Compile Include="FlattyTweet\Extensions\AdornerDragDrop.cs" />
+    <Compile Include="FlattyTweet\Extensions\ApplicationPaths.cs" />
+    <Compile Include="FlattyTweet\Extensions\FileType.cs" />
+    <Compile Include="FlattyTweet\Extensions\ApplicationTextMetrics.cs" />
+    <Compile Include="FlattyTweet\Extensions\AttachedEvents.cs" />
+    <Compile Include="FlattyTweet\Extensions\ButtonProgress.cs" />
+    <Compile Include="FlattyTweet\Extensions\CommonCommands.cs" />
+    <Compile Include="FlattyTweet\Extensions\IntPtrExtensions.cs" />
+    <Compile Include="FlattyTweet\Extensions\Int32Extensions.cs" />
+    <Compile Include="FlattyTweet\Extensions\Int64Extensions.cs" />
+    <Compile Include="FlattyTweet\Extensions\IPopupViewModel.cs" />
+    <Compile Include="FlattyTweet\Extensions\MediaConsts.cs" />
+    <Compile Include="FlattyTweet\Extensions\MTColumnViewModelCollection.cs" />
+    <Compile Include="FlattyTweet\Extensions\MTColumnCollection.cs" />
+    <Compile Include="FlattyTweet\Extensions\MetroColumns.cs" />
+    <Compile Include="FlattyTweet\Extensions\DispatcherExtensions.cs" />
+    <Compile Include="FlattyTweet\Extensions\InlinePopup.cs" />
+    <Compile Include="FlattyTweet\Extensions\KeyHelper.cs" />
+    <Compile Include="FlattyTweet\Extensions\MultiAccountViewModelBase.cs" />
+    <Compile Include="FlattyTweet\Extensions\OneTimer.cs" />
+    <Compile Include="FlattyTweet\Extensions\TimerMessage.cs" />
+    <Compile Include="FlattyTweet\Extensions\PasswordBoxHelper.cs" />
+    <Compile Include="FlattyTweet\Extensions\SortableObservableCollection`1.cs" />
+    <Compile Include="FlattyTweet\Extensions\MTAccountCollection.cs" />
+    <Compile Include="FlattyTweet\Extensions\SharedResourceDictionary.cs" />
+    <Compile Include="FlattyTweet\Extensions\TweetRenderer.cs" />
+    <Compile Include="FlattyTweet\Extensions\WordMatcher.cs" />
+    <Compile Include="FlattyTweet\Extensions\IntellisenseItemComparer.cs" />
+    <Compile Include="FlattyTweet\Extensions\RegularExpressions.cs" />
+    <Compile Include="FlattyTweet\Extensions\PopupService.cs" />
+    <Compile Include="FlattyTweet\Extensions\PinViewEventArgs.cs" />
+    <Compile Include="FlattyTweet\Extensions\RTBExtensions.cs" />
+    <Compile Include="FlattyTweet\Extensions\TagMentionLinkRun.cs" />
+    <Compile Include="FlattyTweet\Extensions\SingleInstance.cs" />
+    <Compile Include="FlattyTweet\Extensions\WinApi.cs" />
+    <Compile Include="FlattyTweet\Extensions\ProgramInfo.cs" />
+    <Compile Include="FlattyTweet\Extensions\TweetDataTemplateSelector.cs" />
+    <Compile Include="FlattyTweet\Extensions\IntellisenseItem.cs" />
+    <Compile Include="FlattyTweet\Extensions\IntellisenseExtension.cs" />
+    <Compile Include="FlattyTweet\Extensions\IntellisenseDataSource.cs" />
+    <Compile Include="FlattyTweet\Extensions\IntellisenseAdorner.cs" />
+    <Compile Include="FlattyTweet\Extensions\TwitterListContainer.cs" />
+    <Compile Include="FlattyTweet\Extensions\NullImageConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\EmptyStringToVisibility.cs" />
+    <Compile Include="FlattyTweet\Extensions\AppendSpaceToNonEmptyString.cs" />
+    <Compile Include="FlattyTweet\Extensions\NegateBooleanToVisibilityConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\BooleanToVisibilityHiddenConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\NegateVisibilityConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\NegateConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\IntToBooleanConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\AccentConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\ArtworkConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\NotificationPositionConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\TweetFontSizeDisplayConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\TwitterTimeDisplayConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\EqualityConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\TweetTypeIsDMConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\TweetTypeIsProfileConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\TweetTypeIsMyTweetsConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\NotificationButtonColorConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\EmptyCollectionToCollapsedConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\EmptyCollectionToVisibleConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\StreamEventToIconConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\DateToHumanReadableConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\CountToOpacityConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\AppendStringConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\ImagePreviewConverter.cs" />
+    <Compile Include="FlattyTweet\Extensions\ViewModelMessages.cs" />
+    <Compile Include="FlattyTweet\Extensions\TweetListType.cs" />
+    <Compile Include="FlattyTweet\Extensions\TweetListSpecial.cs" />
+    <Compile Include="FlattyTweet\Extensions\InputBoxType.cs" />
+    <Compile Include="FlattyTweet\Extensions\StartStage.cs" />
+    <Compile Include="FlattyTweet\Extensions\DialogType.cs" />
+    <Compile Include="FlattyTweet\Extensions\TimerMessages.cs" />
+    <Compile Include="FlattyTweet\Extensions\ColourAccent.cs" />
+    <Compile Include="FlattyTweet\Extensions\Artwork.cs" />
+    <Compile Include="FlattyTweet\Extensions\TweetFontSizeDisplay.cs" />
+    <Compile Include="FlattyTweet\Extensions\TwitterTimeDisplay.cs" />
+    <Compile Include="FlattyTweet\Extensions\ViewModelType.cs" />
+    <Compile Include="FlattyTweet\Extensions\ViewType.cs" />
+    <Compile Include="FlattyTweet\Extensions\NotificationPosition.cs" />
+    <Compile Include="FlattyTweet\Extensions\RefreshTypes.cs" />
+    <Compile Include="FlattyTweet\Extensions\ResizeDirection.cs" />
+    <Compile Include="FlattyTweet\Extensions\ErrorIcon.cs" />
+    <Compile Include="FlattyTweet\Extensions\DisplayType.cs" />
+    <Compile Include="FlattyTweet\Extensions\WINDOWPOSPARAMS.cs" />
+    <Compile Include="FlattyTweet\Extensions\POINT.cs" />
+    <Compile Include="FlattyTweet\Extensions\MINMAXINFO.cs" />
+    <Compile Include="FlattyTweet\Extensions\MONITORINFO.cs" />
+    <Compile Include="FlattyTweet\Extensions\RECT.cs" />
+    <Compile Include="FlattyTweet\Extensions\MetroTwitScreen.cs" />
+    <Compile Include="FlattyTweet\Extensions\MetroTwitColumn.cs" />
+    <Compile Include="FlattyTweet\Extensions\MetroTwitWindow.cs" />
+    <Compile Include="FlattyTweet\Extensions\CacheUser.cs" />
+    <Compile Include="FlattyTweet\Extensions\CacheHashTag.cs" />
+    <Compile Include="FlattyTweet\Extensions\MetroTwitSiteFeed.cs" />
+    <Compile Include="FlattyTweet\Extensions\Extensions.cs" />
+    <Compile Include="FlattyTweet\Extensions\MetroTwitTwitterizer.cs" />
+    <Compile Include="FlattyTweet\Extensions\KeyboardShortcutMessage.cs" />
+    <Compile Include="FlattyTweet\Extensions\RetweetMessage.cs" />
+    <Compile Include="FlattyTweet\Extensions\KeyboardShortcutType.cs" />
+    <Compile Include="FlattyTweet\Extensions\AsyncErrorHandler.cs" />
+    <Compile Include="FlattyTweet\Extensions\TabItemExtension.cs" />
+    <Compile Include="FlattyTweet\Extensions\URLShortening.cs" />
+    <Compile Include="FlattyTweet\Extensions\URLAdorner.cs" />
+    <Compile Include="FlattyTweet\Extensions\PropertyObserver.cs" />
+    <Compile Include="FlattyTweet\Model\ActionUrls.cs" />
+    <Compile Include="FlattyTweet\Model\AppStateModel.cs" />
+    <Compile Include="FlattyTweet\Model\MetroTwitAPIStatus.cs" />
+    <Compile Include="FlattyTweet\Model\MediaManager.cs" />
+    <Compile Include="FlattyTweet\Model\oEmbed.cs" />
+    <Compile Include="FlattyTweet\Model\OembedResponse.cs" />
+    <Compile Include="FlattyTweet\Model\UndoTweetState.cs" />
+    <Compile Include="FlattyTweet\Model\UserSettings.cs" />
+    <Compile Include="FlattyTweet\Model\Embedly.cs" />
+    <Compile Include="FlattyTweet\Model\EmbedlyPreviewResponse.cs" />
+    <Compile Include="FlattyTweet\Model\EmbedlyObject.cs" />
+    <Compile Include="FlattyTweet\Model\EmbedlyImage.cs" />
+    <Compile Include="FlattyTweet\Model\EmbedlyPlace.cs" />
+    <Compile Include="FlattyTweet\Model\MessageDialogService.cs" />
+    <Compile Include="FlattyTweet\Model\NestService.cs" />
+    <Compile Include="FlattyTweet\Model\NestColumn.cs" />
+    <Compile Include="FlattyTweet\Model\NestSettings.cs" />
+    <Compile Include="FlattyTweet\Model\NestSync.cs" />
+    <Compile Include="FlattyTweet\Model\TwitterStreaming.cs" />
+    <Compile Include="FlattyTweet\Model\CacheData.cs" />
+    <Compile Include="FlattyTweet\Model\CoreServices.cs" />
+    <Compile Include="FlattyTweet\Model\CustomRestResponse.cs" />
+    <Compile Include="FlattyTweet\Model\RestService.cs" />
+    <Compile Include="FlattyTweet\Model\SettingsData.cs" />
+    <Compile Include="FlattyTweet\Model\TwitterREST.cs" />
+    <Compile Include="FlattyTweet\Model\MetroRestResponse.cs" />
+    <Compile Include="FlattyTweet\MVVM\Messages\PromptMessage.cs" />
+    <Compile Include="FlattyTweet\ViewModel\ActivitiesViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\GenericProgressAndMessagePopupViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\IncomingOutgoingRequestsViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\MediaPreviewViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\MetroTwitErrorViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\MetroTwitStatusBase.cs" />
+    <Compile Include="FlattyTweet\ViewModel\NotificationsViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\PopupFormSaveErrorViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\ProgressPromptViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\SearchCriteriaViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\SearchExpressionBuilderViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\SearchTerm.cs" />
+    <Compile Include="FlattyTweet\ViewModel\RelationalOperator.cs" />
+    <Compile Include="FlattyTweet\ViewModel\SearchUserViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\SelectTwitterListViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\TwitterDirectMessageExtended.cs" />
+    <Compile Include="FlattyTweet\ViewModel\TwitterListExtended.cs" />
+    <Compile Include="FlattyTweet\ViewModel\TwitterStreamEventExtended.cs" />
+    <Compile Include="FlattyTweet\ViewModel\MetroTwitUser.cs" />
+    <Compile Include="FlattyTweet\ViewModel\UserAccountViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\TwitterStatusExtended.cs" />
+    <Compile Include="FlattyTweet\ViewModel\GeoViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\InputBoxViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\ListsViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\ListEqualityComparer.cs" />
+    <Compile Include="FlattyTweet\ViewModel\MainViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\ManageTwitterListViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\NotificationControlViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\SettingsViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\AccountManagementViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\TrendsViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\TrendsGroupType.cs" />
+    <Compile Include="FlattyTweet\ViewModel\TrendsGroup.cs" />
+    <Compile Include="FlattyTweet\ViewModel\TweetListViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\TwitViewModel.cs" />
+    <Compile Include="FlattyTweet\ViewModel\SingleImageUploadRequest.cs" />
+    <Compile Include="FlattyTweet\ViewModel\ViewModelLocator.cs" />
+    <Compile Include="FlattyTweet\View\BaseTweetListView.cs" />
+    <Compile Include="FlattyTweet\View\ModalWindowHost.cs" />
+    <Compile Include="FlattyTweet\View\ProfileView.cs" />
+    <Compile Include="FlattyTweet\View\InlineErrorControl.cs" />
+    <Compile Include="FlattyTweet\View\ActivitiesView.cs" />
+    <Compile Include="FlattyTweet\View\CenterModalWindowHost.cs" />
+    <Compile Include="FlattyTweet\View\FollowUsView.cs" />
+    <Compile Include="FlattyTweet\View\GenericProgressAndMessagePopupView.cs" />
+    <Compile Include="FlattyTweet\View\ManageAccountView.cs" />
+    <Compile Include="FlattyTweet\View\DebugView.cs" />
+    <Compile Include="FlattyTweet\View\IncomingOutgoingRequestsView.cs" />
+    <Compile Include="FlattyTweet\View\MediaPreviewView.cs" />
+    <Compile Include="FlattyTweet\View\PopupFormSaveErrorView.cs" />
+    <Compile Include="FlattyTweet\View\ProgressPromptView.cs" />
+    <Compile Include="FlattyTweet\View\SearchCriteriaView.cs" />
+    <Compile Include="FlattyTweet\View\SearchExpressionBuilderView.cs" />
+    <Compile Include="FlattyTweet\View\SearchUserView.cs" />
+    <Compile Include="FlattyTweet\View\SelectTwitterListView.cs" />
+    <Compile Include="FlattyTweet\View\WelcomeView.cs" />
+    <Compile Include="FlattyTweet\View\ManageTwitterListView.cs" />
+    <Compile Include="FlattyTweet\View\RetweetQuestionView.cs" />
+    <Compile Include="FlattyTweet\View\ComboAccountItem.cs" />
+    <Compile Include="FlattyTweet\View\ListsView.cs" />
+    <Compile Include="FlattyTweet\View\LoginView.cs" />
+    <Compile Include="FlattyTweet\View\ErrorView.cs" />
+    <Compile Include="FlattyTweet\View\GeoView.cs" />
+    <Compile Include="FlattyTweet\View\NotificationControlView.cs" />
+    <Compile Include="FlattyTweet\View\NotificationView.cs" />
+    <Compile Include="FlattyTweet\View\AddAccountView.cs" />
+    <Compile Include="FlattyTweet\View\SimpleErrorPrompt.cs" />
+    <Compile Include="FlattyTweet\View\TrendsView.cs" />
+    <Compile Include="FlattyTweet\View\UpdateView.cs" />
+    <Compile Include="FlattyTweet\View\InputBoxView.cs" />
+    <Compile Include="FlattyTweet\View\MessageBoxView.cs" />
+    <Compile Include="FlattyTweet\View\SettingsView.cs" />
+    <Compile Include="FlattyTweet\View\TweetListView.cs" />
+    <Compile Include="FlattyTweet\View\TwitView.cs" />
+    <Compile Include="FlattyTweet\View\WebBrowserView.cs" />
+    <Compile Include="AnimationScrollViewerOffset\ScrollViewerUtilities.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fodyweavers.xml" />
+    <Resource Include="resources\defaultavatar.png" />
+    <Resource Include="resources\placeholder.png" />
+    <Resource Include="resources\refresh.png" />
+    <Resource Include="resources\sidebarbg-dots.jpg" />
+    <Resource Include="resources\sidebarbg-flower-1.jpg" />
+    <Resource Include="resources\sidebarbg-flower-2.jpg" />
+    <Resource Include="resources\sidebarbg-grill.jpg" />
+    <Resource Include="resources\sidebarbg-grunge-1.jpg" />
+    <Resource Include="resources\sidebarbg-grunge-2.jpg" />
+    <Resource Include="resources\sidebarbg-lines.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="mainwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\activitiesview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\addaccountview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\centermodalwindowhost.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\debugview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\errorview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\followusview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\genericprogressandmessagepopupview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\geoview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\incomingoutgoingrequestsview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\inlineerrorcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\inputboxview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\listsview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\loginview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\manageaccountview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\managetwitterlistview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\mediapreviewview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\messageboxview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\modalwindowhost.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\notificationcontrolview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\notificationview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\popupformsaveerrorview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\profileview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\progresspromptview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\retweetquestionview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\searchcriteriaview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\searchexpressionbuilderview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\searchuserview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\selecttwitterlistview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\settingsview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\simpleerrorprompt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\trendsview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\tweetlistview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\twitview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\updateview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\webbrowserview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\welcomeview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlattyTweet.AddInSideAdapter\FlattyTweet.AddInSideAdapter.csproj">
+      <Project>{d3f55e65-b296-458a-8fe3-05d74742de60}</Project>
+      <Name>FlattyTweet.AddInSideAdapter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.AddInView\FlattyTweet.AddInView.csproj">
+      <Project>{821eeb73-1aa8-4b90-ad03-800148073ba3}</Project>
+      <Name>FlattyTweet.AddInView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.AppContracts\FlattyTweet.AppContracts.csproj">
+      <Project>{00166d1a-1c0d-4394-8ea1-65d43b188e69}</Project>
+      <Name>FlattyTweet.AppContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.Bing\FlattyTweet.Bing.csproj">
+      <Project>{a91a5616-c930-4656-b2e8-fd71a8fe5b37}</Project>
+      <Name>FlattyTweet.Bing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.Extensibility\FlattyTweet.Extensibility.csproj">
+      <Project>{9517a139-a499-4fed-b04c-7a49d6c0f964}</Project>
+      <Name>FlattyTweet.Extensibility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.GoogleURL\FlattyTweet.GoogleURL.csproj">
+      <Project>{2c5910d1-4008-4190-95b9-b427024c9e32}</Project>
+      <Name>FlattyTweet.GoogleURL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.Google\FlattyTweet.Google.csproj">
+      <Project>{cbacdd62-3c08-427f-b456-1cb8987542c4}</Project>
+      <Name>FlattyTweet.Google</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.HostSideAdapter\FlattyTweet.HostSideAdapter.csproj">
+      <Project>{e544306f-ac28-41b0-b5d4-9a56e14f52cc}</Project>
+      <Name>FlattyTweet.HostSideAdapter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.HostView\FlattyTweet.HostView.csproj">
+      <Project>{07d398e4-969f-4cd5-beb9-d81f96da2676}</Project>
+      <Name>FlattyTweet.HostView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.IEAddIn\FlattyTweet.IEAddIn.csproj">
+      <Project>{cfa860a0-c4f4-4e04-a206-7c10e6921282}</Project>
+      <Name>FlattyTweet.IEAddIn</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.Isgd\FlattyTweet.Isgd.csproj">
+      <Project>{1f7dfa05-d8c2-4cef-9fc4-c2a38e155a0b}</Project>
+      <Name>FlattyTweet.Isgd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.Themes\FlattyTweet.Themes.csproj">
+      <Project>{1704e6a3-0ae9-41a6-a98f-88d5442f5aa4}</Project>
+      <Name>FlattyTweet.Themes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.Tinyurl\FlattyTweet.Tinyurl.csproj">
+      <Project>{d498970d-6dfa-4f7f-b95d-4bfe63157dc9}</Project>
+      <Name>FlattyTweet.Tinyurl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.TwitLonger\FlattyTweet.TwitLonger.csproj">
+      <Project>{fed8e113-3a84-43ef-af98-39abaa0b7ac3}</Project>
+      <Name>FlattyTweet.TwitLonger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.TwitPic\FlattyTweet.TwitPic.csproj">
+      <Project>{164467fc-1d9e-4bee-adef-8fcd01ef4736}</Project>
+      <Name>FlattyTweet.TwitPic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PropertyChanged\PropertyChanged.csproj">
+      <Project>{e923b3e4-db91-4451-bb96-fa12a1529ac7}</Project>
+      <Name>PropertyChanged</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MetroTwitPlus_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\Twitter.ico" />
+    <Resource Include="resources\Twitter_48.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

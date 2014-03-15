@@ -1,0 +1,112 @@
+<UserControl x:Class="FlattyTweet.View.ManageTwitterListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:extensions="clr-namespace:FlattyTweet.Extensions"
+             Loaded="UserControl_Loaded" Style="{DynamicResource MetroUserControl}">
+  <FrameworkElement.Resources>
+    <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
+    <extensions:NegateConverter x:Key="negateConverter"/>
+    <Style TargetType="{x:Type ListBox}">
+      <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="true"/>
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type ListBox}">
+            <ItemsPresenter/>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style TargetType="{x:Type ListBoxItem}">
+      <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="true"/>
+      <Setter Property="FrameworkElement.HorizontalAlignment" Value="Stretch"/>
+      <Setter Property="FrameworkElement.Margin" Value="0,0,0,5"/>
+      <Setter Property="ListBoxItem.IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type ListBoxItem}">
+            <ContentPresenter/>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </FrameworkElement.Resources>
+  <Grid Margin="8,10,8,0">
+    <UserControl x:Name="loadingAnimation" Style="{DynamicResource Throbber}" Margin="20" VerticalAlignment="Center"
+                 Content="{Binding ProgressText}"
+                 Visibility="{Binding ShowAnimation, Converter={StaticResource booleanToVisibilityConverter}}"/>
+    <DockPanel Visibility="{Binding ShowForm, Converter={StaticResource booleanToVisibilityConverter}}">
+      <Button DockPanel.Dock="Bottom" HorizontalAlignment="Left" Margin="0,30" Content="_save"
+              Style="{DynamicResource MetroButton}" Width="140" IsDefault="true" Command="{Binding SaveCommand}"/>
+      <ScrollViewer>
+        <StackPanel>
+          <Label x:Name="listNameLabel" Content="List _name:" Padding="0" Margin="0,0,0,5"
+                 Style="{DynamicResource MetroFormLabel}" Target="{Binding ElementName=listNameTextBox}"/>
+                    <TextBox x:Name="listNameTextBox" Margin="0,0,0,10" Text="{Binding Name,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                    </TextBox>
+          <Label x:Name="descrptionLabel" Content="_Description:" Padding="0" Margin="0,5,0,5"
+                 Style="{DynamicResource MetroFormLabel}" Target="{Binding ElementName=descriptionTextBox}"/>
+          <TextBox x:Name="descriptionTextBox" Margin="0,0,0,5" MaxLength="100" TextWrapping="Wrap"
+                   AcceptsReturn="true" Height="70" Text="{Binding Description}"/>
+          <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Opacity="0.5" Text="Optional. Limit 100 characters."
+                     Margin="0,0,0,5"/>
+          <Label x:Name="isPublicLabel" Content="_Privacy:" Padding="0" Margin="0,5,0,5"
+                 Style="{DynamicResource MetroFormLabel}"/>
+          <RadioButton Content="Public - Anyone can follow this list" Margin="0,0,0,5" GroupName="ListPrivacy"
+                       IsChecked="{Binding IsPublic}"/>
+          <RadioButton Content="Private - Only you can access this list" Margin="0,0,0,5" GroupName="ListPrivacy"
+                       IsChecked="{Binding IsPublic, Converter={StaticResource negateConverter}}"/>
+          <StackPanel Visibility="{Binding ShowMembersList, Converter={StaticResource booleanToVisibilityConverter}}">
+            <Label x:Name="membersOfThisListLabel" Content="_Listed users:" Padding="0" Margin="0,5,0,5"
+                   Style="{DynamicResource MetroFormLabel}"/>
+            <ListBox Margin="0,0,0,5" SelectionMode="Multiple" ItemsSource="{Binding UsersInThisList}">
+              <FrameworkElement.Resources>
+                <Style TargetType="{x:Type ListBox}">
+                  <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="true"/>
+                  <Setter Property="Control.Template">
+                    <Setter.Value>
+                      <ControlTemplate TargetType="{x:Type ListBox}">
+                        <StackPanel IsItemsHost="true"/>
+                      </ControlTemplate>
+                    </Setter.Value>
+                  </Setter>
+                </Style>
+                <Style TargetType="{x:Type ListBoxItem}">
+                  <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="true"/>
+                  <Setter Property="FrameworkElement.HorizontalAlignment" Value="Stretch"/>
+                  <Setter Property="ListBoxItem.IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                  <Setter Property="FrameworkElement.Margin" Value="0,0,0,5"/>
+                  <Setter Property="Control.Template">
+                    <Setter.Value>
+                      <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <ContentPresenter/>
+                      </ControlTemplate>
+                    </Setter.Value>
+                  </Setter>
+                </Style>
+              </FrameworkElement.Resources>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <DockPanel Background="Transparent" Cursor="Hand">
+                    <CheckBox DockPanel.Dock="Left" VerticalAlignment="Top" Margin="0,3,5,0" IsChecked="{Binding IsSelected}"/>
+                    <StackPanel Margin="0,0,0,3">
+                      <TextBlock FontWeight="SemiBold" Text="{Binding BaseUser.ScreenName}"/>
+                      <TextBlock Text="{Binding BaseUser.Name}"/>
+                    </StackPanel>
+                  </DockPanel>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ListBox>
+          </StackPanel>
+        </StackPanel>
+      </ScrollViewer>
+    </DockPanel>
+    <StackPanel VerticalAlignment="Center"
+                Visibility="{Binding ShowErrorMessage, Converter={StaticResource booleanToVisibilityConverter}}">
+      <UserControl Style="{DynamicResource ErrorMessage}" HorizontalAlignment="Center">
+        <TextBlock Text="{Binding ErrorMessage}"/>
+      </UserControl>
+      <Button HorizontalAlignment="Center" Content="ok" Style="{DynamicResource MetroButton}" Width="140"
+              Margin="0,15,0,0" Command="{Binding OKCommand}"/>
+    </StackPanel>
+  </Grid>
+</UserControl>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\Joshua\AppData\Local\Apps\2.0\8WK4PAMP.D6Y\V814PCJP.C3C\metr..tion_89233686fad4c081_0001.0001_335d7c2b6b7c57eb\HostSideAdapters\MetroTwit.HostSideAdapter.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E544306F-AC28-41B0-B5D4-9A56E14F52CC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>FlattyTweet.HostSideAdapter</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>FlattyTweet.HostSideAdapter</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.AddIn" />
+    <Reference Include="System.AddIn.Contract" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.Windows.Presentation" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IsolatedElementContractToViewHostAdapter.cs" />
+    <Compile Include="IMyNativeHandle.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlattyTweet.AddInView\FlattyTweet.AddInView.csproj">
+      <Project>{821eeb73-1aa8-4b90-ad03-800148073ba3}</Project>
+      <Name>FlattyTweet.AddInView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.AppContracts\FlattyTweet.AppContracts.csproj">
+      <Project>{00166d1a-1c0d-4394-8ea1-65d43b188e69}</Project>
+      <Name>FlattyTweet.AppContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.Extensibility\FlattyTweet.Extensibility.csproj">
+      <Project>{9517a139-a499-4fed-b04c-7a49d6c0f964}</Project>
+      <Name>FlattyTweet.Extensibility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlattyTweet.HostView\FlattyTweet.HostView.csproj">
+      <Project>{07d398e4-969f-4cd5-beb9-d81f96da2676}</Project>
+      <Name>FlattyTweet.HostView</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

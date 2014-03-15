@@ -1,0 +1,22 @@
+<ex:InlinePopup x:Class="FlattyTweet.View.GeoView"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:ex="clr-namespace:FlattyTweet.Extensions"
+                Style="{DynamicResource MetroInlinePopup}">
+  <FrameworkElement.Resources>
+    <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
+  </FrameworkElement.Resources>
+    <StackPanel Background="{DynamicResource ModernBgDarkerBrush}">
+    <UserControl Style="{DynamicResource Throbber}" Content="Mapping location..." Margin="20" Width="250"
+                 Visibility="{Binding ShowAnimation, Converter={StaticResource booleanToVisibilityConverter}}"/>
+    <Button Style="{DynamicResource MetroOverlayButton}" Margin="0,0,0,10" Cursor="Hand"
+            Command="{Binding LinkCommand}" CommandParameter="{Binding LiveMapURL}">
+      <Image Width="320" Height="320" Source="{Binding GeoImageURI, Converter={StaticResource nullImageConverter}}">
+
+      </Image>
+    </Button>
+    <TextBlock Margin="0,0,0,5" Text="{Binding GeoAddress}"/>
+  </StackPanel>
+</ex:InlinePopup>

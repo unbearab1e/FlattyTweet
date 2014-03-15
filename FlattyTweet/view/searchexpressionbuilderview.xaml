@@ -1,0 +1,177 @@
+<Window x:Class="FlattyTweet.View.SearchExpressionBuilderView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Extensions="clr-namespace:FlattyTweet.Extensions"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:b="clr-namespace:FlattyTweet.Behaviors"
+        x:Name="SearchExpressionBuilder" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="false"
+        Style="{DynamicResource MetroWindow}" Background="{DynamicResource ModernBgDarkerBrush}">
+    <FrameworkElement.Resources>
+        <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
+    </FrameworkElement.Resources>
+    <i:Interaction.Behaviors>
+        <b:MetroSideWindowBehavior/>
+    </i:Interaction.Behaviors>
+    <Border x:Name="LayoutRoot" Background="{DynamicResource ModernBgDarkerBrush}"
+          BorderBrush="{DynamicResource ModernFeatureBrush}" BorderThickness="3,0">
+        <Grid>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
+                  Visibility="{Binding ShowSaveSearchErrorPanel, Converter={StaticResource booleanToVisibilityConverter}}">
+                <TextBlock Margin="28" HorizontalAlignment="Center" Text="Failed to save search, please try again"/>
+                <Button Width="100" Style="{DynamicResource MetroButton}" Margin="0,0,0,28"
+                Command="{Binding DiscardShowSaveSearchErrorCommand}">ok</Button>
+            </StackPanel>
+            <UserControl Style="{DynamicResource Throbber}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Content="Saving search..." Margin="28"
+                   Visibility="{Binding ShowSavingSearchThrobber, Converter={StaticResource booleanToVisibilityConverter}}"/>
+            <DockPanel Margin="30,36"
+                 Visibility="{Binding ShowMainContents, Converter={StaticResource booleanToVisibilityConverter}}">
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,10" DockPanel.Dock="Bottom">
+                    <Button Content="_search" Style="{DynamicResource MetroButton}" Width="140" IsDefault="true"
+                  Command="{Binding SaveCommand}"/>
+                    <Button Content="cancel" Style="{DynamicResource MetroButton}" Width="100" Margin="10,0,0,0"
+                  IsCancel="true" Command="{Binding CancelCommand}"/>
+                </StackPanel>
+                <CheckBox DockPanel.Dock="Bottom" Margin="0,20,0,15" IsChecked="{Binding SaveThisSearch}">
+                    Save this search to Twitter
+                </CheckBox>
+                <TextBlock Text="advanced search" DockPanel.Dock="Top" Style="{DynamicResource MetroHeading1}"
+                   Margin="0,0,0,25"/>
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="0,0,10,0" Background="{DynamicResource ModernBgDarkerBrush}" RenderOptions.ClearTypeHint="Enabled">
+                        <FrameworkElement.Resources>
+                            <DataTemplate x:Key="SearchTermItem">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <TextBox Width="315" Text="{Binding SearchText}"/>
+                                    <CheckBox HorizontalAlignment="Right" Content="Exact" VerticalAlignment="Center" Margin="10,0,10,0"
+                            IsChecked="{Binding IsExact}"/>
+                                    <ComboBox SelectedIndex="0" HorizontalAlignment="Right" MinWidth="80"
+                            SelectedValue="{Binding SearchOperator}">
+                                        <ComboBoxItem>AND</ComboBoxItem>
+                                        <ComboBoxItem>OR</ComboBoxItem>
+                                    </ComboBox>
+                                    <Button VerticalAlignment="Center" Margin="6,0,0,0" Style="{DynamicResource MetroPathButton}" Width="28"
+                          Height="28" ToolTip="Remove"
+                          Command="{Binding DataContext.RemoveSearchTermCommand, ElementName=SearchExpressionBuilder}"
+                          CommandParameter="{Binding}">
+                                        <Path Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathClose}" Margin="0,2,0,0"
+                          Width="11" Height="11" Stretch="Fill"/>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </FrameworkElement.Resources>
+                        <TextBlock Margin="0,0,0,5">
+              Display name (optional):
+                        </TextBlock>
+                        <TextBox Width="350" HorizontalAlignment="Left" Margin="0,0,0,15" Text="{Binding SearchName}"/>
+                        <Expander Margin="0,0,0,10" IsExpanded="true">
+                            <HeaderedContentControl.Header>
+                                <TextBlock>Search terms</TextBlock>
+                            </HeaderedContentControl.Header>
+                            <StackPanel Margin="22,0,0,0">
+                                <ItemsControl ItemTemplate="{StaticResource SearchTermItem}" MinHeight="0" Margin="0,10,0,0"
+                              ItemsSource="{Binding SearchTerms}"/>
+                                <Button Content="_add another term" Style="{DynamicResource MetroButton}" HorizontalAlignment="Left"
+                        Width="160" Margin="0,0,0,0" Command="{Binding AddSearchTermCommand}"/>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Margin="0,0,0,10">
+                            <HeaderedContentControl.Header>
+                                <TextBlock>Excludes</TextBlock>
+                            </HeaderedContentControl.Header>
+                            <StackPanel Margin="22,0,0,0">
+                                <TextBox AcceptsReturn="true" Height="50" HorizontalAlignment="Stretch" Margin="0,10,0,0"
+                         Text="{Binding Exclusions}"/>
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Opacity="0.5" Text="One exclusion per line"
+                           Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Margin="0,0,0,10">
+                            <HeaderedContentControl.Header>
+                                <TextBlock>Tags</TextBlock>
+                            </HeaderedContentControl.Header>
+                            <StackPanel Margin="22,0,0,0">
+                                <TextBox AcceptsReturn="true" Height="50" HorizontalAlignment="Stretch" Margin="0,10,0,0"
+                         Text="{Binding Tags}"/>
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Opacity="0.5" Text="One tag per line"
+                           Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Margin="0,0,0,10">
+                            <HeaderedContentControl.Header>
+                                <TextBlock>From users</TextBlock>
+                            </HeaderedContentControl.Header>
+                            <StackPanel Margin="22,0,0,0">
+                                <TextBox AcceptsReturn="true" Height="50" HorizontalAlignment="Stretch" Margin="0,10,0,0"
+                         Text="{Binding FromPeople}"/>
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Opacity="0.5" Text="One username per line"
+                           Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Margin="0,0,0,10">
+                            <HeaderedContentControl.Header>
+                                <TextBlock>To users</TextBlock>
+                            </HeaderedContentControl.Header>
+                            <StackPanel Margin="22,0,0,0">
+                                <TextBox AcceptsReturn="true" Height="50" HorizontalAlignment="Stretch" Margin="0,10,0,0"
+                         Text="{Binding ToPeople}"/>
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Opacity="0.5" Text="One username per line"
+                           Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Margin="0,0,0,10">
+                            <HeaderedContentControl.Header>
+                                <TextBlock>Mentions users</TextBlock>
+                            </HeaderedContentControl.Header>
+                            <StackPanel Margin="22,0,0,0">
+                                <TextBox AcceptsReturn="true" Height="50" HorizontalAlignment="Stretch" Margin="0,10,0,0"
+                         Text="{Binding Mentioning}"/>
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Opacity="0.5" Text="One username per line"
+                           Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Margin="0,0,0,10">
+                            <HeaderedContentControl.Header>
+                                <TextBlock>Sources</TextBlock>
+                            </HeaderedContentControl.Header>
+                            <StackPanel Margin="22,0,0,0">
+                                <TextBox AcceptsReturn="true" Height="50" HorizontalAlignment="Stretch" Margin="0,10,0,0"
+                         Text="{Binding Sources}"/>
+                                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Opacity="0.5" Text="One source per line"
+                           Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Margin="0,0,0,10">
+                            <HeaderedContentControl.Header>
+                                <TextBlock>Other options</TextBlock>
+                            </HeaderedContentControl.Header>
+                            <StackPanel Margin="22,10,0,0">
+                                <CheckBox IsChecked="{Binding Positive}">Positive tweet :)</CheckBox>
+                                <CheckBox Margin="0,5,0,0" IsChecked="{Binding Negative}">Negative tweet :(</CheckBox>
+                                <CheckBox Margin="0,5,0,0" IsChecked="{Binding Question}">Question ?</CheckBox>
+                                <CheckBox Margin="0,5,10,0" IsChecked="{Binding ContainsLinks}">
+                                    Contains web link(s)
+                                </CheckBox>
+                            </StackPanel>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+                <FrameworkElement.Triggers>
+                    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                        <BeginStoryboard Storyboard="{DynamicResource MetroFadeSlide}"/>
+                    </EventTrigger>
+                </FrameworkElement.Triggers>
+                <UIElement.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </UIElement.RenderTransform>
+            </DockPanel>
+        </Grid>
+    </Border>
+</Window>

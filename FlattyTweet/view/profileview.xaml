@@ -1,0 +1,255 @@
+<view:BaseTweetListView x:Class="FlattyTweet.View.ProfileView"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                        xmlns:Extensions="clr-namespace:FlattyTweet.Extensions"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:ex="clr-namespace:FlattyTweet.Extensions"
+                        xmlns:view="clr-namespace:FlattyTweet.View"
+                        Loaded="UserControl_Loaded" Unloaded="UserControl_Unloaded"
+                        Style="{DynamicResource MetroUserControl}">
+  <FrameworkElement.Resources>
+    <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
+    <ex:TweetDataTemplateSelector x:Key="tweetDataTemplateSelector" StatusTemplate="{StaticResource StatusTweetTemplate}"
+                                  SearchStatusTemplate="{StaticResource StatusTweetTemplate}"
+                                  DirectMessageTemplate="{StaticResource DirectMessageTemplate}"
+                                  ProfileStatusTemplate="{StaticResource StatusTweetTemplate}"
+                                  RetweetUsersTemplate="{StaticResource RetweetedByTemplate}"
+                                  BackLogTemplate="{StaticResource BackLogTemplate}"
+                                  RetweetFriendsTemplate="{StaticResource RetweetFriendsTemplate}"
+                                  RetweetOthersTemplate="{StaticResource RetweetOthersTemplate}"
+                                  UserTemplate="{StaticResource UserTemplate}" ListTemplate="{StaticResource ListTemplate}"/>
+  </FrameworkElement.Resources>
+  <DockPanel>
+    <Grid Background="Transparent" DockPanel.Dock="Left" Margin="12,12,24,12" Width="220"
+          Visibility="{Binding ProfileDetailsVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
+      <UserControl Style="{DynamicResource Throbber}" HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                   Content="Loading profile..." Margin="0"
+                   Visibility="{Binding ShowProfileLoading, Converter={StaticResource booleanToVisibilityConverter}}"/>
+      <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Visibility="{Binding UserVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
+          <Button Style="{StaticResource MetroOverlayButton}" ToolTip="View avatar" HorizontalAlignment="Left"
+                  Width="170" Height="170" Margin="0,0,0,10" Command="{Binding ContentLinkCommand}"
+                  CommandParameter="{Binding User.ProfileImageLocation}"
+                  Visibility="{Binding UserVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
+            <Image>
+              <Image.Source>
+                <PriorityBinding>
+                  <Binding Path="UserImageUrl" IsAsync="true" Converter="{StaticResource nullImageConverter}"/>
+                  <Binding Path="UserDefaultImage" IsAsync="true" Converter="{StaticResource nullImageConverter}"/>
+                </PriorityBinding>
+              </Image.Source>
+            </Image>
+          </Button>
+          <TabControl SelectionChanged="TabControl_SelectionChanged" x:Name="Display" TabStripPlacement="Left"
+                      Visibility="{Binding UserVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
+            <TabItem>
+              <HeaderedContentControl.Header>
+                <TextBlock>
+                  <Run Text="{Binding User.NumberOfStatuses, StringFormat='{}{0:#,0}', Mode=OneWay}"/>
+                  <Run Text=" tweets"/>
+                </TextBlock>
+              </HeaderedContentControl.Header>
+            </TabItem>
+            <TabItem IsEnabled="false">
+              <HeaderedContentControl.Header>
+                <TextBlock>
+                  <Run Text="{Binding User.NumberOfFollowers, StringFormat='{}{0:#,0}', Mode=OneWay}"/>
+                  <Run Text=" followers"/>
+                </TextBlock>
+              </HeaderedContentControl.Header>
+            </TabItem>
+            <TabItem IsEnabled="false">
+              <HeaderedContentControl.Header>
+                <TextBlock>
+                  <Run Text="{Binding User.NumberOfFriends, StringFormat='{}{0:#,0}', Mode=OneWay}"/>
+                  <Run Text=" following"/>
+                </TextBlock>
+              </HeaderedContentControl.Header>
+            </TabItem>
+            <TabItem IsEnabled="false">
+              <HeaderedContentControl.Header>
+                <TextBlock>
+                  <Run Text="{Binding User.ListedCount, StringFormat='{}{0:#,0}', Mode=OneWay}"/>
+                  <Run Text=" listed"/>
+                </TextBlock>
+              </HeaderedContentControl.Header>
+            </TabItem>
+          </TabControl>
+          <Button Style="{StaticResource MetroButton}" HorizontalAlignment="Left" Width="170" Margin="0,0,0,0"
+                  Content="{Binding FollowButtonText, Mode=OneWay}" IsEnabled="{Binding FollowButtonIsEnabled}"
+                  Visibility="{Binding FollowButtonVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}"
+                  Command="{Binding FollowCommand}"/>
+          <Grid HorizontalAlignment="Left" Width="170" Margin="0,0,0,0"
+                Visibility="{Binding FollowsYouVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
+            <TextBlock TextTrimming="CharacterEllipsis" Margin="0,8,0,0">
+              <Path Stretch="Uniform" Width="15" Height="14" Fill="{DynamicResource ModernFeatureBrush}"
+                    Margin="0,0,4,-3" Data="{StaticResource PathFollowsUser}"/>
+              <Run Text="Follows you"/>
+            </TextBlock>
+          </Grid>
+          <Button Click="ProfileOptionsButton_Click" x:Name="ProfileOptionsButton"
+                  Style="{StaticResource MetroPathButton}" HorizontalAlignment="Left" Margin="0,10,0,0"
+                  Visibility="{Binding UserVisible, Mode=OneWay}">
+            <StackPanel Orientation="Horizontal">
+              <Path Stretch="Uniform" Width="12" Height="12" Fill="{DynamicResource ModernContrastBrush}"
+                    Data="{StaticResource PathSettings}" Margin="0,1,5,0"/>
+              <TextBlock Text="User options"/>
+            </StackPanel>
+          </Button>
+          <StackPanel Margin="0,20,0,0">
+            <TextBlock TextWrapping="Wrap" Margin="0,0,0,5" FontWeight="SemiBold" FontSize="17"
+                       Visibility="{Binding NameVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
+              <Hyperlink ToolTip="View profile on Twitter.com" Focusable="false" Command="{Binding ProfileLinkCommand}">
+                <Run Text="{Binding User.Name, Mode=OneWay}"/>
+              </Hyperlink>
+            </TextBlock>
+            <TextBlock LineHeight="19" Margin="0,0,0,6" TextWrapping="Wrap"
+                       Visibility="{Binding DataContext.BioVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
+                       DataContext="{Binding UserRenderedDescription}">
+              <ex:TweetRenderer.Tweet>
+                <Binding Mode="OneWay" IsAsync="true"/>
+              </ex:TweetRenderer.Tweet>
+            </TextBlock>
+            <TextBlock ToolTip="Verified account" Margin="0,0,0,6"
+                       Visibility="{Binding VerifiedVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
+              <Path Stretch="Uniform" Width="12" Height="12" Fill="{DynamicResource ModernFeatureBrush}"
+                    Margin="0,0,6,-1" Data="{StaticResource PathVerified}"/>
+              <Run Text="Verified"/>
+            </TextBlock>
+            <TextBlock ToolTip="Protected account" Margin="0,0,0,6"
+                       Visibility="{Binding ProtectedVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
+              <Path Stretch="Uniform" Width="9" Height="12" Fill="{DynamicResource ModernFeatureBrush}"
+                    Margin="2,0,6,-1" Data="{StaticResource PathPadlock}"/>
+              <Run Text="Protected"/>
+            </TextBlock>
+            <TextBlock ToolTip="Joined date" Margin="0,0,0,6" TextTrimming="CharacterEllipsis">
+              <Path Stretch="Uniform" Width="12" Height="12" Fill="{DynamicResource ModernFeatureBrush}"
+                    Margin="0,0,6,-1" Data="{StaticResource PathTime}"/>
+              <Run Text="{Binding User.CreatedDate, Mode=OneWay, StringFormat='{}{0:Y}'}"/>
+            </TextBlock>
+            <TextBlock ToolTip="Location" Margin="0,0,0,6" TextWrapping="Wrap"
+                       Visibility="{Binding LocationVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
+              <Path Stretch="Uniform" Width="11" Height="12" Fill="{DynamicResource ModernFeatureBrush}"
+                    Margin="0,0,6,-1" Data="{StaticResource PathGeo}"/>
+              <Run Text="{Binding User.Location, Mode=OneWay}"/>
+            </TextBlock>
+            <TextBlock ToolTip="Website" Margin="0,0,0,6" TextTrimming="CharacterEllipsis"
+                       Visibility="{Binding WebSiteVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
+              <Path Stretch="Uniform" Width="12" Height="12" Fill="{DynamicResource ModernFeatureBrush}"
+                    Margin="0,0,6,-1" Data="{StaticResource PathWeb}"/>
+              <Hyperlink Focusable="false" ToolTip="Go to website" Foreground="{DynamicResource HyperlinkURL}"
+                         Command="{Binding LinkCommand}">
+                <Run Text="{Binding User.Website, Mode=OneWay}"/>
+              </Hyperlink>
+            </TextBlock>
+          </StackPanel>
+        </StackPanel>
+      </ScrollViewer>
+      <FrameworkElement.ContextMenu>
+        <ContextMenu x:Name="UserOptionsMenu">
+          <MenuItem Header="Mention user in tweet" Command="{Binding MentionCommand}"/>
+          <MenuItem Header="Direct message user" Command="{Binding DirectMessageCommand}"/>
+          <MenuItem Header="Add user to lists" Command="{Binding AddToListCommand}"/>
+          <MenuItem Header="{Binding NoRetweetsText}" Command="{Binding NoRetweetsCommand}"/>
+          <Separator/>
+          <MenuItem Header="{Binding BlockedText, Mode=OneWay}" IsEnabled="{Binding BlockEnabled, Mode=OneWay}"
+                    Command="{Binding BlockCommand}"/>
+          <MenuItem Header="Report spammer" IsEnabled="{Binding SpamEnabled, Mode=OneWay}"
+                    Command="{Binding ReportSpamCommand}"/>
+        </ContextMenu>
+      </FrameworkElement.ContextMenu>
+    </Grid>
+    <UserControl Style="{DynamicResource Throbber}" HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                 DockPanel.Dock="Top" Margin="12"
+                 Visibility="{Binding ShowLoading, Converter={StaticResource booleanToVisibilityConverter}}">
+      <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="{Binding LoadingText}"/>
+    </UserControl>
+    <DockPanel Visibility="{Binding ShowContentVisibility, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
+      <DockPanel Margin="20,20" Dock="Top"
+                 Visibility="{Binding ProtectedPanelVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
+        <Path VerticalAlignment="Top" Width="16" Height="22" Margin="0,0,10,0" Stretch="Fill"
+              Fill="{DynamicResource ProtectedAccountIconLarge}" Data="{StaticResource PathPadlock}"/>
+        <StackPanel>
+          <TextBlock FontSize="15" TextWrapping="Wrap" Margin="0,0,0,5">Protected Account</TextBlock>
+          <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+            This user has a protected Twitter account. You must be an approved follower before you can view their tweets.
+          </TextBlock>
+          <Button Content="follow" Style="{StaticResource MetroButton}" Width="200" HorizontalAlignment="Left"
+                  Command="{Binding FollowCommand}"/>
+        </StackPanel>
+      </DockPanel>
+      <UserControl PreviewMouseDown="AdControl_PreviewMouseDown" x:Name="AdControl" DockPanel.Dock="Top"
+                   Margin="4,8,3,0"
+                   Visibility="{Binding ShowingAd, Converter={StaticResource booleanToVisibilityConverter}}">
+        <Control.Template>
+          <ControlTemplate>
+            <Button Style="{DynamicResource AdButton}" Cursor="Hand" DataContext="{Binding Ad, Mode=OneWay}"
+                    Command="{Binding LinkCommand}" CommandParameter="{Binding AdUrls.click_url}">
+              <DockPanel x:Name="TweetAdGrid" Style="{StaticResource TweetGrid}">
+                <Grid DockPanel.Dock="Bottom" Margin="0,4,0,0" TextOptions.TextFormattingMode="Display"
+                      TextBlock.FontSize="{Binding TextMetrics.TweetFooterFontSize, Source={x:Static Application.Current}}">
+                  <Button Style="{DynamicResource MetroPathButton}" HorizontalAlignment="Left" Cursor="Hand"
+                          Command="{Binding RetweetCommand}">
+                    <TextBlock>
+                      <Path Stretch="Uniform" Width="12" Height="12" Fill="{DynamicResource ModernFeatureBrush}"
+                            Margin="0,0,4,-1" Data="{StaticResource PathRetweet}"/>
+                      <Run Text="Share as tweet"/>
+                    </TextBlock>
+                  </Button>
+                  <Button Style="{DynamicResource MetroPathButton}" HorizontalAlignment="Right" Cursor="Hand"
+                          Command="{Binding LinkCommand}" CommandParameter="{Binding SourceLink, Mode=OneWay}">
+                    <TextBlock>
+                      <Run Text="Ad by 140proof"/>
+                    </TextBlock>
+                  </Button>
+                </Grid>
+                <Canvas x:Name="AvatarDisplay" Style="{StaticResource AvatarDisplay}" DockPanel.Dock="Right" Width="48"
+                        Height="48" Margin="12,0,0,0">
+                  <Canvas PresentationOptions:Freeze="True" x:Name="avatargrid" Width="48" Height="48"
+                          HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Panel.Background>
+                      <ImageBrush PresentationOptions:Freeze="True">
+                        <ImageBrush.ImageSource>
+                          <PriorityBinding>
+                            <Binding Path="AdImage" IsAsync="true" Converter="{StaticResource nullImageConverter}"/>
+                            <Binding Path="UserDefaultImage" IsAsync="true" Converter="{StaticResource nullImageConverter}"/>
+                          </PriorityBinding>
+                        </ImageBrush.ImageSource>
+                      </ImageBrush>
+                    </Panel.Background>
+                  </Canvas>
+                </Canvas>
+                <StackPanel Style="{StaticResource TweetContent}">
+                  <DockPanel Style="{StaticResource TweetHeader}">
+                    <TextBlock Style="{StaticResource TweetHeaderText}"
+                               FontSize="{Binding TextMetrics.TweetHeaderFontSize, Source={x:Static Application.Current}}">
+                      <Hyperlink Command="{Binding LinkCommand}" CommandParameter="{Binding AdUrls.click_url}">
+                        <Run Text="{Binding User.ScreenName}"/>
+                      </Hyperlink>
+                    </TextBlock>
+                  </DockPanel>
+                  <TextBlock x:Name="TweetDisplay" Style="{StaticResource TweetTextBlock}" FontSize="{Binding TextMetrics.TweetBodyFontSize, Source={x:Static Application.Current}}"
+                             LineHeight="{Binding TextMetrics.TweetTextLineHeight, Source={x:Static Application.Current}}">
+                    <ex:TweetRenderer.Tweet>
+                      <Binding Mode="OneWay" IsAsync="true"/>
+                    </ex:TweetRenderer.Tweet>
+                  </TextBlock>
+                </StackPanel>
+              </DockPanel>
+            </Button>
+          </ControlTemplate>
+        </Control.Template>
+      </UserControl>
+      <ListBox PreviewKeyDown="TweetDisplay_KeyDown" SelectionChanged="tweets_SelectionChanged" x:Name="tweets"
+               Style="{DynamicResource MetroTweetItemsControl}"
+               ItemsSource="{Binding Tweets,IsAsync=True,Mode=OneWay}"
+               ItemTemplateSelector="{StaticResource tweetDataTemplateSelector}"
+               ItemContainerStyle="{DynamicResource MetroTweetItem}"
+               Visibility="{Binding TweetPanelVisible, Mode=OneWay, Converter={StaticResource booleanToVisibilityConverter}}">
+
+      </ListBox>
+    </DockPanel>
+  </DockPanel>
+</view:BaseTweetListView>
