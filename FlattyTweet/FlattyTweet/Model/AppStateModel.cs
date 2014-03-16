@@ -19,8 +19,6 @@ namespace FlattyTweet.Model
     [Export(typeof(ISettingsService))]
     public class AppStateModel : ViewModelBase, ISettingsService
     {
-        private MetroTwitAPIStatus APIStatus = (MetroTwitAPIStatus)null;
-
         private bool enableMainWindowControlBox;
 
         public bool ShowCompactAccountPane

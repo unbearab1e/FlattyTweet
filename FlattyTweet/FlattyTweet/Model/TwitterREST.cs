@@ -38,7 +38,10 @@ namespace FlattyTweet.Model
                 finally
                 {
                     if (local_0 != null)
+                    {
                         local_0();
+                        local_0 = null;
+                    }
                 }
             });
             Action<Task<TwitterResponse<TwitterStatusCollection>>> continuationAction2 = (Action<Task<TwitterResponse<TwitterStatusCollection>>>)(response =>

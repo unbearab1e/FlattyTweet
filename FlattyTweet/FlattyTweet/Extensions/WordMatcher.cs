@@ -49,28 +49,20 @@ namespace FlattyTweet.Extensions
 
     public void AddWords(IEnumerable<IntellisenseItem> words, string group)
     {
-        Action action = null;
         if (words != null)
         {
             try
             {
-                if (action == null)
+                Task task = new Task(() =>
                 {
-                    action = delegate
+                    IntellisenseItem[] array = words.ToArray<IntellisenseItem>();
+                    for (int i = 0; i < (int)array.Length; i++)
                     {
-                        foreach (IntellisenseItem item in words.ToArray<IntellisenseItem>())
-                        {
-                            this.AddWord(item, group);
-                        }
-                    };
-                }
-                Task task = new Task(action);
-                task.ContinueWith(delegate(Task t)
-                {
-                    if (t.Exception != null)
-                    {
+                        IntellisenseItem intellisenseItem = array[i];
+                        this.AddWord(intellisenseItem, group);
                     }
                 });
+                task.ContinueWith((Task t) => t.Exception == null);
                 task.Start();
             }
             catch

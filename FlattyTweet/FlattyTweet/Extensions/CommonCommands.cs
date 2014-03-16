@@ -92,7 +92,7 @@ namespace FlattyTweet.Extensions
                             Decimal ID = orig.IsRetweet ? orig.OriginalID : orig.ID;
                             TwitterResponse<Status> r = await Tweets.RetweetAsync(App.AppState.Accounts[account].Tokens, ID, MetroTwitTwitterizer.Options);
                             if (r.Result != RequestResult.Success)
-                                System.Windows.Application.Current.Dispatcher.BeginInvoke((Action)(() => Messenger.Default.Send<DialogMessage>(new DialogMessage(string.Empty, (Action<MessageBoxResult>)(o => { })), (object)DialogType.RetweetError)), new object[0]);
+                                await System.Windows.Application.Current.Dispatcher.BeginInvoke((Action)(() => Messenger.Default.Send<DialogMessage>(new DialogMessage(string.Empty, (Action<MessageBoxResult>)(o => { })), (object)DialogType.RetweetError)), new object[0]);
                         }
                         if (answer == MessageBoxResult.No)
                             Messenger.Default.Send<GenericMessage<object>>(new GenericMessage<object>((object)orig), (object)CommonCommands.MultiAccountifyToken((System.Enum)ViewModelMessages.Retweet, account));
@@ -486,19 +486,20 @@ namespace FlattyTweet.Extensions
 
         public static byte[] DownloadFile(string ImageURI)
         {
-            WebClient webClient1 = new WebClient();
-            WebClient webClient2;
+            byte[] numArray;
+            WebClient webClient = new WebClient();
             try
             {
-                byte[] numArray = webClient1.DownloadData(ImageURI);
-                webClient2 = (WebClient)null;
-                return numArray;
+                byte[] numArray1 = webClient.DownloadData(ImageURI);
+                webClient = null;
+                numArray = numArray1;
             }
-            catch (WebException ex)
+            catch (WebException webException)
             {
-                webClient2 = (WebClient)null;
-                return (byte[])null;
+                webClient = null;
+                numArray = null;
             }
+            return numArray;
         }
 
         public static void UnBlock(long id, Decimal TwitterAccountID)

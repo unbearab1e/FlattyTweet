@@ -405,13 +405,13 @@ namespace FlattyTweet.ViewModel
                     else
                     {
                         Messenger.Default.Send<DialogMessage>(new DialogMessage(string.Empty, (Action<MessageBoxResult>)(r => { })), (object)DialogType.SignInAuthError);
-                        goto label_12;
+                        return;
                     }
                 }
                 catch (Exception ex)
                 {
                     Messenger.Default.Send<DialogMessage>(new DialogMessage(ex.Message, (Action<MessageBoxResult>)(r => { })), (object)DialogType.SignInTwitterizerAuthError);
-                    goto label_12;
+                    return;
                 }
             }
             Messenger.Default.Send<GenericMessage<object>>(new GenericMessage<object>((object)null), (object)ViewModelMessages.CloseCenterModalWindowHost);
@@ -428,7 +428,6 @@ namespace FlattyTweet.ViewModel
                 App.AppState.Accounts[this.TwitterAccountID].UpdateProfile(true);
                 Messenger.Default.Send<GenericMessage<bool>>(new GenericMessage<bool>(true), (object)this.MultiAccountifyToken((Enum)ViewModelMessages.ReloadTweetViews));
             }
-        label_12: ;
         }
 
         private static string ParseQuerystringParameter(string parameterName, string text)

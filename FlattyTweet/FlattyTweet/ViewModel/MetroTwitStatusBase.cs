@@ -655,67 +655,56 @@ namespace FlattyTweet.ViewModel
         {
             get
             {
-                DateTime dateTime1;
-                int num1;
-                if (SettingsData.Instance.TwitterTimeDisplay != TwitterTimeDisplay.Relative)
+                string str;
+                DateTime now;
+                bool flag;
+                bool date;
+                if (SettingsData.Instance.TwitterTimeDisplay == TwitterTimeDisplay.Relative || SettingsData.Instance.TwitterTimeDisplay == TwitterTimeDisplay.RelativeAbsolute && this.CreatedDate.ToLocalTime() > DateTime.Now.AddHours(-6))
                 {
-                    if (SettingsData.Instance.TwitterTimeDisplay == TwitterTimeDisplay.RelativeAbsolute)
+                    flag = false;
+                }
+                else if (SettingsData.Instance.TwitterTimeDisplay != TwitterTimeDisplay.AbsoluteRelative)
+                {
+                    flag = true;
+                }
+                else
+                {
+                    DateTime localTime = this.CreatedDate.ToLocalTime();
+                    now = DateTime.Now;
+                    flag = !(localTime < now.AddHours(-6));
+                }
+                if (flag)
+                {
+                    DateTime dateTime = DateTime.Now;
+                    now = this.CreatedDate;
+                    TimeSpan timeSpan = dateTime - now.ToLocalTime();
+                    string empty = string.Empty;
+                    string str1 = CultureInfo.CurrentCulture.DateTimeFormat.MonthDayPattern.Replace("MMMM", "MMM");
+                    if (timeSpan.Days > 0)
                     {
-                        dateTime1 = this.CreatedDate;
-                        DateTime dateTime2 = dateTime1.ToLocalTime();
-                        dateTime1 = DateTime.Now;
-                        DateTime dateTime3 = dateTime1.AddHours(-6.0);
-                        if (dateTime2 > dateTime3)
-                            goto label_6;
-                    }
-                    if (SettingsData.Instance.TwitterTimeDisplay == TwitterTimeDisplay.AbsoluteRelative)
-                    {
-                        dateTime1 = this.CreatedDate;
-                        DateTime dateTime2 = dateTime1.ToLocalTime();
-                        dateTime1 = DateTime.Now;
-                        DateTime dateTime3 = dateTime1.AddHours(-6.0);
-                        num1 = !(dateTime2 < dateTime3) ? 1 : 0;
-                        goto label_7;
+                        date = false;
                     }
                     else
                     {
-                        num1 = 1;
-                        goto label_7;
+                        now = DateTime.Now - timeSpan;
+                        DateTime date1 = now.Date;
+                        now = DateTime.Now;
+                        date = !(date1 != now.Date);
                     }
-                }
-            label_6:
-                num1 = 0;
-            label_7:
-                if (num1 == 0)
-                    return new DateToHumanReadableConverter().Convert((object)this.CreatedDate, typeof(string), (object)null, CultureInfo.CurrentCulture).ToString();
-                DateTime now = DateTime.Now;
-                dateTime1 = this.CreatedDate;
-                DateTime dateTime4 = dateTime1.ToLocalTime();
-                TimeSpan timeSpan = now - dateTime4;
-                string str1 = string.Empty;
-                string format = CultureInfo.CurrentCulture.DateTimeFormat.MonthDayPattern.Replace("MMMM", "MMM");
-                int num2;
-                if (timeSpan.Days <= 0)
-                {
-                    dateTime1 = DateTime.Now - timeSpan;
-                    DateTime date1 = dateTime1.Date;
-                    dateTime1 = DateTime.Now;
-                    DateTime date2 = dateTime1.Date;
-                    num2 = !(date1 != date2) ? 1 : 0;
+                    if (!date)
+                    {
+                        now = this.CreatedDate.ToLocalTime();
+                        empty = string.Concat(now.ToString(str1), " ");
+                    }
+                    now = this.CreatedDate.ToLocalTime();
+                    empty = string.Concat(empty, now.ToShortTimeString());
+                    str = empty;
                 }
                 else
-                    num2 = 0;
-                if (num2 == 0)
                 {
-                    dateTime1 = this.CreatedDate;
-                    dateTime1 = dateTime1.ToLocalTime();
-                    str1 = dateTime1.ToString(format) + " ";
+                    str = (new DateToHumanReadableConverter()).Convert(this.CreatedDate, typeof(string), null, CultureInfo.CurrentCulture).ToString();
                 }
-                string str2 = str1;
-                dateTime1 = this.CreatedDate;
-                dateTime1 = dateTime1.ToLocalTime();
-                string str3 = dateTime1.ToShortTimeString();
-                return str2 + str3;
+                return str;
             }
         }
 
@@ -1460,14 +1449,14 @@ namespace FlattyTweet.ViewModel
             CommonCommands.EmailTweet(this);
         }
 
-        private void Follow()
+        private async void Follow()
         {
-            CommonCommands.Follow((string)null, this.User, this.TwitterAccountID, "following...");
+            await CommonCommands.Follow((string)null, this.User, this.TwitterAccountID, "following...");
         }
 
-        private void Unfollow()
+        private async void Unfollow()
         {
-            CommonCommands.Follow((string)null, this.User, this.TwitterAccountID, "unfollow");
+            await CommonCommands.Follow((string)null, this.User, this.TwitterAccountID, "unfollow");
         }
 
         public void UpdateTime()

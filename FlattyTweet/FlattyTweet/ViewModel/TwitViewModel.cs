@@ -1838,7 +1838,7 @@ namespace FlattyTweet.ViewModel
                     //while (this.PostTweetEnabledCounter > 0 && !this.TwitterImageServiceIsEnabled);
                     if (this.imageUploadsFailed)
                     {
-                        System.Windows.Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                        await System.Windows.Application.Current.Dispatcher.BeginInvoke((Action)(() =>
                         {
                             SimpleErrorPrompt local_0 = new SimpleErrorPrompt()
                             {
@@ -1861,13 +1861,13 @@ namespace FlattyTweet.ViewModel
                         this.TweetEntryEnabled = true;
                         this.ImageUploadButtonIsEnabled = true;
                         this.PostTweetProgressVisibility = Visibility.Collapsed;
-                        goto label_60;
+                        return;
                     }
                     else if (this.CharCount > SettingsData.Instance.TweetCharLimit && Enumerable.Count<ITweetService>(Enumerable.Where<ITweetService>((IEnumerable<ITweetService>)CoreServices.Instance.TweetServices, (Func<ITweetService, bool>)(x => x.OverrideTweetCharLimit))) == 0)
                     {
-                        System.Windows.Application.Current.Dispatcher.BeginInvoke((Action)(() => Messenger.Default.Send<DialogMessage>(new DialogMessage(string.Empty, (Action<MessageBoxResult>)(o => { })), (object)DialogType.TweetLength)), new object[0]);
+                        await System.Windows.Application.Current.Dispatcher.BeginInvoke((Action)(() => Messenger.Default.Send<DialogMessage>(new DialogMessage(string.Empty, (Action<MessageBoxResult>)(o => { })), (object)DialogType.TweetLength)), new object[0]);
                         error = true;
-                        goto label_60;
+                        return;
                     }
                     else
                     {
@@ -1876,7 +1876,6 @@ namespace FlattyTweet.ViewModel
                         Match dmMatch = (Match)null;
                         string userName = string.Empty;
                         string tweetpoststring = this.ActualTweetText;
-                        bool flag;
                         if (this.newTweetType == TwitViewModel.NewTweetType.DirectMessage)
                         {
                             dmMatch = TwitViewModel.DM_EXPRESSION.Match(tweetpoststring);
@@ -2028,7 +2027,6 @@ namespace FlattyTweet.ViewModel
             }
             else
                 this.EnableTweetArea();
-        label_60: ;
         }
 
         private void EnableTweetArea()

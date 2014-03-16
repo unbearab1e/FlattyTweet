@@ -52,7 +52,7 @@ namespace FlattyTweet.Model
       task.Start();
     }
 
-    private void StreamingFriends(GenericMessage<TwitterIdCollection> o)
+    private async void StreamingFriends(GenericMessage<TwitterIdCollection> o)
     {
       List<long> userstoadd = new List<long>();
       if (o.Content == null || o.Content.Count <= 0)
@@ -70,7 +70,7 @@ namespace FlattyTweet.Model
           userstoadd.Add((long) userid);
       }
       if (userstoadd.Count > 0)
-        this.LoadUsersfromTwitter(userstoadd);
+        await this.LoadUsersfromTwitter(userstoadd);
     }
 
     public void UpdateMentionsIntellisense()
@@ -350,7 +350,7 @@ namespace FlattyTweet.Model
                         user.DeleteImage();
                         this.CachedUsers.Remove(this.CacheUserName(user.ScreenName));
                     }
-                    this.LoadUsersfromTwitter(userstoadd);
+                    await this.LoadUsersfromTwitter(userstoadd);
                 }
             }
             return false;

@@ -187,7 +187,7 @@ namespace FlattyTweet
         {
             TwitterResponse<TwitterSavedSearchCollection> r = await SavedSearches.SavedSearchesAsync(App.AppState.Accounts[TwitterAccountID].Tokens, MetroTwitTwitterizer.Options);
             if (r.Result == RequestResult.Success && r.ResponseObject != null && r.ResponseObject.Count > 0)
-                System.Windows.Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                await System.Windows.Application.Current.Dispatcher.BeginInvoke((Action)(() =>
                 {
                     App.AppState.Accounts[TwitterAccountID].SavedSearches.Clear();
                     AppState.Accounts[TwitterAccountID].SavedSearches.AddRange<TwitterSavedSearch>(r.ResponseObject);

@@ -221,7 +221,7 @@ namespace FlattyTweet.ViewModel
                                 this.RaisePropertyChanged("TotalRequestsCount");
                             };
                         }
-                        System.Windows.Application.Current.Dispatcher.InvokeAsync(callback, DispatcherPriority.Background);
+                        await System.Windows.Application.Current.Dispatcher.InvokeAsync(callback, DispatcherPriority.Background);
                     }
                 }
             }
@@ -251,7 +251,7 @@ namespace FlattyTweet.ViewModel
                                 this.RaisePropertyChanged("TotalRequestsCount");
                             };
                         }
-                        System.Windows.Application.Current.Dispatcher.InvokeAsync(asyncVariable2, DispatcherPriority.Background);
+                        await System.Windows.Application.Current.Dispatcher.InvokeAsync(asyncVariable2, DispatcherPriority.Background);
                     }
                 }
             }
