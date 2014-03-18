@@ -34,8 +34,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlattyTweet.TwitLonger", "F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlattyTweet.TwitPic", "FlattyTweet.TwitPic\FlattyTweet.TwitPic.csproj", "{164467FC-1D9E-4BEE-ADEF-8FCD01EF4736}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyChanged", "PropertyChanged\PropertyChanged.csproj", "{E923B3E4-DB91-4451-BB96-FA12A1529AC7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -106,10 +104,6 @@ Global
 		{164467FC-1D9E-4BEE-ADEF-8FCD01EF4736}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{164467FC-1D9E-4BEE-ADEF-8FCD01EF4736}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{164467FC-1D9E-4BEE-ADEF-8FCD01EF4736}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E923B3E4-DB91-4451-BB96-FA12A1529AC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E923B3E4-DB91-4451-BB96-FA12A1529AC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E923B3E4-DB91-4451-BB96-FA12A1529AC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E923B3E4-DB91-4451-BB96-FA12A1529AC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

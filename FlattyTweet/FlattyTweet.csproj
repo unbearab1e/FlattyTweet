@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <!--Project was exported from assembly: C:\Users\Joshua\AppData\Local\Apps\2.0\8WK4PAMP.D6Y\V814PCJP.C3C\metr..tion_89233686fad4c081_0001.0001_335d7c2b6b7c57eb\MetroTwitLoop.exe-->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -20,8 +19,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.1.0.3134</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -46,7 +45,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>resources\Twitter.ico</ApplicationIcon>
+    <ApplicationIcon>resources\Twitter2.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>106708EFE48F48FD548C30FA182DCFB02F7B8549</ManifestCertificateThumbprint>
@@ -63,21 +62,41 @@
   <PropertyGroup>
     <StartupObject>FlattyTweet.App</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Windows.Shell">
-      <HintPath>..\Microsoft.Windows.Shell.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="GalaSoft.MvvmLight.Extras.WPF45, Version=4.2.30.23246, Culture=neutral, PublicKeyToken=0e27b6f8be9b2ef7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\GalaSoft.MvvmLight.Extras.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WPF45, Version=4.2.30.23246, Culture=neutral, PublicKeyToken=eabbf6a5f5af5004, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\GalaSoft.MvvmLight.WPF45.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Shell, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Windows.Shell.3.0.1.0\lib\net40\Microsoft.Windows.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
-    <Reference Include="System.Windows.Interactivity" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="GalaSoft.MvvmLight.WPF45">
-      <HintPath>lib\GalaSoft.MvvmLight.WPF45.dll</HintPath>
+    <Reference Include="PropertyChanged, Version=1.47.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PropertyChanged.Fody.1.47.0.0\Lib\NET35\PropertyChanged.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.4.2.30.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="Twitterizer">
       <HintPath>..\Twitterizer.dll</HintPath>
     </Reference>
@@ -88,19 +107,10 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="Bugsense.WPF">
-      <HintPath>lib\Bugsense.WPF.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
-    <Reference Include="GalaSoft.MvvmLight.Extras.WPF45">
-      <HintPath>lib\GalaSoft.MvvmLight.Extras.WPF45.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.AddIn" />
   </ItemGroup>
@@ -230,7 +240,6 @@
     <Compile Include="FlattyTweet\Extensions\KeyboardShortcutMessage.cs" />
     <Compile Include="FlattyTweet\Extensions\RetweetMessage.cs" />
     <Compile Include="FlattyTweet\Extensions\KeyboardShortcutType.cs" />
-    <Compile Include="FlattyTweet\Extensions\AsyncErrorHandler.cs" />
     <Compile Include="FlattyTweet\Extensions\TabItemExtension.cs" />
     <Compile Include="FlattyTweet\Extensions\URLShortening.cs" />
     <Compile Include="FlattyTweet\Extensions\URLAdorner.cs" />
@@ -564,10 +573,6 @@
       <Project>{164467fc-1d9e-4bee-adef-8fcd01ef4736}</Project>
       <Name>FlattyTweet.TwitPic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PropertyChanged\PropertyChanged.csproj">
-      <Project>{e923b3e4-db91-4451-bb96-fa12a1529ac7}</Project>
-      <Name>PropertyChanged</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -587,11 +592,38 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.manifest" />
     <None Include="MetroTwitPlus_TemporaryKey.pfx" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\Twitter.ico" />
     <Resource Include="resources\Twitter_48.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\Twitter2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="PropertyChanged">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.1.22.1\build\Fody.targets" Condition="Exists('..\packages\Fody.1.22.1\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.1.22.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.22.1\build\Fody.targets'))" />
+  </Target>
 </Project>

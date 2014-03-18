@@ -1,4 +1,4 @@
-﻿using Bugsense.WPF;
+﻿
 using GalaSoft.MvvmLight.Messaging;
 using FlattyTweet.Extensibility;
 using FlattyTweet.Extensions;
@@ -134,7 +134,6 @@ namespace FlattyTweet
 
         public App()
         {
-            BugSense.Init("w8c0e738", (string)null, "http://bugsense.appspot.com/api/errors");
             this.Properties[(object)App.SHORTENED_URL_CACHE_KEY] = (object)new Dictionary<string, Dictionary<string, string>>();
             this.Properties[(object)App.MOST_RECENT_SEARCH_TERMS_KEY] = (object)new List<string>();
             this.LoadExtensions(new Decimal(0));

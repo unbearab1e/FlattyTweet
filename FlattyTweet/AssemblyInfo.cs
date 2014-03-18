@@ -6,7 +6,6 @@ using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Resources;
 
-[assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyAssociatedContentFile("flattytweet.appcontracts.dll")]
 [assembly: ComVisible(false)]

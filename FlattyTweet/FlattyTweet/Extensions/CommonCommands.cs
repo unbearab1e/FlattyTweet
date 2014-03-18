@@ -1,4 +1,4 @@
-﻿using Bugsense.WPF;
+﻿
 using GalaSoft.MvvmLight.Messaging;
 using FlattyTweet;
 using FlattyTweet.Model;
@@ -658,7 +658,7 @@ namespace FlattyTweet.Extensions
             }
             catch (Exception ex)
             {
-                BugSense.SendException(ex);
+                
             }
         }
 
@@ -726,11 +726,6 @@ namespace FlattyTweet.Extensions
                     }
                     else
                     {
-                        errors = r.Errors;
-                        if (errors != null)
-                        {
-                            BugSense.SendException(new Exception(errors.First<TwitterError>().Message));
-                        }
                         nullable = false;
                     }
                     return nullable;
@@ -758,11 +753,6 @@ namespace FlattyTweet.Extensions
                     }
                     else
                     {
-                        errors = r.Errors;
-                        if (errors != null)
-                        {
-                            BugSense.SendException(new Exception(errors.First<TwitterError>().Message));
-                        }
                         nullable = false;
                     }
                 }

@@ -1,5 +1,5 @@
 ﻿
-using Bugsense.WPF;
+
 using FlattyTweet;
 using FlattyTweet.Extensions;
 using System;
@@ -821,7 +821,7 @@ namespace FlattyTweet.ViewModel
       }
       catch (Exception ex)
       {
-        BugSense.SendException(ex);
+        
       }
     }
   }

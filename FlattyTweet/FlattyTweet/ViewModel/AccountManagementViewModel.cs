@@ -1,4 +1,4 @@
-﻿using Bugsense.WPF;
+﻿//using Bugsense.WPF;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using FlattyTweet;
@@ -277,12 +277,6 @@ namespace FlattyTweet.ViewModel
                     this.FollowText = "thanks";
                     this.FollowIsEnabled = false;
                 }
-                else
-                {
-                    IEnumerable<TwitterError> local_0 = r.Result.Errors;
-                    if (local_0 != null)
-                        BugSense.SendException(new Exception(Enumerable.First<TwitterError>(local_0).Message));
-                }
             }));
         }
 
@@ -297,9 +291,9 @@ namespace FlattyTweet.ViewModel
                 }
                 else
                 {
-                    IEnumerable<TwitterError> local_0 = r.Result.Errors;
-                    if (local_0 != null)
-                        BugSense.SendException(new Exception(Enumerable.First<TwitterError>(local_0).Message));
+                    //IEnumerable<TwitterError> local_0 = r.Result.Errors;
+                    //if (local_0 != null)
+                    //    BugSense.SendException(new Exception(Enumerable.First<TwitterError>(local_0).Message));
                 }
             }));
         }
