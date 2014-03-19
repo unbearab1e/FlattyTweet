@@ -351,7 +351,7 @@ namespace FlattyTweet.ViewModel
                 {
                     asyncVariable0 = () => this.Closed = true;
                 }
-                await Application.Current.Dispatcher.BeginInvoke(asyncVariable0, DispatcherPriority.Background, new object[0]);
+                Application.Current.Dispatcher.BeginInvoke(asyncVariable0, DispatcherPriority.Background, new object[0]);
             }
         }
         else if (this.Link.ExpandedUrl.Contains("vine.co", StringComparison.InvariantCultureIgnoreCase))
@@ -375,14 +375,14 @@ namespace FlattyTweet.ViewModel
             {
                 asyncVariable1 = () => this.Closed = true;
             }
-            await Application.Current.Dispatcher.BeginInvoke(asyncVariable1, DispatcherPriority.Background, new object[0]);
+            Application.Current.Dispatcher.BeginInvoke(asyncVariable1, DispatcherPriority.Background, new object[0]);
         }
         if (((!this.Closed && (result != null)) && (result.Type != "error")) && (result.Type != null))
         {
             Action method = null;
             Action action3 = null;
             OembedResponse noEmbed = result;
-            await Application.Current.Dispatcher.BeginInvoke((Action) (()=>
+            Application.Current.Dispatcher.BeginInvoke((Action) (()=>
             {
                 this.Title = WebUtility.HtmlDecode(noEmbed.Title);
                 if (!string.IsNullOrEmpty(noEmbed.Title))
@@ -415,7 +415,7 @@ namespace FlattyTweet.ViewModel
                         this.WebBrowserVisible = Visibility.Visible;
                     };
                 }
-                await Application.Current.Dispatcher.BeginInvoke(method, DispatcherPriority.Background, new object[0]);
+                Application.Current.Dispatcher.BeginInvoke(method, DispatcherPriority.Background, new object[0]);
             }
             if (((noEmbed.Type == "photo") && !problemOccured) && !string.IsNullOrEmpty(noEmbed.Url))
             {
@@ -478,7 +478,7 @@ namespace FlattyTweet.ViewModel
                                         this.WebBrowserVisible = Visibility.Collapsed;
                                     };
                                 }
-                                await Application.Current.Dispatcher.BeginInvoke(action, DispatcherPriority.Background, new object[0]);
+                                Application.Current.Dispatcher.BeginInvoke(action, DispatcherPriority.Background, new object[0]);
                             }
                             else
                             {
@@ -521,7 +521,7 @@ namespace FlattyTweet.ViewModel
                         this.ThrobberVisible = Visibility.Collapsed;
                     };
                 }
-                await Application.Current.Dispatcher.BeginInvoke(action3, DispatcherPriority.Background, new object[0]);
+                Application.Current.Dispatcher.BeginInvoke(action3, DispatcherPriority.Background, new object[0]);
             }
         }
         else if (!this.Closed)
@@ -534,7 +534,7 @@ namespace FlattyTweet.ViewModel
             {
                 asyncVariable2 = () => this.LinkCommand.Execute(this.Link.Url);
             }
-            await Application.Current.Dispatcher.BeginInvoke(asyncVariable2, DispatcherPriority.Background, new object[0]);
+            Application.Current.Dispatcher.BeginInvoke(asyncVariable2, DispatcherPriority.Background, new object[0]);
         }
     }
   }

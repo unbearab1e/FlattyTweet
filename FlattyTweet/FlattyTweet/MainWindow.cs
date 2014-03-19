@@ -261,7 +261,7 @@ namespace FlattyTweet
 
     private void MainWindow_ContentRendered(object sender, EventArgs e)
     {
-      this.TaskbarIcon.Icon = new Icon(System.Windows.Application.GetResourceStream(new Uri("/Resources/Twitter.ico", UriKind.Relative)).Stream, new System.Drawing.Size(16, 16));
+      this.TaskbarIcon.Icon = new Icon(System.Windows.Application.GetResourceStream(new Uri("/Resources/Twitter2.ico", UriKind.Relative)).Stream, new System.Drawing.Size(16, 16));
       this.TaskbarIcon.Visible = SettingsData.Instance.MinimisetoTray;
       this.TaskbarIcon.Click += new EventHandler(this.TaskbarIcon_Click);
       App.StartupStage(StartStage.UIRendered);
