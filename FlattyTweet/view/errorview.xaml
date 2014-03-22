@@ -7,7 +7,7 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
   <StackPanel>
     <TextBlock VerticalAlignment="Top" Margin="0,0,0,10" Style="{DynamicResource MetroHeading1}"
-               Foreground="{DynamicResource MetroHeadingColorDark}">
+               Foreground="{DynamicResource ModernTextLightestBrush}">
       Something went wrong, very wrong
     </TextBlock>
     <TextBlock HorizontalAlignment="Left" Margin="0,0,0,5" TextWrapping="Wrap">

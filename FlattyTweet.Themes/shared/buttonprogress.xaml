@@ -46,7 +46,7 @@
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="PART_ProgressBorderRect" Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)">
-                                            <DiscreteColorKeyFrame Value="{DynamicResource URLShorteningButtonFillHover}" KeyTime="0"/>
+                                            <DiscreteColorKeyFrame Value="{DynamicResource ModernTextLightestColor}" KeyTime="0"/>
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="text" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)">
                                             <DiscreteColorKeyFrame Value="{DynamicResource URLShorteningButtonTextFocus}" KeyTime="0"/>
@@ -104,7 +104,7 @@
                                 <Condition SourceName="PART_ProgressFillRect" Property="Tag" Value="True"></Condition>
                                 <Condition Property="IsMouseOver" Value="True"></Condition>
                             </MultiTrigger.Conditions>
-                            <Setter Property="Fill" Value="{DynamicResource URLShorteningButtonFillHover}" TargetName="PART_ProgressFillRect" />
+                            <Setter Property="Fill" Value="{DynamicResource ModernTextLightestColor}" TargetName="PART_ProgressFillRect" />
                             <Setter Property="Cursor" Value="Hand" />
                         </MultiTrigger>
 

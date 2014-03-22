@@ -34,7 +34,7 @@
             Height="24" VerticalAlignment="Top" Stretch="Fill" Fill="#FF333333"
             Data="F1 M 142.612,122.375 L 148.462,122.375 148.462,116.524 150.824,116.524 150.824,122.375 156.674,122.375 156.674,124.736 150.824,124.736 150.824,130.587 148.462,130.587 148.462,124.736 142.612,124.736 142.612,122.375 Z"/>
       <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Style="{DynamicResource MetroHeading1}"
-                 Foreground="{DynamicResource MetroHeadingColorDark}" Margin="0,0,0,5" Text="{Binding Title}"/>
+                 Foreground="{DynamicResource ModernTextLightestBrush}" Margin="0,0,0,5" Text="{Binding Title}"/>
       <TextBlock TextWrapping="Wrap" VerticalAlignment="Stretch" Margin="0,0,0,5" DataContext="{Binding Message}"
                  Extensions:TweetRenderer.Tweet="{Binding Mode=OneWay}"/>
     </DockPanel>

@@ -5,7 +5,7 @@
             xmlns:Extensions="clr-namespace:FlattyTweet.Extensions"
             RenderOptions.ClearTypeHint="Enabled" Width="400" Margin="20,10,20,20" Background="Transparent">
   <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Style="{DynamicResource MetroHeading1}"
-             Foreground="{DynamicResource MetroHeadingColorDark}" Margin="0,0,0,5" Text="{Binding Title}"/>
+             Foreground="{DynamicResource ModernTextLightestBrush}" Margin="0,0,0,5" Text="{Binding Title}"/>
   <TextBlock TextWrapping="Wrap" VerticalAlignment="Stretch" Margin="0,0,0,5" Text="{Binding Message}"/>
   <RichTextBox TextChanged="InputEdit_TextChanged" x:Name="InputEdit" Height="28" VerticalAlignment="Stretch"
                AcceptsReturn="false" DockPanel.Dock="Bottom" Visibility="Collapsed"/>

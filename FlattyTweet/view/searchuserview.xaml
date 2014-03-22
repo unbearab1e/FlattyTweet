@@ -4,7 +4,7 @@
              Loaded="UserControl_Loaded">
   <StackPanel RenderOptions.ClearTypeHint="Enabled">
     <TextBlock Text="search user" TextWrapping="Wrap" Style="{DynamicResource MetroHeading1}"
-               Foreground="{DynamicResource MetroHeadingColorDark}" Margin="0,0,0,10"/>
+               Foreground="{DynamicResource ModernTextLightestBrush}" Margin="0,0,0,10"/>
     <TextBlock Margin="0,0,0,5">Twitter username:</TextBlock>
     <RichTextBox TextChanged="InputEdit_TextChanged" x:Name="InputEdit" Height="28" Width="310"
                  VerticalAlignment="Stretch" AcceptsReturn="false" Margin="0,0,0,20"

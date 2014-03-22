@@ -270,11 +270,11 @@ namespace FlattyTweet.Behaviors
       color.G = (byte) (int) (num1 * (double) color.G + (1.0 - num1) * (double) Colors.White.G);
       color.B = (byte) (int) (num1 * (double) color.B + (1.0 - num1) * (double) Colors.White.B);
       SharedResourceDictionary resourceDictionary = new SharedResourceDictionary();
-      resourceDictionary.Add((object) "MetroColorFeature", (object) color);
-      color.A = (byte) ((double) color.A * 0.5);
-      resourceDictionary.Add((object) "MetroColorFeatureFade", (object) System.Windows.Media.Color.FromArgb(color.A, color.R, color.G, color.B));
+      resourceDictionary.Add((object) "ModernColorFeature", (object) color);
+      //color.A = (byte) ((double) color.A * 0.5);
+      //resourceDictionary.Add((object) "ModernColorFeatureFade", (object) System.Windows.Media.Color.FromArgb(color.A, color.R, color.G, color.B));
       double num2 = 0.299 * (double) color.R + 0.587 * (double) color.G + 0.114 * (double) color.B;
-      resourceDictionary.Add((object) "MetroColorFeatureContrast", (object) (num2 > 205.0 ? Colors.Black : Colors.White));
+      resourceDictionary.Add((object) "ModernColorFeatureContrast", (object) (num2 > 205.0 ? Colors.Black : Colors.White));
       return resourceDictionary;
     }
   }

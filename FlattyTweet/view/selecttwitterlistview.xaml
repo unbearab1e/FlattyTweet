@@ -64,7 +64,7 @@
                  Content="{Binding ProgressText, Mode=TwoWay}"
                  Visibility="{Binding ShowAnimation, Converter={StaticResource booleanToVisibilityConverter}}"/>
     <TextBlock Grid.Row="0" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="0,0,0,25"
-               Style="{DynamicResource MetroHeading1}" Foreground="{DynamicResource MetroHeadingColorDark}"
+               Style="{DynamicResource MetroHeading1}" Foreground="{DynamicResource ModernTextLightestBrush}"
                Text="add to lists"/>
     <StackPanel Grid.Row="1"
                 Visibility="{Binding ShowFailedLists, Converter={StaticResource booleanToVisibilityConverter}}">

@@ -5,15 +5,21 @@
     
     <!--New color scheme-->
 
+    
     <Color x:Key="ModernBgDarkerColor">#FF282B2F</Color>
     <Color x:Key="ModernBgLighterColor">#FF2E3136</Color>
+    <Color x:Key="ModernTextLightestColor">#FFEEEEEE</Color>
     <Color x:Key="ModernTextLighterColor" >#FFBBBBBB</Color>
     <Color x:Key="ModernTextDarkerColor" >#FF888888</Color>
+    <Color x:Key="ModernTextDarkestColor">#FF333333</Color>
+    
     
     <SolidColorBrush x:Key="ModernBgDarkerBrush" Color="{StaticResource ModernBgDarkerColor}" />
     <SolidColorBrush x:Key="ModernBgLighterBrush" Color="{StaticResource ModernBgLighterColor}" />
+    <SolidColorBrush x:Key="ModernTextLightestBrush" Color="{StaticResource ModernTextLightestColor}" />
     <SolidColorBrush x:Key="ModernTextLighterBrush" Color="{StaticResource ModernTextLighterColor}"  />
     <SolidColorBrush x:Key="ModernTextDarkerBrush" Color="{StaticResource ModernTextDarkerColor}"  />
+    <SolidColorBrush x:Key="ModernTextDarkestBrush" Color="{StaticResource ModernTextDarkestColor}" />
     
     <!-- 
     Overlay
@@ -28,43 +34,20 @@
     Controls
     -->
 
-    <SolidColorBrush x:Key="MetroCheckboxCheck" Color="#FF333333"  />
-    <SolidColorBrush x:Key="MetroCheckboxBorder" Color="#FFCCCCCC"  />
-
     <SolidColorBrush x:Key="MetroComboBoxBg" Color="#FF333333"  />
-    <SolidColorBrush x:Key="MetroComboBoxArrow" Color="#FF999999"  />
-    <Color x:Key="MetroComboBoxBorderHover">#FFCCCCCC</Color>
-    <Color x:Key="MetroComboBoxBgHover">#FF333333</Color>
     <Color x:Key="MetroComboBoxItemHighlighted">#FF3f3f3f</Color>
-
     <SolidColorBrush x:Key="MetroMenuItemArrow" Color="#FFCCCCCC"  />
-
-    <SolidColorBrush x:Key="MetroScollbarScroll" Color="#FF444444"  />
-    <Color x:Key="MetroScollbarScrollHover" >#FFCCCCCC</Color>
-
+    <SolidColorBrush x:Key="MetroScollbarScroll" Color="#FF686868"  />
+    <Color x:Key="MetroScollbarScrollHover" >#FF9E9E9E</Color>
     <SolidColorBrush x:Key="MetroExpander" Color="#FFCCCCCC"  />
     <SolidColorBrush x:Key="MetroExpanderTick" Color="#FF111111"  />
-
     <SolidColorBrush x:Key="MetroProgressBg" Color="#FF333333" />
-
-    <SolidColorBrush x:Key="MetroSliderBg" Color="#FF333333"  />
-    <SolidColorBrush x:Key="MetroSliderThumb" Color="#FF999999"  />
-    <SolidColorBrush x:Key="MetroSliderBorder" Color="#FF111111"  />
-    <Color x:Key="MetroSliderThumbHover" >#FFCCCCCC</Color>
-
-    <SolidColorBrush x:Key="MetroTextBoxBg" Color="#FF333333"  />
-    <SolidColorBrush x:Key="MetroTextBoxBorder" Color="#FF808080"  />
-    <SolidColorBrush x:Key="MetroTextBoxBorderHover" Color="#FFCCCCCC"  />
-    <SolidColorBrush x:Key="MetroTextBoxBgFocus" Color="#FF333333"  />
-    <SolidColorBrush x:Key="MetroTextBoxCaret" Color="#FFDDDDDD"  />
     <SolidColorBrush x:Key="MetroTextBoxErrorBorder" Color="#FFec0000"  />
-    <SolidColorBrush x:Key="MetroTextBoxErrorBg" Color="#FF310000"  />
 
     <!--
     Text
     -->
-
-    <SolidColorBrush x:Key="MetroHeadingColorDark" Color="#FFEEEEEE"  />
+    
     <SolidColorBrush x:Key="MetroFormLabelColor" Color="#FF999999"  />
     
     <!--
@@ -111,15 +94,12 @@
     New tweet box
     -->
 
-    <SolidColorBrush x:Key="NewTweetBorderColor" Color="#FF444444"  />
-    <Color x:Key="NewTweetBorderHover" >#FF999999</Color>
+    <SolidColorBrush x:Key="NewTweetBorderColor" Color="#FF686868"  />
     <SolidColorBrush x:Key="NewTweetText" Color="#FFAAAAAA"  />
     <SolidColorBrush x:Key="NewTweetTextCaret" Color="#FFAAAAAA"  />
     <SolidColorBrush x:Key="NewTweetButton" Color="#FFAAAAAA"  />
-
     <SolidColorBrush x:Key="NewTweetCharCountOK" Color="#20CCCCCC"  />
     <SolidColorBrush x:Key="NewTweetCharCountOver" Color="#25eb0048"  />
-
     <SolidColorBrush x:Key="NewTweetStatusGray" Color="#FF999999"  />
     <SolidColorBrush x:Key="NewTweetStatusGreen" Color="#FF9ce19c"  />
     <SolidColorBrush x:Key="NewTweetStatusRed" Color="#FFeba1b8"  />
@@ -129,9 +109,7 @@
     -->
 
     <SolidColorBrush x:Key="ButtonProgressBorderFillNormal" Color="#FF666666" />
-
     <SolidColorBrush x:Key="URLShorteningButtonFillNormal" Color="#FF333333"  />
-    <Color x:Key="URLShorteningButtonFillHover">#FFEEEEEE</Color>
     <Color x:Key="URLShorteningButtonFillFocus">#FFAAAAAA</Color>
     <SolidColorBrush x:Key="URLShorteningButtonTextNormal" Color="#FF8cb0d3"  />
     <Color x:Key="URLShorteningButtonTextFocus">#FF111111</Color>

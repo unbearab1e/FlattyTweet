@@ -199,7 +199,7 @@ To provide you all the functionality in FlattyTweet, please reauthenticate your 
                 </Grid.RowDefinitions>
                 <Canvas x:Name="leftPaneContainerBg" Grid.RowSpan="3">
                     <Panel.Background>
-                        <SolidColorBrush Color="{DynamicResource MetroColorFeature}" Opacity="1"/>
+                        <SolidColorBrush Color="{DynamicResource ModernColorFeature}" Opacity="1"/>
                     </Panel.Background>
                 </Canvas>
                 <Canvas x:Name="leftPaneContainerArt" Grid.RowSpan="3" Visibility="{Binding ArtworkVisibility}">
@@ -371,7 +371,7 @@ To provide you all the functionality in FlattyTweet, please reauthenticate your 
                                                                 <ColumnDefinition Width="16"/>
                                                             </Grid.ColumnDefinitions>
                                                             <Path Grid.Column="0" Width="16" Height="11" Stretch="Fill"
-                                    Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathGroupPeople}"/>
+                                    Fill="{DynamicResource ModernTextLightestBrush}" Data="{StaticResource PathGroupPeople}"/>
                                                             <TextBlock Grid.Column="1" Margin="0,1,0,0" FontWeight="SemiBold" FontSize="14"
                                          Foreground="{DynamicResource ModernFeatureBrush}"
                                          Text="{Binding TwitViewModel.FriendsVM.TweetCount, TargetNullValue=-}"/>
@@ -385,7 +385,7 @@ To provide you all the functionality in FlattyTweet, please reauthenticate your 
                                                                 <ColumnDefinition Width="24"/>
                                                                 <ColumnDefinition Width="16"/>
                                                             </Grid.ColumnDefinitions>
-                                                            <Path Width="14" Height="14" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
+                                                            <Path Width="14" Height="14" Stretch="Fill" Fill="{DynamicResource ModernTextLightestBrush}"
                                     Data="{StaticResource PathMention}"/>
                                                             <TextBlock Grid.Column="1" Margin="0,1,0,0" FontWeight="SemiBold" FontSize="14"
                                          Foreground="{DynamicResource ModernFeatureBrush}"
@@ -400,7 +400,7 @@ To provide you all the functionality in FlattyTweet, please reauthenticate your 
                                                                 <ColumnDefinition Width="24"/>
                                                                 <ColumnDefinition Width="16"/>
                                                             </Grid.ColumnDefinitions>
-                                                            <Path Width="16" Height="11" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
+                                                            <Path Width="16" Height="11" Stretch="Fill" Fill="{DynamicResource ModernTextLightestBrush}"
                                     Data="{StaticResource PathDirectMessage}"/>
                                                             <TextBlock Grid.Column="1" Margin="0,1,0,0" FontWeight="SemiBold" FontSize="14"
                                          Foreground="{DynamicResource ModernFeatureBrush}"
@@ -415,7 +415,7 @@ To provide you all the functionality in FlattyTweet, please reauthenticate your 
                                                                 <ColumnDefinition Width="24"/>
                                                                 <ColumnDefinition Width="16"/>
                                                             </Grid.ColumnDefinitions>
-                                                            <Path Width="14" Height="12" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
+                                                            <Path Width="14" Height="12" Stretch="Fill" Fill="{DynamicResource ModernTextLightestBrush}"
                                     Data="{StaticResource PathNotifications}"/>
                                                             <TextBlock Grid.Column="1" Margin="0,1,0,0" FontWeight="SemiBold" FontSize="14"
                                          Foreground="{DynamicResource ModernFeatureBrush}"
@@ -445,7 +445,7 @@ To provide you all the functionality in FlattyTweet, please reauthenticate your 
                                                                 </ImageBrush>
                                                             </Panel.Background>
                                                         </Canvas>
-                                                        <TextBlock Grid.Column="1" Foreground="{DynamicResource MetroHeadingColorDark}" FontSize="15"
+                                                        <TextBlock Grid.Column="1" Foreground="{DynamicResource ModernTextLightestBrush}" FontSize="15"
                                        FontWeight="SemiBold" TextTrimming="CharacterEllipsis" Margin="10,0,0,0"
                                        Text="{Binding TwitterAccountName}"/>
                                                     </Grid>
@@ -461,8 +461,8 @@ To provide you all the functionality in FlattyTweet, please reauthenticate your 
                                                                 <ColumnDefinition Width="Auto"/>
                                                             </Grid.ColumnDefinitions>
                                                             <Path Grid.Column="0" Width="16" Height="11" Stretch="Fill"
-                                    Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathGroupPeople}"/>
-                                                            <TextBlock Grid.Column="1" Margin="10,0" FontSize="14" Foreground="{DynamicResource MetroHeadingColorDark}"
+                                    Fill="{DynamicResource ModernTextLightestBrush}" Data="{StaticResource PathGroupPeople}"/>
+                                                            <TextBlock Grid.Column="1" Margin="10,0" FontSize="14" Foreground="{DynamicResource ModernTextLightestBrush}"
                                          TextTrimming="CharacterEllipsis">timeline</TextBlock>
                                                             <TextBlock Grid.Column="2" FontWeight="SemiBold" FontSize="14"
                                          Foreground="{DynamicResource ModernFeatureBrush}"
@@ -478,9 +478,9 @@ To provide you all the functionality in FlattyTweet, please reauthenticate your 
                                                                 <ColumnDefinition Width="*"/>
                                                                 <ColumnDefinition Width="Auto"/>
                                                             </Grid.ColumnDefinitions>
-                                                            <Path Width="14" Height="14" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
+                                                            <Path Width="14" Height="14" Stretch="Fill" Fill="{DynamicResource ModernTextLightestBrush}"
                                     Data="{StaticResource PathMention}"/>
-                                                            <TextBlock Grid.Column="1" Margin="10,0" FontSize="14" Foreground="{DynamicResource MetroHeadingColorDark}"
+                                                            <TextBlock Grid.Column="1" Margin="10,0" FontSize="14" Foreground="{DynamicResource ModernTextLightestBrush}"
                                          TextTrimming="CharacterEllipsis">mentions</TextBlock>
                                                             <TextBlock Grid.Column="2" FontWeight="SemiBold" FontSize="14"
                                          Foreground="{DynamicResource ModernFeatureBrush}"
@@ -496,9 +496,9 @@ To provide you all the functionality in FlattyTweet, please reauthenticate your 
                                                                 <ColumnDefinition Width="*"/>
                                                                 <ColumnDefinition Width="Auto"/>
                                                             </Grid.ColumnDefinitions>
-                                                            <Path Width="16" Height="11" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
+                                                            <Path Width="16" Height="11" Stretch="Fill" Fill="{DynamicResource ModernTextLightestBrush}"
                                     Data="{StaticResource PathDirectMessage}"/>
-                                                            <TextBlock Grid.Column="1" Margin="10,0" FontSize="14" Foreground="{DynamicResource MetroHeadingColorDark}"
+                                                            <TextBlock Grid.Column="1" Margin="10,0" FontSize="14" Foreground="{DynamicResource ModernTextLightestBrush}"
                                          TextTrimming="CharacterEllipsis">messages</TextBlock>
                                                             <TextBlock Grid.Column="2" FontWeight="SemiBold" FontSize="14"
                                          Foreground="{DynamicResource ModernFeatureBrush}"
@@ -515,9 +515,9 @@ To provide you all the functionality in FlattyTweet, please reauthenticate your 
                                                                 <ColumnDefinition Width="*"/>
                                                                 <ColumnDefinition Width="Auto"/>
                                                             </Grid.ColumnDefinitions>
-                                                            <Path Width="14" Height="12" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
+                                                            <Path Width="14" Height="12" Stretch="Fill" Fill="{DynamicResource ModernTextLightestBrush}"
                                     Data="{StaticResource PathNotifications}"/>
-                                                            <TextBlock Grid.Column="1" Margin="10,0" FontSize="14" Foreground="{DynamicResource MetroHeadingColorDark}"
+                                                            <TextBlock Grid.Column="1" Margin="10,0" FontSize="14" Foreground="{DynamicResource ModernTextLightestBrush}"
                                          TextTrimming="CharacterEllipsis">notifications</TextBlock>
                                                             <TextBlock Grid.Column="2" FontWeight="SemiBold" FontSize="14"
                                          Foreground="{DynamicResource ModernFeatureBrush}" Text="{Binding UnreadActivtiesCount}"/>
@@ -529,7 +529,7 @@ To provide you all the functionality in FlattyTweet, please reauthenticate your 
                                         <Button x:Name="InactiveSwitchButton" Style="{DynamicResource MetroOverlayButton}" Visibility="Collapsed"
                             Margin="0,0,1,0" Command="{Binding SwitchToThisAccountCommand}">
                                             <Control.Background>
-                                                <SolidColorBrush Color="{DynamicResource MetroColorFeature}" Opacity="0.3"/>
+                                                <SolidColorBrush Color="{DynamicResource ModernColorFeature}" Opacity="0.3"/>
                                             </Control.Background>
                                             <FrameworkElement.ContextMenu>
                                                 <ContextMenu>
@@ -578,12 +578,12 @@ To provide you all the functionality in FlattyTweet, please reauthenticate your 
               Margin="0,0,1,0">
                     <Rectangle Fill="{DynamicResource ModernFeatureBrush}" Opacity="0.15"/>
                     <Button x:Name="addAccountFull" Style="{DynamicResource MetroPathButton}" HorizontalAlignment="Center"
-                  VerticalAlignment="Center" Height="40" Width="40" ToolTip="Manage accounts"
+                  VerticalAlignment="Center" Height="40" Width="40" ToolTip="Manage Accounts"
                   Command="{Binding AddUserAccountCommand}">
                         <Canvas>
                             <Ellipse Width="30" Height="30" Margin="5" Stretch="Fill" StrokeLineJoin="Round"
-                       Stroke="{DynamicResource MetroHeadingColorDark}" StrokeThickness="1"/>
-                            <Path Width="16" Height="16" Margin="12" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
+                       Stroke="{DynamicResource ModernTextLightestBrush}" StrokeThickness="1"/>
+                            <Path Width="16" Height="16" Margin="12" Stretch="Fill" Fill="{DynamicResource ModernTextLightestBrush}"
                     Data="{StaticResource PathManageAccounts}"/>
                         </Canvas>
                     </Button>
@@ -612,30 +612,30 @@ To provide you all the functionality in FlattyTweet, please reauthenticate your 
                         <Button x:Name="MinimiseButton" Style="{DynamicResource MetroPathButton2}" Width="34" Height="30"
                     ToolTip="Minimize" shell:WindowChrome.IsHitTestVisibleInChrome="true"
                     Command="{Binding MinimiseCommand}">
-                            <Rectangle Width="10" Height="3" Fill="{DynamicResource MetroHeadingColorDark}" VerticalAlignment="Bottom"
+                            <Rectangle Width="10" Height="3" Fill="{DynamicResource ModernTextLightestBrush}" VerticalAlignment="Bottom"
                          Margin="0,0,0,8"/>
                         </Button>
                         <Button x:Name="MaximiseBtn" Style="{DynamicResource MetroPathButton2}" Width="34" Height="30"
                     ToolTip="Maximize" shell:WindowChrome.IsHitTestVisibleInChrome="true"
                     Command="{Binding MaximiseCommand}">
-                            <Path Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathMaximize}"
+                            <Path Fill="{DynamicResource ModernTextLightestBrush}" Data="{StaticResource PathMaximize}"
                     Margin="0,6,0,0" Width="11" Height="11" Stretch="Fill"/>
                         </Button>
                         <Button x:Name="RestoreBtn" Style="{DynamicResource MetroPathButton2}" Width="34" Height="30"
                     ToolTip="Restore" Visibility="Collapsed" shell:WindowChrome.IsHitTestVisibleInChrome="true"
                     Command="{Binding MaximiseCommand}">
-                            <Path Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathRestore}" Margin="0,6,0,0"
+                            <Path Fill="{DynamicResource ModernTextLightestBrush}" Data="{StaticResource PathRestore}" Margin="0,6,0,0"
                     Width="11" Height="11" Stretch="Fill"/>
                         </Button>
                         <Button x:Name="CloseBtn" Width="34" Height="30" Style="{DynamicResource MetroPathButton2}" ToolTip="Quit"
                     shell:WindowChrome.IsHitTestVisibleInChrome="true" Command="{Binding ExitCommand}">
-                            <Path Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathClose}" Margin="0,6,0,0"
+                            <Path Fill="{DynamicResource ModernTextLightestBrush}" Data="{StaticResource PathClose}" Margin="0,6,0,0"
                     Stretch="Fill" Width="11" Height="11"/>
                         </Button>
                         <Button x:Name="CloseBtnMax" Width="40" Height="30" Margin="0,0,-6,0"
                     Style="{DynamicResource MetroPathButton2}" ToolTip="Quit" Visibility="Collapsed"
                     shell:WindowChrome.IsHitTestVisibleInChrome="true" Command="{Binding ExitCommand}">
-                            <Path Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathClose}" Margin="0,6,6,0"
+                            <Path Fill="{DynamicResource ModernTextLightestBrush}" Data="{StaticResource PathClose}" Margin="0,6,6,0"
                     Stretch="Fill" Width="11" Height="11"/>
                         </Button>
                     </StackPanel>

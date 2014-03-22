@@ -7,7 +7,7 @@
     <DockPanel Margin="30,36">
         <StackPanel>
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Style="{DynamicResource MetroHeading1}"
-                 Foreground="{DynamicResource MetroHeadingColorDark}" Margin="0,0,0,20">let's rock</TextBlock>
+                 Foreground="{DynamicResource ModernTextLightestBrush}" Margin="0,0,0,20">let's rock</TextBlock>
             <TextBlock Margin="0,0,0,10">See you on Twitter!</TextBlock>
             <Button Content="ready to rock and roll" IsDefault="true" Width="300" Height="40"
               HorizontalAlignment="Left" Style="{DynamicResource MetroButton}" Command="{Binding CancelCommand}"/>

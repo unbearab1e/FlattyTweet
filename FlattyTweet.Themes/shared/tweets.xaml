@@ -237,14 +237,14 @@
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush.Color">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource NewTweetBorderHover}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource ModernColorFeature}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="KeyboardFocus">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush.Color">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource MetroColorFeature}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource ModernColorFeature}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -318,10 +318,10 @@
                                             </DiscreteObjectKeyFrame>
                                         </ObjectAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="heart">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource MetroColorFeature}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource ModernColorFeature}" />
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="heart">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource MetroColorFeature}" />
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource ModernColorFeature}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>

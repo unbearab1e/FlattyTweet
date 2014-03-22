@@ -40,8 +40,8 @@
     Controls
     -->
 
-    <SolidColorBrush x:Key="MetroCheckboxCheck" Color="#FFFFFFFF"  />
-    <SolidColorBrush x:Key="MetroCheckboxBorder" Color="#FF333333"  />
+    <SolidColorBrush x:Key="ModernTextLightestBrush" Color="#FFFFFFFF"  />
+    <SolidColorBrush x:Key="ModernTextDarkestBrush" Color="#FF333333"  />
 
     <SolidColorBrush x:Key="MetroComboBoxBg" Color="#FFEEEEEE"  />
     <SolidColorBrush x:Key="MetroComboBoxArrow" Color="#FF999999"  />
@@ -75,9 +75,9 @@
     <Color x:Key="MetroSliderThumbHover" >#FF111111</Color>
 
     <SolidColorBrush x:Key="MetroTextBoxBg" Color="#FFEEEEEE"  />
-    <SolidColorBrush x:Key="MetroTextBoxBorderHover" Color="#FF333333"  />
-    <SolidColorBrush x:Key="MetroTextBoxBgFocus" Color="#FFFFFFFF"  />
-    <SolidColorBrush x:Key="MetroTextBoxCaret" Color="#FF000000"  />
+    <SolidColorBrush x:Key="ModernFeatureBrush" Color="#FF333333"  />
+    <SolidColorBrush x:Key="ModernBgDarkerBrush" Color="#FFFFFFFF"  />
+    <SolidColorBrush x:Key="ModernFeatureBrush" Color="#FF000000"  />
     <SolidColorBrush x:Key="MetroTextBoxErrorBorder" Color="#FFe50000"  />
     <SolidColorBrush x:Key="MetroTextBoxErrorBg" Color="#FFffcece" />
 
@@ -86,7 +86,7 @@
     -->
 
     <SolidColorBrush x:Key="MetroHeadingColorLight" Color="{StaticResource MetroColorFeatureContrast}"  />
-    <SolidColorBrush x:Key="MetroHeadingColorDark" Color="#FF000000"  />
+    <SolidColorBrush x:Key="ModernTextLightestBrush" Color="#FF000000"  />
     <SolidColorBrush x:Key="MetroFormLabelColor" Color="#FF333333"  />
 
     <!--
@@ -185,7 +185,7 @@
     <SolidColorBrush x:Key="ButtonProgressBorderFillNormal" Color="#FFCCCCCC" />
 
     <SolidColorBrush x:Key="URLShorteningButtonFillNormal" Color="#FFEEEEEE" />
-    <Color x:Key="URLShorteningButtonFillHover">#FF333333</Color>
+    <Color x:Key="ModernTextLightestColor">#FF333333</Color>
     <Color x:Key="URLShorteningButtonFillFocus">#FF666666</Color>
     <SolidColorBrush x:Key="URLShorteningButtonTextNormal" Color="#FF0083de" />
     <Color x:Key="URLShorteningButtonTextFocus">#FFFFFFFF</Color>

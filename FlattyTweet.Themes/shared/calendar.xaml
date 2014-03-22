@@ -9,9 +9,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CalendarDayButton">
-                    <Border BorderBrush="{DynamicResource MetroCheckboxBorder}" BorderThickness="1">
+                    <Border BorderBrush="{DynamicResource ModernTextDarkestBrush}" BorderThickness="1">
                         <Grid>
-                            <Rectangle x:Name="InactiveBackground" Fill="{DynamicResource MetroCheckboxBorder}" Opacity="0" />
+                            <Rectangle x:Name="InactiveBackground" Fill="{DynamicResource ModernTextDarkestBrush}" Opacity="0" />
                             <Rectangle x:Name="SelectedBackground" Opacity="0">
                                 <Rectangle.Fill>
                                     <SolidColorBrush Color="{DynamicResource MetroComboBoxItemHighlighted}" />
@@ -24,7 +24,7 @@
                             </Rectangle>
                             <Rectangle x:Name="TodayBackground" Opacity="0">
                                 <Rectangle.Fill>
-                                    <SolidColorBrush Color="{DynamicResource MetroColorFeature}" />
+                                    <SolidColorBrush Color="{DynamicResource ModernColorFeature}" />
                                 </Rectangle.Fill>
                             </Rectangle>
                             <ContentPresenter x:Name="NormalText" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="4" TextElement.Foreground="{DynamicResource ModernTextLighterBrush}"></ContentPresenter>
@@ -78,7 +78,7 @@
                                 <VisualState Name="Today">
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="TodayBackground" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
-                                        <ColorAnimation Duration="0" Storyboard.TargetName="NormalText" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" To="{DynamicResource MetroColorFeatureContrast}" />
+                                        <ColorAnimation Duration="0" Storyboard.TargetName="NormalText" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" To="{DynamicResource ModernColorFeatureContrast}" />
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
@@ -111,9 +111,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CalendarButton">
-                    <Border BorderBrush="{DynamicResource MetroCheckboxBorder}" BorderThickness="1">
+                    <Border BorderBrush="{DynamicResource ModernTextDarkestBrush}" BorderThickness="1">
                         <Grid>
-                            <Rectangle x:Name="InactiveBackground" Fill="{DynamicResource MetroCheckboxBorder}" Opacity="0" />
+                            <Rectangle x:Name="InactiveBackground" Fill="{DynamicResource ModernTextDarkestBrush}" Opacity="0" />
                             <Rectangle x:Name="SelectedBackground" Opacity="0">
                                 <Rectangle.Fill>
                                     <SolidColorBrush Color="{DynamicResource MetroComboBoxItemHighlighted}" />

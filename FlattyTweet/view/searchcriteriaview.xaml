@@ -51,7 +51,7 @@
                  Visibility="{Binding ShowSavingSearchThrobber, Converter={StaticResource booleanToVisibilityConverter}}"/>
     <StackPanel Visibility="{Binding ShowMainContents, Converter={StaticResource booleanToVisibilityConverter}}">
       <TextBlock Text="search twitter" TextWrapping="Wrap" Style="{DynamicResource MetroHeading1}"
-                 Foreground="{DynamicResource MetroHeadingColorDark}"/>
+                 Foreground="{DynamicResource ModernTextLightestBrush}"/>
       <StackPanel Margin="0,10"
                   Visibility="{Binding ShowListOfSavedSearches, Converter={StaticResource booleanToVisibilityConverter}}">
         <TextBlock Margin="0,0,0,5">Saved searches:</TextBlock>
@@ -76,7 +76,7 @@
                         Width="28" Height="28" ToolTip="Remove saved search"
                         Command="{Binding DataContext.DeleteSavedSearchCommand, Source={x:Reference Name=_this}}"
                         CommandParameter="{Binding}">
-                  <Path Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathClose}" Margin="0,2,0,0"
+                  <Path Fill="{DynamicResource ModernTextLightestBrush}" Data="{StaticResource PathClose}" Margin="0,2,0,0"
                         Width="11" Height="11" Stretch="Fill"/>
                 </Button>
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="NoWrap"

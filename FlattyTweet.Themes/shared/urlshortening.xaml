@@ -37,7 +37,7 @@
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="button" Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)">
-                                            <DiscreteColorKeyFrame Value="{DynamicResource URLShorteningButtonFillHover}" KeyTime="0"/>
+                                            <DiscreteColorKeyFrame Value="{DynamicResource ModernTextLightestColor}" KeyTime="0"/>
                                         </ColorAnimationUsingKeyFrames>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="text" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)">
                                             <DiscreteColorKeyFrame Value="{DynamicResource URLShorteningButtonTextFocus}" KeyTime="0"/>

@@ -22,7 +22,7 @@
     </UIElement.RenderTransform>
     <DockPanel Margin="20,10,20,20">
       <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Style="{DynamicResource MetroHeading1}"
-                 Foreground="{DynamicResource MetroHeadingColorDark}" Margin="0,0,0,10" Text="{Binding Title}"/>
+                 Foreground="{DynamicResource ModernTextLightestBrush}" Margin="0,0,0,10" Text="{Binding Title}"/>
       <UserControl Width="350" Style="{DynamicResource Throbber}" Margin="0,0,0,5" Content="{Binding ProgressText}"
                    Visibility="{Binding ShowAnimation, Converter={StaticResource booleanToVisibilityConverter}}"/>
       <StackPanel Visibility="{Binding ShowErrorMessage, Converter={StaticResource booleanToVisibilityConverter}}">

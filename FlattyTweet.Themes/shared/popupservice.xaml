@@ -13,17 +13,17 @@
                         <Border Name="PART_PopupContainer" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{DynamicResource ModernBgDarkerBrush}" BorderThickness="1" BorderBrush="{DynamicResource ModernFeatureBrush}">
                             <DockPanel x:Name="Content" UseLayoutRounding="True">
                                 <Grid DockPanel.Dock="Top" MinHeight="32" MaxHeight="74">
-                                    <TextBlock Name="PART_Title" Style="{DynamicResource MetroHeading1}" VerticalAlignment="Bottom" Foreground="{DynamicResource MetroHeadingColorDark}" Margin="15,38,15,4" />
+                                    <TextBlock Name="PART_Title" Style="{DynamicResource MetroHeading1}" VerticalAlignment="Bottom" Foreground="{DynamicResource ModernTextLightestBrush}" Margin="15,38,15,4" />
                                     <Button Name="PART_BackButton" Margin="0,0,0,0" Style="{DynamicResource MetroPathButton}" HorizontalAlignment="Left" VerticalAlignment="Top" ClipToBounds="True" Height="36" Width="36" ToolTip="Back" Visibility="Collapsed">
                                         <Canvas Margin="-7,-7,0,0">
-                                            <Ellipse Width="36" Height="36" Margin="0" Stretch="Fill" StrokeLineJoin="Round" Stroke="{DynamicResource MetroHeadingColorDark}" StrokeThickness="1"/>
-                                            <Path Width="18" Height="18" Margin="9" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathBack}"/>
+                                            <Ellipse Width="36" Height="36" Margin="0" Stretch="Fill" StrokeLineJoin="Round" Stroke="{DynamicResource ModernTextLightestBrush}" StrokeThickness="1"/>
+                                            <Path Width="18" Height="18" Margin="9" Stretch="Fill" Fill="{DynamicResource ModernTextLightestBrush}" Data="{StaticResource PathBack}"/>
                                         </Canvas>
                                     </Button>
                                     <Button Name="PART_PinButton" Margin="0,0,0,-32" Style="{DynamicResource MetroPathButton}" HorizontalAlignment="Right" VerticalAlignment="Top" ClipToBounds="True" Height="38" Width="42" ToolTip="Pin as column">
                                         <Canvas Margin="4,-8,0,0">
-                                            <Ellipse Width="42" Height="42" Margin="0" Stretch="Fill" StrokeLineJoin="Round" Stroke="{DynamicResource MetroHeadingColorDark}" StrokeThickness="1"/>
-                                            <Path Width="20" Height="20" Margin="11"  Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathPin}"/>
+                                            <Ellipse Width="42" Height="42" Margin="0" Stretch="Fill" StrokeLineJoin="Round" Stroke="{DynamicResource ModernTextLightestBrush}" StrokeThickness="1"/>
+                                            <Path Width="20" Height="20" Margin="11"  Stretch="Fill" Fill="{DynamicResource ModernTextLightestBrush}" Data="{StaticResource PathPin}"/>
                                         </Canvas>
                                     </Button>
                                 </Grid>

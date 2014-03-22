@@ -7,7 +7,7 @@
         <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontWeight" Value="Light"/>
-        <Setter Property="Foreground" Value="{DynamicResource MetroHeadingColorDark}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ModernTextLightestBrush}"/>
     </Style>
 
     <Style x:Key="MetroHeading2" TargetType="{x:Type TextBlock}">

@@ -31,8 +31,8 @@
             shell:WindowChrome.IsHitTestVisibleInChrome="true" Command="{Binding BackCommand}">
             <Canvas Margin="-7,-7,0,0">
                 <Ellipse Width="40" Height="40" Margin="0" Stretch="Fill" StrokeLineJoin="Round"
-                 Stroke="{DynamicResource MetroHeadingColorDark}" StrokeThickness="1"/>
-                <Path Width="20" Height="20" Margin="10" Stretch="Fill" Fill="{DynamicResource MetroHeadingColorDark}"
+                 Stroke="{DynamicResource ModernTextLightestBrush}" StrokeThickness="1"/>
+                <Path Width="20" Height="20" Margin="10" Stretch="Fill" Fill="{DynamicResource ModernTextLightestBrush}"
               Data="{StaticResource PathBack}"/>
             </Canvas>
         </Button>
@@ -150,7 +150,7 @@
                             </DockPanel>
                         </ComboBoxItem>
                     </ComboBox>
-                    <TextBlock TextWrapping="Wrap" Text="Sidebar background" Style="{DynamicResource MetroHeading2}"
+                    <!--<TextBlock TextWrapping="Wrap" Text="Sidebar background" Style="{DynamicResource MetroHeading2}"
                      Margin="0,20,0,5"/>
                     <ComboBox Margin="0,0,0,5" SelectedIndex="{Binding Artwork, Converter={StaticResource artworkConverter}}">
                         <ComboBoxItem>None</ComboBoxItem>
@@ -168,7 +168,7 @@
                             <ImageBrush Stretch="UniformToFill"
                           ImageSource="{Binding ArtworkImage, Converter={StaticResource nullImageConverter}}"/>
                         </Panel.Background>
-                    </Canvas>
+                    </Canvas>-->
                     <TextBlock TextWrapping="Wrap" Text="Display options" Style="{DynamicResource MetroHeading2}"
                      Margin="0,20,0,5"/>
                     <CheckBox Margin="0,0,0,5" IsChecked="{Binding KeepScrollPositionatTop}">
@@ -284,12 +284,12 @@
                                     <RadioButton Style="{DynamicResource NotifScreenRadioButton}" Width="{Binding BoundsWidth}"
                                Height="{Binding BoundsHeight}" Margin="{Binding BoundsMargin}"
                                IsChecked="{Binding IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}">
-                                        <Border Background="{DynamicResource MetroComboBoxBg}" Margin="{Binding WorkingAreaMargin}"
+                                        <Border Background="{DynamicResource ModernTextDarkerBrush}" Margin="{Binding WorkingAreaMargin}"
                             Height="{Binding WorkingAreaHeight}" Width="{Binding WorkingAreaWidth}">
                                             <Grid Margin="4,4,8,8">
                                                 <Grid Name="ScreenNumber" Width="48" Height="48" VerticalAlignment="Center" HorizontalAlignment="Center">
                                                     <TextBlock FontSize="32" VerticalAlignment="Center" HorizontalAlignment="Center"
-                                     Foreground="{DynamicResource MetroCheckboxBorder}" Margin="0,0,0,4" Text="{Binding ScreenNumber}"/>
+                                     Foreground="{DynamicResource ModernTextLightestBrush}" Margin="0,0,0,4" Text="{Binding ScreenNumber}"/>
                                                 </Grid>
                                                 <RadioButton CommandParameter="1" HorizontalAlignment="Left" VerticalAlignment="Top"
                                      DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"
@@ -345,10 +345,10 @@
                                     <Setter Property="Control.Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="{x:Type RadioButton}">
-                                                <Border Name="NotifScreen" BorderThickness="1" BorderBrush="{DynamicResource MetroComboBoxBg}"
+                                                <Border Name="NotifScreen" BorderThickness="1" BorderBrush="{DynamicResource ModernTextDarkerBrush}"
                                 RenderTransformOrigin="0.5,0.5">
                                                     <Border.Background>
-                                                        <SolidColorBrush Color="{DynamicResource MetroComboBoxItemHighlighted}"/>
+                                                        <SolidColorBrush Color="{DynamicResource ModernTextDarkerColor}"/>
                                                     </Border.Background>
                                                     <UIElement.RenderTransform>
                                                         <TransformGroup>
@@ -365,14 +365,14 @@
                                                             <VisualState x:Name="MouseOver">
                                                                 <Storyboard>
                                                                     <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush.Color" Storyboard.TargetName="NotifScreen">
-                                                                        <DiscreteColorKeyFrame KeyTime="0" Value="{DynamicResource MetroCheckboxBorderHover}"/>
+                                                                        <DiscreteColorKeyFrame KeyTime="0" Value="{DynamicResource ModernTextLighterColor}"/>
                                                                     </ColorAnimationUsingKeyFrames>
                                                                 </Storyboard>
                                                             </VisualState>
                                                             <VisualState x:Name="Pressed">
                                                                 <Storyboard>
                                                                     <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush.Color" Storyboard.TargetName="NotifScreen">
-                                                                        <DiscreteColorKeyFrame KeyTime="0" Value="{DynamicResource MetroCheckboxBorderHover}"/>
+                                                                        <DiscreteColorKeyFrame KeyTime="0" Value="{DynamicResource ModernTextLighterColor}"/>
                                                                     </ColorAnimationUsingKeyFrames>
                                                                     <DoubleAnimationUsingKeyFrames Storyboard.TargetName="NotifScreen"
                                                                  Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
@@ -478,7 +478,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border BorderThickness="1" BorderBrush="{DynamicResource MetroComboBoxBg}" Margin="0,0,10,0" Width="250">
+                                    <Border BorderThickness="1" BorderBrush="{DynamicResource ModernTextDarkerBrush}" Margin="0,0,10,0" Width="250">
                                         <StackPanel Margin="10">
                                             <TextBlock FontSize="15" FontWeight="Bold" Margin="0,0,0,10">
                         <Run Text="@"/>
@@ -527,7 +527,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border BorderThickness="1" BorderBrush="{DynamicResource MetroComboBoxBg}" Margin="0,0,10,0" Width="250">
+                                    <Border BorderThickness="1" BorderBrush="{DynamicResource ModernTextDarkerBrush}" Margin="0,0,10,0" Width="250">
                                         <StackPanel Margin="10">
                                             <TextBlock FontSize="15" FontWeight="Bold" Margin="0,0,0,10">
                         <Run Text="@"/>
@@ -592,7 +592,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border BorderThickness="1" BorderBrush="{DynamicResource MetroComboBoxBg}" Margin="0,0,10,0">
+                                    <Border BorderThickness="1" BorderBrush="{DynamicResource ModernTextDarkerBrush}" Margin="0,0,10,0">
                                         <StackPanel Margin="10">
                                             <TextBlock FontSize="15" FontWeight="Bold" Margin="0,0,0,10">
                         <Run Text="@"/>

@@ -118,7 +118,7 @@ namespace FlattyTweet.ViewModel
         Task task = new Task((Action) (() => this.GeoLookup(coordinate)));
         task.ContinueWith((Action<Task>) (t => CommonCommands.CheckTaskExceptions(t)));
         task.Start();
-        object resource = Application.Current.FindResource((object) "MetroColorFeature");
+        object resource = Application.Current.FindResource((object) "ModernColorFeature");
         string PinColour = resource == null ? "blue" : "0x" + resource.ToString().Remove(0, 3);
         this.GeoImageURI = CoreServices.Instance.CurrentMapService.StaticMapURL(coordinate.Latitude, coordinate.Longitude, 320, 320, PinColour);
         GeoViewModel geoViewModel = this;

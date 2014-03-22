@@ -18,7 +18,7 @@
                 Style="{DynamicResource MetroButton}" Margin="5,0,0,0"/>
       </Grid>
       <TextBlock DockPanel.Dock="Top" Text="retweet" TextWrapping="Wrap" Style="{DynamicResource MetroHeading1}"
-                 Foreground="{DynamicResource MetroHeadingColorDark}" Margin="0,0,0,5"/>
+                 Foreground="{DynamicResource ModernTextLightestBrush}" Margin="0,0,0,5"/>
       <StackPanel DockPanel.Dock="Bottom">
         <Label Content="From account:" Margin="0,5,0,5"/>
         <ComboBox x:Name="AccountCombo" IsEnabled="{Binding AccountEnabled}" ItemsSource="{Binding Accounts}">

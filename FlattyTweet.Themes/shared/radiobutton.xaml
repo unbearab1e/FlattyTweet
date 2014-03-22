@@ -11,8 +11,8 @@
                     <BulletDecorator Background="Transparent" x:Name="Bullet">
                         <BulletDecorator.Bullet>
                             <Grid x:Name="button" RenderTransformOrigin="0.5,0.5">
-                                <Ellipse x:Name="Border" Width="14" Height="14" Stretch="Fill" Stroke="{DynamicResource MetroCheckboxBorder}"/>
-                                <Ellipse x:Name="CheckMark" Width="6" Height="6" Stretch="Fill" Fill="{DynamicResource MetroCheckboxCheck}" UseLayoutRounding="False"/>
+                                <Ellipse x:Name="Border" Width="14" Height="14" Stretch="Fill" Stroke="{DynamicResource ModernTextLightestBrush}"/>
+                                <Ellipse x:Name="CheckMark" Width="6" Height="6" Stretch="Fill" Fill="{DynamicResource ModernBgDarkerBrush}" UseLayoutRounding="False"/>
                                 <Grid.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -61,7 +61,7 @@
                                             <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1.0"/>
                                         </DoubleAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="Border">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{DynamicResource MetroCheckboxBorder}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{DynamicResource ModernTextLightestBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>

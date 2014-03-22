@@ -15,7 +15,7 @@ namespace FlattyTweet.Extensions
       if ((int) value == 0)
         return (object) Colors.LightGray;
       else
-        return Application.Current.FindResource((object) "MetroColorFeature");
+        return Application.Current.FindResource((object) "ModernColorFeature");
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

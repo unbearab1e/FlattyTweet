@@ -51,16 +51,16 @@
 
     <ControlTemplate x:Key="HorizontalSlider" TargetType="{x:Type Slider}">
         <Grid>
-            <Border Name="TrackBackground" Margin="0" Height="6" Grid.Row="1" Background="{DynamicResource MetroSliderBg}" />
+            <Border Name="TrackBackground" Margin="0" Height="6" Grid.Row="1" Background="{DynamicResource ModernTextDarkerBrush}" />
             <Track Name="PART_Track">
                 <Track.DecreaseRepeatButton>
                     <RepeatButton Name="SliderLeft"
-                      Foreground="{DynamicResource MetroSliderThumb}"
+                      Foreground="{DynamicResource ModernTextLighterBrush}"
                       Style="{StaticResource SliderButtonStyleLeft}"
                       Command="Slider.DecreaseLarge" />
                 </Track.DecreaseRepeatButton>
                 <Track.Thumb>
-                    <Thumb Name="SliderThumb" Foreground="{DynamicResource MetroSliderThumb}" BorderBrush="{DynamicResource MetroSliderBorder}" Style="{StaticResource SliderThumbStyle}" />
+                    <Thumb Name="SliderThumb" Foreground="{DynamicResource ModernTextLighterBrush}" BorderBrush="{DynamicResource ModernTextDarkestBrush}" Style="{StaticResource SliderThumbStyle}" />
                 </Track.Thumb>
                 <Track.IncreaseRepeatButton>
                     <RepeatButton 
@@ -77,10 +77,10 @@
                     <VisualState x:Name="MouseOver">
                         <Storyboard>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground.Color" Storyboard.TargetName="SliderThumb">
-                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="{DynamicResource MetroSliderThumbHover}"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="{DynamicResource ModernColorFeature}"/>
                             </ColorAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground.Color" Storyboard.TargetName="SliderLeft">
-                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="{DynamicResource MetroSliderThumbHover}"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="{DynamicResource ModernTextLightestColor}"/>
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>

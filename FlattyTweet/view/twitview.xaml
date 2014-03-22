@@ -278,7 +278,7 @@
                       ToolTip="Remove image" HorizontalAlignment="Left" VerticalAlignment="Top"
                       Command="{Binding RemoveSingleImageCommand}"
                       Visibility="{Binding SingleImageSelected, Converter={StaticResource booleanToVisibilityConverter}}">
-                                <Path Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathClose}" Stretch="Fill"
+                                <Path Fill="{DynamicResource ModernTextLightestBrush}" Data="{StaticResource PathClose}" Stretch="Fill"
                       Width="10" Height="10"/>
                             </Button>
                         </Grid>
@@ -294,11 +294,13 @@
                             <TextBlock FontSize="12" FontWeight="SemiBold" TextAlignment="Left" TextTrimming="CharacterEllipsis"
                          Height="17" DockPanel.Dock="Bottom" Margin="5,0,5,3" Style="{DynamicResource NotFollowing}"
                          Visibility="{Binding StatusLabelVisibility}" Text="{Binding StatusText}"/>
-                            <RichTextBox PreviewDragEnter="NewTweetEdit_DragOver" PreviewDragOver="NewTweetEdit_DragOver"
+                            <RichTextBox Style="{StaticResource NewTwitRichTextBox}" 
+                           PreviewDragEnter="NewTweetEdit_DragOver" PreviewDragOver="NewTweetEdit_DragOver"
                            Drop="NewTweetEdit_Drop" TextChanged="NewTweetEdit_TextChanged"
                            MouseEnter="NewTweetEdit_MouseEvent" MouseLeave="NewTweetEdit_MouseEvent"
                            GotFocus="NewTweetEdit_MouseEvent" LostFocus="NewTweetEdit_MouseEvent"
-                           PreviewKeyDown="NewTweetEdit_KeyDown" x:Name="NewTweetEdit" Style="{DynamicResource NewTweet}"
+                           PreviewKeyDown="NewTweetEdit_KeyDown" x:Name="NewTweetEdit" 
+                                         
                            TextBlock.Foreground="{DynamicResource ModernTextLighterBrush}" Margin="0,5,0,2" AllowDrop="true"
                            IsDocumentEnabled="true" AcceptsReturn="false" IsEnabled="{Binding TweetEntryEnabled}"
                            Extensions:IntellisenseExtension.IsEnabled="{Binding UseAutoComplete, Mode=OneWay}"

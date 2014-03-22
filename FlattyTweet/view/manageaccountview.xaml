@@ -14,7 +14,7 @@
   <DockPanel Margin="30,36">
     <TextBlock DragOver="DragOverHandler" Drop="SourceDrop" AllowDrop="true" DockPanel.Dock="Top"
                HorizontalAlignment="Left" TextWrapping="Wrap" Style="{DynamicResource MetroHeading1}"
-               Foreground="{DynamicResource MetroHeadingColorDark}">manage users</TextBlock>
+               Foreground="{DynamicResource ModernTextLightestBrush}">manage users</TextBlock>
     <Grid DockPanel.Dock="Bottom">
       <Button Content="_close" Width="150" HorizontalAlignment="Right" Style="{DynamicResource MetroButton}"
               Command="{Binding CancelCommand}"/>

@@ -1833,9 +1833,6 @@ namespace FlattyTweet.ViewModel
                         }));
                         await Task.Run((Action)(() => this.uploadImageCountDownEvent.Wait()));
                     }
-                    //do
-                    //  ;
-                    //while (this.PostTweetEnabledCounter > 0 && !this.TwitterImageServiceIsEnabled);
                     if (this.imageUploadsFailed)
                     {
                         await System.Windows.Application.Current.Dispatcher.BeginInvoke((Action)(() =>

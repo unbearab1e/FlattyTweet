@@ -10,8 +10,8 @@
                 <ControlTemplate TargetType="{x:Type CheckBox}">
                     <BulletDecorator Background="Transparent" x:Name="Bullet">
                         <BulletDecorator.Bullet>
-                            <Border x:Name="Border" Width="14" Height="14" BorderThickness="1" Background="Transparent" BorderBrush="{DynamicResource MetroCheckboxBorder}" RenderTransformOrigin="0.5,0.5">
-                                <Path x:Name="CheckMark" Width="10" Height="10" Stretch="Fill" Fill="{DynamicResource MetroCheckboxCheck}" Data="{StaticResource PathCheckmark}" UseLayoutRounding="False"/>
+                            <Border x:Name="Border" Width="14" Height="14" BorderThickness="1" Background="Transparent" BorderBrush="{DynamicResource ModernTextLightestBrush}" RenderTransformOrigin="0.5,0.5">
+                                <Path x:Name="CheckMark" Width="10" Height="10" Stretch="Fill" Fill="{DynamicResource ModernBgDarkerBrush}" Data="{StaticResource PathCheckmark}" UseLayoutRounding="False"/>
                                 <Border.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
@@ -60,8 +60,9 @@
                                             <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1.0"/>
                                         </DoubleAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
-                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{DynamicResource MetroCheckboxBorder}"/>
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{DynamicResource ModernTextLightestBrush}"/>
                                         </ObjectAnimationUsingKeyFrames>
+
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Unchecked">

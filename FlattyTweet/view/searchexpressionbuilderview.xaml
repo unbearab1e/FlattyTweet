@@ -56,7 +56,7 @@
                           Height="28" ToolTip="Remove"
                           Command="{Binding DataContext.RemoveSearchTermCommand, ElementName=SearchExpressionBuilder}"
                           CommandParameter="{Binding}">
-                                        <Path Fill="{DynamicResource MetroHeadingColorDark}" Data="{StaticResource PathClose}" Margin="0,2,0,0"
+                                        <Path Fill="{DynamicResource ModernTextLightestBrush}" Data="{StaticResource PathClose}" Margin="0,2,0,0"
                           Width="11" Height="11" Stretch="Fill"/>
                                     </Button>
                                 </StackPanel>
