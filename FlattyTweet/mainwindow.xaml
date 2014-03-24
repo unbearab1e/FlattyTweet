@@ -14,43 +14,44 @@
         StateChanged="Window_StateChanged" PreviewMouseDown="Main_PreviewMouseDown" Closed="Main_Closed"
         SizeChanged="Main_SizeChanged" x:Name="Main" Style="{DynamicResource MetroWindow}"
         Title="FlattyTweet" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-        MinWidth="480" MinHeight="300" BorderThickness="0,0,0,0" Margin="0"  BorderBrush="{DynamicResource ModernBgDarkerBrush}"
+        MinWidth="480" MinHeight="300" BorderThickness="0" Margin="0"  BorderBrush="{DynamicResource ModernBgDarkerBrush}"
         ResizeMode="CanResizeWithGrip" WindowState="{Binding MainWindowState}">
     <FrameworkElement.Resources>
-        <extensions:NegateBooleanToVisibilityConverter x:Key="negateBooleanToVisibilityConverter"/>
-        <extensions:EmptyCollectionToVisibleConverter x:Key="emptyCollectionToVisibilityConverter"/>
-        <extensions:EmptyCollectionToCollapsedConverter x:Key="emptyCollectionToCollapsedConverter"/>
-        <extensions:CountToOpacityConverter x:Key="countToOpacityConverter" TargetOpacity="0.3"/>
-        <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
-        <extensions:BooleanToVisibilityHiddenConverter x:Key="booleanToVisibilityHiddenConverter"/>
-        <DrawingBrush x:Key="OverlayBrush">
-            <DrawingBrush.Drawing>
-                <DrawingGroup>
-                    <GeometryDrawing>
-                        <GeometryDrawing.Brush>
-                            <SolidColorBrush Color="#FFf35f0e"/>
-                        </GeometryDrawing.Brush>
-                        <GeometryDrawing.Geometry>
-                            <EllipseGeometry Center="8,8" RadiusY="7" RadiusX="7"/>
-                        </GeometryDrawing.Geometry>
-                        <GeometryDrawing.Pen>
-                            <Pen Brush="#FFa13500" Thickness="1"/>
-                        </GeometryDrawing.Pen>
-                    </GeometryDrawing>
+        <ResourceDictionary>
+            <extensions:NegateBooleanToVisibilityConverter x:Key="negateBooleanToVisibilityConverter"/>
+            <extensions:EmptyCollectionToVisibleConverter x:Key="emptyCollectionToVisibilityConverter"/>
+            <extensions:EmptyCollectionToCollapsedConverter x:Key="emptyCollectionToCollapsedConverter"/>
+            <extensions:CountToOpacityConverter x:Key="countToOpacityConverter" TargetOpacity="0.3"/>
+            <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter"/>
+            <extensions:BooleanToVisibilityHiddenConverter x:Key="booleanToVisibilityHiddenConverter"/>
+            <DrawingBrush x:Key="OverlayBrush">
+                <DrawingBrush.Drawing>
                     <DrawingGroup>
-                        <GeometryDrawing Brush="#FFFFFFFF">
+                        <GeometryDrawing>
+                            <GeometryDrawing.Brush>
+                                <SolidColorBrush Color="#FFf35f0e"/>
+                            </GeometryDrawing.Brush>
                             <GeometryDrawing.Geometry>
-                                <GeometryGroup>
-                                    <PathGeometry Figures="{Binding Figures}">
-
-                                    </PathGeometry>
-                                </GeometryGroup>
+                                <EllipseGeometry Center="8,8" RadiusY="7" RadiusX="7"/>
                             </GeometryDrawing.Geometry>
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="#FFa13500" Thickness="1"/>
+                            </GeometryDrawing.Pen>
                         </GeometryDrawing>
+                        <DrawingGroup>
+                            <GeometryDrawing Brush="#FFFFFFFF">
+                                <GeometryDrawing.Geometry>
+                                    <GeometryGroup>
+                                        <PathGeometry Figures="{Binding Figures}">
+                                        </PathGeometry>
+                                    </GeometryGroup>
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
                     </DrawingGroup>
-                </DrawingGroup>
-            </DrawingBrush.Drawing>
-        </DrawingBrush>
+                </DrawingBrush.Drawing>
+            </DrawingBrush>
+        </ResourceDictionary>
     </FrameworkElement.Resources>
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo>
@@ -174,7 +175,7 @@ To provide you all the functionality in FlattyTweet, please reauthenticate your 
                       Buttons="YesNo" DefaultResult="No"/>
         <b:DialogBehavior DialogType="NothingToUndo" Caption="nothing to undo"
                       Text="Nope, history doesn't stretch that far..." Buttons="OK" DefaultResult="OK"/>
-        
+
         <b:UpdateDialogBehavior/>
         <b:GeoDialogBehavior/>
         <b:MediaPreviewDialogBehavior/>

@@ -99,7 +99,7 @@
                   ItemsSource="{Binding Source={x:Static Application.Current}, Path=MostRecentSearchTerms}"
                   Text="{Binding SearchQuery}"/>
         <Button x:Name="advancedButton" ToolTip="Advanced search" Content="..."
-                Style="{DynamicResource MetroButton}" Width="26" Height="29" HorizontalAlignment="Left"
+                Style="{DynamicResource MetroButton}" Width="26" Height="28" HorizontalAlignment="Left"
                 Command="{Binding AdvancedCommand}"/>
       </StackPanel>
       <CheckBox HorizontalAlignment="Left" Margin="0,5,0,15" IsChecked="{Binding SaveThisSearch}">

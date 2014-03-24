@@ -24,4 +24,4 @@ using System.Windows.Resources;
 [assembly: AssemblyAssociatedContentFile("flattytweet.ieaddin.dll")]
 [assembly: AssemblyAssociatedContentFile("flattytweet.hostsideadapter.dll")]
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
-[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.0.0.0")]

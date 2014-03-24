@@ -14,7 +14,7 @@
                     <ControlTemplate.Resources>
 
                         <ControlTemplate x:Key="MenuItem.Item" TargetType="{x:Type MenuItem}">
-                            <Border x:Name="Border" Background="{DynamicResource ModernFeatureBrush}" Padding="10,5,10,5">
+                            <Border x:Name="Border" Background="transparent" Padding="10,5,10,5">
                                 <ContentPresenter ContentSource="Header" RecognizesAccessKey="True" RenderOptions.ClearTypeHint="Enabled" TextBlock.Foreground="{DynamicResource ModernContrastBrush}" />
                             </Border>
                             <ControlTemplate.Triggers>
@@ -35,8 +35,8 @@
                                 <Grid>
                                     <ContentPresenter ContentSource="Header" RecognizesAccessKey="True" RenderOptions.ClearTypeHint="Enabled" TextBlock.Foreground="{DynamicResource ModernContrastBrush}" />
                                     <Path Width="4" Height="5" Stretch="Fill" Fill="{DynamicResource MetroMenuItemArrow}" Data="{DynamicResource PathRightArrow}" HorizontalAlignment="Right"/>
-                                    <Popup Name="PART_Popup" Placement="Right" HorizontalOffset="8" AllowsTransparency="True" IsOpen="{TemplateBinding IsSubmenuOpen}" PopupAnimation="Fade">
-                                        <Border Margin="8" MinWidth="170" Background="{DynamicResource ModernBgLighterBrush}" BorderThickness="1" BorderBrush="{DynamicResource ModernFeatureBrush}">
+                                    <Popup Name="PART_Popup" Placement="Right" HorizontalOffset="10" VerticalOffset="-6"  AllowsTransparency="True" IsOpen="{TemplateBinding IsSubmenuOpen}" PopupAnimation="Fade">
+                                        <Border Margin="8" MinWidth="170" Background="{DynamicResource ModernFeatureBrush}" BorderThickness="1" BorderBrush="{DynamicResource ModernTextDarkestBrush}">
                                             <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" Margin="0"/>
                                         </Border>
                                     </Popup>
@@ -88,7 +88,7 @@
 
                     </ControlTemplate.Resources>
 
-                    <Border x:Name="Border" Margin="8" MinWidth="170" Background="{DynamicResource ModernFeatureBrush}" BorderThickness="1" BorderBrush="{DynamicResource ModernBgLighterBrush}">
+                    <Border x:Name="Border" Margin="8" MinWidth="170" Background="{DynamicResource ModernFeatureBrush}" BorderThickness="1" BorderBrush="{DynamicResource ModernTextDarkestBrush}">
                         <StackPanel x:Name="Content" IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" Margin="0">
                             <StackPanel.RenderTransform>
                                 <TransformGroup>

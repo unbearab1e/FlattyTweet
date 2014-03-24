@@ -109,7 +109,7 @@
     <Style x:Key="{x:Type RichTextBox}" TargetType="{x:Type RichTextBox}">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="CaretBrush" Value="{DynamicResource ModernFeatureBrush}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource ModernTextLighterBrush}" />
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="SelectionBrush" Value="{DynamicResource ModernFeatureBrush}"/>
         <Setter Property="Template">
@@ -165,64 +165,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="NewTwitRichTextBox" TargetType="{x:Type RichTextBox}">
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="CaretBrush" Value="{DynamicResource ModernTextLighterBrush}" />
-        <Setter Property="FontFamily" Value="Segoe UI" />
-        <Setter Property="SelectionBrush" Value="{DynamicResource ModernFeatureBrush}"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type RichTextBox}">
-                    <Border Name="Border" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
-                        <ScrollViewer Margin="0,4,0,4" FontSize="13" x:Name="PART_ContentHost" />
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="Border" Property="Opacity" Value="0.5"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource ModernFeatureBrush}"/>
-                        </Trigger>
-                        <Trigger Property="IsFocused" Value="True">
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource ModernFeatureBrush}"/>
-                            
-                        </Trigger>
-                        <Trigger Property="Validation.HasError" Value="True">
-                            <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
-                            
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxErrorBorder}" />
-                        </Trigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="Validation.HasError" Value="True" />
-                                <Condition Property="IsMouseOver" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxErrorBorder}"/>
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="Validation.HasError" Value="True" />
-                                <Condition Property="IsFocused" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource MetroTextBoxErrorBorder}"/>
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource ModernBgDarkerBrush}"/>
-                        </MultiTrigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="ContextMenu">
-            <Setter.Value>
-                <ContextMenu>
-                    <MenuItem Header="Cut" Command="ApplicationCommands.Cut"/>
-                    <MenuItem Header="Copy" Command="ApplicationCommands.Copy"/>
-                    <MenuItem Header="Paste" Command="ApplicationCommands.Paste"/>
-                </ContextMenu>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
+   
     <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="Cursor" Value="Hand"/>

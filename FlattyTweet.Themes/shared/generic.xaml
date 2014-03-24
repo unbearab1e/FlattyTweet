@@ -15,7 +15,7 @@
             <Setter.Value>
                 <shell:WindowChrome CaptionHeight="30"
                                         CornerRadius="0"
-                                        GlassFrameThickness="0,0,0,0"                                        
+                                        GlassFrameThickness="0"                                        
                                         ResizeBorderThickness="5" />
             </Setter.Value>
         </Setter>

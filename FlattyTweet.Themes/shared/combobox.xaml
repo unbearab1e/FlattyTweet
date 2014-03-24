@@ -54,7 +54,7 @@
 
     <Style x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="CaretBrush" Value="{DynamicResource ModernFeatureBrush}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource ModernTextLighterBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource ModernTextLighterBrush}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -86,7 +86,8 @@
                             <Border.BorderBrush>
                                 <SolidColorBrush Color="{StaticResource ModernTextLighterColor}" />
                             </Border.BorderBrush>
-                        </Border><ToggleButton Name="ToggleButton" Template="{StaticResource ComboBoxToggleButton}" Focusable="false"
+                        </Border>
+                        <ToggleButton Name="ToggleButton" Template="{StaticResource ComboBoxToggleButton}" Focusable="false"
                             IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press">
                         </ToggleButton>
                         <ContentPresenter Name="ContentSite" IsHitTestVisible="False" 
@@ -114,6 +115,9 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="BorderFocused">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
                                         </ObjectAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground.Color" Storyboard.TargetName="PART_EditableTextBox">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource ModernColorFeatureContrast}" />
+                                        </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Unfocused" />
@@ -125,6 +129,9 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="BorderFocused">
                                             <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
                                         </ObjectAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground.Color" Storyboard.TargetName="PART_EditableTextBox">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource ModernColorFeatureContrast}" />
+                                        </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>

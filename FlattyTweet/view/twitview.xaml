@@ -180,8 +180,6 @@
                             </ContextMenu>
                         </FrameworkElement.ContextMenu>
                         <Canvas>
-                            <Ellipse Width="30" Height="30" Margin="5" Stretch="Fill" StrokeLineJoin="Round"
-                       Stroke="{DynamicResource ModernContrastBrush}" StrokeThickness="0"/>
                             <Path Width="14" Height="14" Margin="13" Stretch="Fill" Fill="{DynamicResource ModernContrastBrush}"
                     Data="{StaticResource PathAdd}"/>
                         </Canvas>
@@ -191,8 +189,6 @@
                   Height="40" Width="40" Margin="0,0,12,0" ToolTip="Twitter lists" IsEnabled="{Binding ListsEnabled}"
                   Command="{Binding ListsCommand}">
                         <Canvas>
-                            <Ellipse Width="30" Height="30" Margin="5" Stretch="Fill" StrokeLineJoin="Round"
-                       Stroke="{DynamicResource ModernContrastBrush}" StrokeThickness="0"/>
                             <Path Width="14" Height="12" Margin="13,14" Stretch="Fill" Fill="{DynamicResource ModernContrastBrush}"
                     Data="{StaticResource PathList}"/>
                         </Canvas>
@@ -201,8 +197,6 @@
                   VerticalAlignment="Center" Height="40" Width="40" Margin="0,0,12,0" ToolTip="Refresh"
                   Command="{Binding RefreshCommand}">
                         <Canvas>
-                            <Ellipse Width="30" Height="30" Margin="5" Stretch="Fill" StrokeLineJoin="Round"
-                       Stroke="{DynamicResource ModernContrastBrush}" StrokeThickness="0"/>
                             <Path Width="14" Height="16" Margin="13,12" Stretch="Fill" Fill="{DynamicResource ModernContrastBrush}"
                     Data="{StaticResource PathRefresh}"/>
                         </Canvas>
@@ -214,8 +208,6 @@
                   Height="40" Width="40" Margin="12,0,0,0" ToolTip="Search Twitter"
                   CommandParameter="{x:Static Extensions:ViewType.Popup}" Command="{Binding SearchCommand}">
                         <Canvas>
-                            <Ellipse Width="30" Height="30" Margin="5" Stretch="Fill" StrokeLineJoin="Round"
-                       Stroke="{DynamicResource ModernContrastBrush}" StrokeThickness="0"/>
                             <Path Width="14" Height="14" Margin="13" Stretch="Fill" Fill="{DynamicResource ModernContrastBrush}"
                     Data="{StaticResource PathSearch}"/>
                         </Canvas>
@@ -225,8 +217,6 @@
                   HorizontalAlignment="Center" Margin="12,0,0,0" ToolTip="User profile"
                   CommandParameter="{x:Static Extensions:ViewType.Popup}" Command="{Binding ProfileSearchCommand}">
                         <Canvas>
-                            <Ellipse Width="30" Height="30" Margin="5" Stretch="Fill" StrokeLineJoin="Round"
-                       Stroke="{DynamicResource ModernContrastBrush}" StrokeThickness="0"/>
                             <Path Width="14" Height="14" Margin="13,12" Stretch="Fill" Fill="{DynamicResource ModernContrastBrush}"
                     Data="{StaticResource PathPerson}"/>
                         </Canvas>
@@ -236,8 +226,6 @@
                   Margin="12,0,12,0" ToolTip="Twitter trends" CommandParameter="{x:Static Extensions:ViewType.Popup}"
                   Command="{Binding TrendsCommand}">
                         <Canvas>
-                            <Ellipse Width="30" Height="30" Margin="5" Stretch="Fill" StrokeLineJoin="Round"
-                       Stroke="{DynamicResource ModernContrastBrush}" StrokeThickness="0"/>
                             <Path Width="15" Height="14" Margin="12,13" Stretch="Fill" Fill="{DynamicResource ModernContrastBrush}"
                     Data="{StaticResource PathTrend}"/>
                         </Canvas>
@@ -261,7 +249,6 @@
                       Command="{Binding AddSingleImageCommand}">
                                 <Grid>
                                     <Grid Visibility="{Binding SingleImageSelected, Converter={StaticResource negateBooleanToVisibilityConverter}}">
-                                        <Ellipse Stroke="{DynamicResource ModernContrastBrush}" StrokeThickness="0"/>
                                         <Path Width="16" Height="14" Margin="0" Stretch="Fill" Fill="{DynamicResource ModernContrastBrush}"
                           Data="{StaticResource PathImage}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                     </Grid>
@@ -294,13 +281,13 @@
                             <TextBlock FontSize="12" FontWeight="SemiBold" TextAlignment="Left" TextTrimming="CharacterEllipsis"
                          Height="17" DockPanel.Dock="Bottom" Margin="5,0,5,3" Style="{DynamicResource NotFollowing}"
                          Visibility="{Binding StatusLabelVisibility}" Text="{Binding StatusText}"/>
-                            <RichTextBox Style="{StaticResource NewTwitRichTextBox}" 
+                            <RichTextBox 
                            PreviewDragEnter="NewTweetEdit_DragOver" PreviewDragOver="NewTweetEdit_DragOver"
                            Drop="NewTweetEdit_Drop" TextChanged="NewTweetEdit_TextChanged"
                            MouseEnter="NewTweetEdit_MouseEvent" MouseLeave="NewTweetEdit_MouseEvent"
                            GotFocus="NewTweetEdit_MouseEvent" LostFocus="NewTweetEdit_MouseEvent"
                            PreviewKeyDown="NewTweetEdit_KeyDown" x:Name="NewTweetEdit" 
-                                         
+                           Style="{DynamicResource NewTweet}"
                            TextBlock.Foreground="{DynamicResource ModernTextLighterBrush}" Margin="0,5,0,2" AllowDrop="true"
                            IsDocumentEnabled="true" AcceptsReturn="false" IsEnabled="{Binding TweetEntryEnabled}"
                            Extensions:IntellisenseExtension.IsEnabled="{Binding UseAutoComplete, Mode=OneWay}"
@@ -334,8 +321,6 @@
                         <Button Style="{DynamicResource MetroPathButton}" Grid.Column="2" ToolTip="Update" Width="60"
                     Command="{Binding PostTweetCommand}" IsEnabled="{Binding PostTweetEnabled}">
                             <Grid>
-                                <Ellipse Width="38" Height="38" Stretch="Fill" StrokeLineJoin="Round"
-                         Stroke="{DynamicResource NewTweetButton}" StrokeThickness="0"/>
                                 <Path Width="18" Height="18" Stretch="Fill" Fill="{DynamicResource NewTweetButton}"
                       Data="{StaticResource PathTweet}" Margin="0,2,0,0"/>
                             </Grid>
